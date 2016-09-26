@@ -22,7 +22,7 @@ function main() {
 main();
 
 function printIntro() {
-    console.log('Speakest thou thine name, caller of your inner self. What is the name bestowed upon thee by thy family? What is the name given to thee by thy friends?\n');
+    console.log('Speakest thou thine name, caller of your inner self.\n What is the name bestowed upon thee by thy family?\n What is the name given to thee by thy friends?');
 }
 
 function setFName() {
@@ -39,4 +39,11 @@ function printNameReaction() {
 
 function setKnowSelf() {
     knowSelf = PROMPT.question('<<(1) = I know who you are.>>\n<<(2) = I do not know you.>>\n<<(3) = I do not know you, nor do I care to.>>\n>');
+    while (knowSelf != 1 && knowSelf != 2 && knowSelf != 3) {
+        knowSelf = PROMPT.question('That is not an option.\n<<(1) = I know who you are.>>\n<<(2) = I do not know you.>>\n<<(3) = I do not know you, nor do I care to.>>\n>');
+    }
+}
+
+function printKnowSelfReaction() {
+
 }
