@@ -44,7 +44,7 @@ function printNameReaction() {
 }
 
 function setKnowSelf() {
-    let chooseVar = PROMPT.question('<<(1) = I know who you are.>>\n' +
+    chooseVar = PROMPT.question('<<(1) = I know who you are.>>\n' +
         '<<(2) = I do not know you.>>\n' +
         '<<(3) = I do not know you, nor do I care to.>>\n' +
         '>');
@@ -61,19 +61,19 @@ function printKnowSelf() {
     if (chooseVar == 1) {
         console.log('\nFascinating.\n ' +
             'If you know me, then you must truly know yourself.\n ' +
-            'An enviable quality.\n ');
+            'An enviable quality.');
     } else if (chooseVar == 2) {
         console.log('\nFew people do.\n ' +
             'Pay it no mind.\n ' +
             'It is not a personal failing.\n ' +
-            'You will, in time, learn of me.\n ');
+            'You will, in time, learn of me.');
     } else if (chooseVar == 3) {
         console.log('\n...?\n ' +
             'I see.\n ' +
             'Then be warned, arrogant one...\n ' +
-            'You will, in time, learn of me.\n ');
+            'You will, in time, learn of me.');
     }
-    console.log('\nDoubtlessly, though, you do not know why I am here.\n ' +
+    console.log(' Doubtlessly, though, you do not know why I am here.\n ' +
         'Or why you are here, for that matter.\n ' +
         'Do you?');
 }
