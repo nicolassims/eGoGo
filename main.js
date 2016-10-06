@@ -95,9 +95,9 @@ function setKnowPurpose() {
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5 && chooseVar != 6
         && chooseVar != 7 && chooseVar != 8 && chooseVar != 9 && chooseVar != 10 && chooseVar != 11
         && chooseVar != 12) {
-        chooseVar = PROMPT.question('\nThat is not an option.\n' +
+        chooseVar = PROMPT.question('\nTo strike your own path is a worthy aim... but not now.\n' +
             '<<(1) = I am here to find that which has not been found.>>\n' +
-            '<<(2) = I am here to pacify that which is enraged.>>\n' +
+            '<<(2) = I am here to bring sense to a crazed world.>>\n' +
             '<<(3) = I am here to do that which I can do.>>\n' +
             '<<(4) = I am here to think that which has not been thought.>>\n' +
             '<<(5) = I am here to command that which needs direction.>>\n' +
@@ -115,10 +115,34 @@ function setKnowPurpose() {
 function printKnowPurpose() {
     console.log('\nFascinating. ');
     if (chooseVar == 1) {
-        console.log('Then I wish you luck in your search.');
+        console.log(' I admire your sense of adventure.');
     } else if (chooseVar == 2) {
-        console.log('Then I wish you a cool head.');
-    } else {
-
+        console.log(' I admire your calmheadedness.');
+    } else if (chooseVar == 3) {
+        console.log(' You\'re more of a versatile jack, then.\n ' +
+            'Admirable.');
+    } else if (chooseVar == 4) {
+        console.log(' A free thinker?\n ' +
+            'Admirable.');
+    } else if (chooseVar == 5) {
+        console.log(' A leader, are you?\n ' +
+            'Admirable, but remember not every lion roars.');
+    } else if (chooseVar == 6) {
+        console.log(' Admirable, but remember somethings are best not known.');
+    } else if (chooseVar == 7) {
+        console.log(' You seek justice?\n ' +
+            'You will make enemies, but I find that admirable.');
+    } else if (chooseVar == 8) {
+        console.log(' Your passion is clear to all who meet you.\n ' +
+            'Admirable.');
+    } else if (chooseVar == 9) {
+        console.log(' And, in the same fashion, your allies will empower you.\n ' +
+            'Admirable.');
+    } else if (chooseVar == 10) {
+        console.log(' Such patience... admirable.');
+    } else if (chooseVar == 11) {
+        console.log(' An admirable goal such as that will ensure you will never suffer alone.');
+    } else if (chooseVar == 12) {
+        console.log(' To do so without expecting a reward is truly admirable.');
     }
 }
