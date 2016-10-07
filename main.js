@@ -1,16 +1,29 @@
 /**
  * @author Sims, Nicolas (sableye.nico@gmail.com)
  * @version 0.0.1
- * @summary River Falls Homes Construction Company. || created: 09.23.2016
+ * @summary A great adventure || created: 09.23.2016
  * @todo
  */
 
 "use strict";
 const PROMPT = require('readline-sync');
 
-let chooseVar, fName, lName;
+let chooseVar, fName, lName, adventure, sense, versatility, imagination, leadership,
+    intelligence, morality, passion, hope, patience, friendliness, sympathy;
 
 function main() {
+    setAdventure();
+    setSense();
+    setVersatility();
+    setImagination();
+    setLeadership();
+    setIntelligence();
+    setMorality();
+    setPassion();
+    setHope();
+    setPatience();
+    setFriendliness();
+    setSympathy();
     printIntro();
     setFName();
     setLName();
@@ -19,6 +32,7 @@ function main() {
     printKnowSelf();
     setKnowPurpose();
     printKnowPurpose();
+    printPlayerStatus();
 }
 
 main();
@@ -116,33 +130,152 @@ function printKnowPurpose() {
     console.log('\nFascinating. ');
     if (chooseVar == 1) {
         console.log(' I admire your sense of adventure.');
+        setAdventure(10);
     } else if (chooseVar == 2) {
         console.log(' I admire your calmheadedness.');
+        setSense(10);
     } else if (chooseVar == 3) {
         console.log(' You\'re more of a versatile jack, then.\n ' +
             'Admirable.');
+        setVersatility(10);
     } else if (chooseVar == 4) {
         console.log(' A free thinker?\n ' +
             'Admirable.');
+        setImagination(10);
     } else if (chooseVar == 5) {
         console.log(' A leader, are you?\n ' +
             'Admirable, but remember not every lion roars.');
+        setLeadership(10);
     } else if (chooseVar == 6) {
         console.log(' Admirable, but remember somethings are best not known.');
+        setIntelligence(10);
     } else if (chooseVar == 7) {
         console.log(' You seek justice?\n ' +
             'You will make enemies, but I find that admirable.');
+        setMorality(10);
     } else if (chooseVar == 8) {
         console.log(' Your passion is clear to all who meet you.\n ' +
             'Admirable.');
+        setPassion(10);
     } else if (chooseVar == 9) {
         console.log(' And, in the same fashion, your allies will empower you.\n ' +
             'Admirable.');
+        setHope(10);
     } else if (chooseVar == 10) {
         console.log(' Such patience... admirable.');
+        setPatience(10);
     } else if (chooseVar == 11) {
         console.log(' An admirable goal such as that will ensure you will never suffer alone.');
+        setFriendliness(10);
     } else if (chooseVar == 12) {
         console.log(' To do so without expecting a reward is truly admirable.');
+        setSympathy(10);
     }
+}
+
+//
+//mechanicFunctions
+//
+
+function setAdventure(value) {
+    if (adventure == null) {
+        adventure = 10;
+    } else {
+        adventure += value;
+    }
+}
+
+function setSense(value) {
+    if (sense == null) {
+        sense = 10;
+    } else {
+        sense += value;
+    }
+}
+
+function setVersatility(value) {
+    if (versatility == null) {
+        versatility = 10;
+    } else {
+        versatility += value;
+    }
+}
+
+function setImagination(value) {
+    if (imagination == null) {
+        imagination = 10;
+    } else {
+        imagination += value;
+    }
+}
+
+function setLeadership(value) {
+    if (leadership == null) {
+        leadership = 10;
+    } else {
+        leadership += value;
+    }
+}
+
+function setIntelligence(value) {
+    if (intelligence == null) {
+        intelligence = 10;
+    } else {
+        intelligence += value;
+    }
+}
+
+function setMorality(value) {
+    if (morality == null) {
+        morality = 10;
+    } else {
+        morality += value;
+    }
+}
+
+function setPassion(value) {
+    if (passion == null) {
+        passion = 10;
+    } else {
+        passion += value;
+    }
+}
+
+function setHope(value) {
+    if (hope == null) {
+        hope = 10;
+    } else {
+        hope += value;
+    }
+}
+
+function setPatience(value) {
+    if (patience == null) {
+        patience = 10;
+    } else {
+        patience += value;
+    }
+}
+
+function setFriendliness(value) {
+    if (friendliness == null) {
+        friendliness = 10;
+    } else {
+        friendliness += value;
+    }
+}
+
+function setSympathy(value) {
+    if (sympathy == null) {
+        sympathy = 10;
+    } else {
+        sympathy += value;
+    }
+}
+
+function printPlayerStatus() {
+    console.log('\nAdventure |' + adventure + '| Leadership |' + leadership + '| Hope |' + hope + '|\n' +
+        'Sense |' + sense + '| Intelligence |' + intelligence + '| Patience |' + patience + '|\n' +
+        'Versatility |' + versatility + '| Morality |' + morality + '| Friendliness |' + friendliness + '|\n' +
+        'Imagination |' + imagination + '| Passion |' + passion + '| Sympathy |' + sympathy + '|');
 }
