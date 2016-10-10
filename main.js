@@ -24,6 +24,7 @@ function main() {
     setPatience();
     setFriendliness();
     setSympathy();
+    printPlayerStatus();
     printIntro();
     setFName();
     setLName();
@@ -107,8 +108,8 @@ function setKnowPurpose() {
         '<<(12) = I am here to console that which feels great sadness.>>\n' +
         '>');
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5 && chooseVar != 6
-        && chooseVar != 7 && chooseVar != 8 && chooseVar != 9 && chooseVar != 10 && chooseVar != 11
-        && chooseVar != 12) {
+    && chooseVar != 7 && chooseVar != 8 && chooseVar != 9 && chooseVar != 10 && chooseVar != 11
+    && chooseVar != 12) {
         chooseVar = PROMPT.question('\nTo strike your own path is a worthy aim... but not now.\n' +
             '<<(1) = I am here to find that which has not been found.>>\n' +
             '<<(2) = I am here to bring sense to a crazed world.>>\n' +
@@ -274,8 +275,9 @@ function setSympathy(value) {
 }
 
 function printPlayerStatus() {
-    console.log('\nAdventure |' + adventure + '| Leadership |' + leadership + '| Hope |' + hope + '|\n' +
-        'Sense |' + sense + '| Intelligence |' + intelligence + '| Patience |' + patience + '|\n' +
-        'Versatility |' + versatility + '| Morality |' + morality + '| Friendliness |' + friendliness + '|\n' +
-        'Imagination |' + imagination + '| Passion |' + passion + '| Sympathy |' + sympathy + '|');
+    console.log('\n' +
+        'Adventure      |' + adventure   + '|    Leadership      |' + leadership +   '|    Hope            |' + hope + '|\n' +
+        'Sense          |' + sense       + '|    Intelligence    |' + intelligence + '|    Patience        |' + patience + '|\n' +
+        'Versatility    |' + versatility + '|    Morality        |' + morality +     '|    Friendliness    |' + friendliness + '|\n' +
+        'Imagination    |' + imagination + '|    Passion         |' + passion +      '|    Sympathy        |' + sympathy + '|');
 }
