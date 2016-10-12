@@ -8,8 +8,9 @@
 "use strict";
 const PROMPT = require('readline-sync');
 
-let chooseVar, fName, lName, adventure, sense, versatility, imagination, leadership,
-    intelligence, morality, passion, hope, patience, friendliness, sympathy;
+let chooseVar, adventure, sense, versatility, imagination, leadership, intelligence, morality, passion, hope, patience,
+    friendliness, sympathy;
+let fName, lName;
 
 function main() {
     setAdventure();
@@ -24,7 +25,6 @@ function main() {
     setPatience();
     setFriendliness();
     setSympathy();
-    printPlayerStatus();
     printIntro();
     setFName();
     setLName();
@@ -33,7 +33,7 @@ function main() {
     printKnowSelf();
     setKnowPurpose();
     printKnowPurpose();
-    printPlayerStatus();
+    wipeScreen();
 }
 
 main();
@@ -172,6 +172,10 @@ function printKnowPurpose() {
         console.log(' To do so without expecting a reward is truly admirable.');
         setSympathy(10);
     }
+    console.log(' However, it is with great sadness that I inform you we must now part.\n ' +
+        'Not forever, not even for long, but I must begone--and you must too.\n ' +
+        'When we meet again, you will possess knowledge beyond knowledge, and strength beyond strength.\n ' +
+        'I await this occasion with bated breath. ');
 }
 
 //
@@ -274,6 +278,10 @@ function setSympathy(value) {
     }
 }
 
+function wipeScreen() {
+
+}
+
 function printPlayerStatus() {
     console.log('\n' +
         'Adventure      |' + adventure   + '|    Leadership      |' + leadership +   '|    Hope            |' + hope + '|\n' +
@@ -281,3 +289,7 @@ function printPlayerStatus() {
         'Versatility    |' + versatility + '|    Morality        |' + morality +     '|    Friendliness    |' + friendliness + '|\n' +
         'Imagination    |' + imagination + '|    Passion         |' + passion +      '|    Sympathy        |' + sympathy + '|');
 }
+
+//
+//storyFunctions
+//
