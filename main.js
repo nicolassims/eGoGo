@@ -13,6 +13,7 @@ let chooseVar, adventure, sense, versatility, imagination, leadership, intellige
 let fName, lName;
 
 function main() {
+    wipeScreen();
     setAdventure();
     setSense();
     setVersatility();
@@ -64,7 +65,7 @@ function setKnowSelf() {
         '<<(3) = I do not know you, nor do I care to.>>\n' +
         '>');
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3) {
-        chooseVar = PROMPT.question('That is not an option.\n' +
+        chooseVar = PROMPT.question('\nThat is not an option.\n' +
             '<<(1) = I know who you are.>>\n' +
             '<<(2) = I do not know you.>>\n' +
             '<<(3) = I do not know you, nor do I care to.>>\n' +
@@ -182,6 +183,36 @@ function printKnowPurpose() {
 //mechanicFunctions
 //
 
+function wipeScreen() {
+    console.log('\n' +
+        '................................OOOOOOOOOO..............................\n' +
+        '..............................OOOOOOOOOOOOOO............................\n' +
+        '.............................OOOOOOOOOOOOOOOO...........................\n' +
+        '............................O.OOOOOOOOOOOOOO.O..........................\n' +
+        '............................OO..OOOOOOOOOO..OO..........................\n' +
+        '............................OOO..I......I..OOO..........................\n' +
+        '.............................OOOOOOO..OOOOOOO...........................\n' +
+        '...............................OOOOOOOOOOOO.............................\n' +
+        '................................OOOOOOOOOO..............................\n' +
+        '................................OOOOOOOOOO..............................\n' +
+        '...............................OOOOOOOOOOOO.............................\n' +
+        '..............................OOOOOOOOOOOOOO............................\n' +
+        '...............................OOOOOOOOOOOO.............................\n' +
+        '...............................O..OOOOOO..O.............................\n' +
+        '................................O...OO...O..............................\n' +
+        '................................OOO....OOO..............................\n' +
+        '..............................O.OOOOOOOOOO.O............................\n' +
+        '..............................O.OOOOOOOOOO.O............................\n' +
+        '.............................OO..OOOOOOOO..OO...........................\n' +
+        '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
+        '..........................OOOOOO....OO....OOOOOO........................\n' +
+        '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
+        '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+    chooseVar = PROMPT.question('                      Press Enter to Continue.\n>');
+    process.stdout.write('\x1Bc');
+
+}
+
 function setAdventure(value) {
     if (adventure == null) {
         adventure = 10;
@@ -276,10 +307,6 @@ function setSympathy(value) {
     } else {
         sympathy += value;
     }
-}
-
-function wipeScreen() {
-
 }
 
 function printPlayerStatus() {
