@@ -9,10 +9,12 @@
 const PROMPT = require('readline-sync');
 
 let chooseVar, adventure, sense, versatility, imagination, leadership, intelligence, morality, passion, hope, patience,
-    friendliness, sympathy;
+    friendliness, sympathy, dateMonth, dateDay;
 let fName, lName;
 
 function main() {
+    setDateMonth();
+    setDateDay();
     wipeScreen();
     setAdventure();
     setSense();
@@ -183,35 +185,132 @@ function printKnowPurpose() {
 //mechanicFunctions
 //
 
+function setDateMonth() {
+    if (dateMonth == null) {
+        dateMonth = 9;
+    } else {
+        dateMonth += 1;
+    }
+} //Increases dateMonth by one.
+
+function setDateDay(value) {
+    if (dateDay == null) {
+        dateDay = 4;
+    } else if (value != null) {
+        dateDay = value;
+    } else {
+        dateDay += 1;
+    }
+} //Increases dateDay by one unless given a value.
+
 function wipeScreen() {
-    console.log('\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '..............................OOOOOOOOOOOOOO............................\n' +
-        '.............................OOOOOOOOOOOOOOOO...........................\n' +
-        '............................O.OOOOOOOOOOOOOO.O..........................\n' +
-        '............................OO..OOOOOOOOOO..OO..........................\n' +
-        '............................OOO..I......I..OOO..........................\n' +
-        '.............................OOOOOOO..OOOOOOO...........................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '..............................OOOOOOOOOOOOOO............................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '...............................O..OOOOOO..O.............................\n' +
-        '................................O...OO...O..............................\n' +
-        '................................OOO....OOO..............................\n' +
-        '..............................O.OOOOOOOOOO.O............................\n' +
-        '..............................O.OOOOOOOOOO.O............................\n' +
-        '.............................OO..OOOOOOOO..OO...........................\n' +
-        '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
-        '..........................OOOOOO....OO....OOOOOO........................\n' +
-        '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
-        '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+    process.stdout.write('\x1Bc');
+    if (dateMonth >= 10 && dateDay >= 10) {
+        console.log('\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '.....' + dateMonth + '/' + dateDay + '...................OOOOOOOOOOOOOOOO...........................\n' +
+            '............................O.OOOOOOOOOOOOOO.O..........................\n' +
+            '............................OO..OOOOOOOOOO..OO..........................\n' +
+            '............................OOO..I......I..OOO..........................\n' +
+            '.............................OOOOOOO..OOOOOOO...........................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '...............................O..OOOOOO..O.............................\n' +
+            '................................O...OO...O..............................\n' +
+            '................................OOO....OOO..............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '.............................OO..OOOOOOOO..OO...........................\n' +
+            '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
+            '..........................OOOOOO....OO....OOOOOO........................\n' +
+            '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
+            '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+    } else if (dateMonth >= 10 && dateDay < 10) {
+        console.log('\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '.....' + dateMonth + '/' + dateDay + '....................OOOOOOOOOOOOOOOO...........................\n' +
+            '............................O.OOOOOOOOOOOOOO.O..........................\n' +
+            '............................OO..OOOOOOOOOO..OO..........................\n' +
+            '............................OOO..I......I..OOO..........................\n' +
+            '.............................OOOOOOO..OOOOOOO...........................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '...............................O..OOOOOO..O.............................\n' +
+            '................................O...OO...O..............................\n' +
+            '................................OOO....OOO..............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '.............................OO..OOOOOOOO..OO...........................\n' +
+            '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
+            '..........................OOOOOO....OO....OOOOOO........................\n' +
+            '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
+            '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+
+    } else if (dateMonth < 10 && dateDay >= 10) {
+        console.log('\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '.....' + dateMonth + '/' + dateDay + '....................OOOOOOOOOOOOOOOO...........................\n' +
+            '............................O.OOOOOOOOOOOOOO.O..........................\n' +
+            '............................OO..OOOOOOOOOO..OO..........................\n' +
+            '............................OOO..I......I..OOO..........................\n' +
+            '.............................OOOOOOO..OOOOOOO...........................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '...............................O..OOOOOO..O.............................\n' +
+            '................................O...OO...O..............................\n' +
+            '................................OOO....OOO..............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '.............................OO..OOOOOOOO..OO...........................\n' +
+            '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
+            '..........................OOOOOO....OO....OOOOOO........................\n' +
+            '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
+            '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+    } else {
+        console.log('\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '.....' + dateMonth + '/' + dateDay + '.....................OOOOOOOOOOOOOOOO...........................\n' +
+            '............................O.OOOOOOOOOOOOOO.O..........................\n' +
+            '............................OO..OOOOOOOOOO..OO..........................\n' +
+            '............................OOO..I......I..OOO..........................\n' +
+            '.............................OOOOOOO..OOOOOOO...........................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '................................OOOOOOOOOO..............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '..............................OOOOOOOOOOOOOO............................\n' +
+            '...............................OOOOOOOOOOOO.............................\n' +
+            '...............................O..OOOOOO..O.............................\n' +
+            '................................O...OO...O..............................\n' +
+            '................................OOO....OOO..............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '..............................O.OOOOOOOOOO.O............................\n' +
+            '.............................OO..OOOOOOOO..OO...........................\n' +
+            '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
+            '..........................OOOOOO....OO....OOOOOO........................\n' +
+            '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
+            '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
+    }
     chooseVar = PROMPT.question('                      Press Enter to Continue.\n>');
     process.stdout.write('\x1Bc');
 
-}
+} //Wipes screen, displays date.
 
 function setAdventure(value) {
     if (adventure == null) {
@@ -219,7 +318,7 @@ function setAdventure(value) {
     } else {
         adventure += value;
     }
-}
+} //Increases the stat by a value.
 
 function setSense(value) {
     if (sense == null) {
@@ -227,7 +326,7 @@ function setSense(value) {
     } else {
         sense += value;
     }
-}
+} //Increases the stat by a value.
 
 function setVersatility(value) {
     if (versatility == null) {
@@ -235,7 +334,7 @@ function setVersatility(value) {
     } else {
         versatility += value;
     }
-}
+} //Increases the stat by a value.
 
 function setImagination(value) {
     if (imagination == null) {
@@ -243,7 +342,7 @@ function setImagination(value) {
     } else {
         imagination += value;
     }
-}
+} //Increases the stat by a value.
 
 function setLeadership(value) {
     if (leadership == null) {
@@ -251,7 +350,7 @@ function setLeadership(value) {
     } else {
         leadership += value;
     }
-}
+} //Increases the stat by a value.
 
 function setIntelligence(value) {
     if (intelligence == null) {
@@ -259,7 +358,7 @@ function setIntelligence(value) {
     } else {
         intelligence += value;
     }
-}
+} //Increases the stat by a value.
 
 function setMorality(value) {
     if (morality == null) {
@@ -267,7 +366,7 @@ function setMorality(value) {
     } else {
         morality += value;
     }
-}
+} //Increases the stat by a value.
 
 function setPassion(value) {
     if (passion == null) {
@@ -275,7 +374,7 @@ function setPassion(value) {
     } else {
         passion += value;
     }
-}
+} //Increases the stat by a value.
 
 function setHope(value) {
     if (hope == null) {
@@ -283,7 +382,7 @@ function setHope(value) {
     } else {
         hope += value;
     }
-}
+} //Increases the stat by a value.
 
 function setPatience(value) {
     if (patience == null) {
@@ -291,7 +390,7 @@ function setPatience(value) {
     } else {
         patience += value;
     }
-}
+} //Increases the stat by a value.
 
 function setFriendliness(value) {
     if (friendliness == null) {
@@ -299,7 +398,7 @@ function setFriendliness(value) {
     } else {
         friendliness += value;
     }
-}
+} //Increases the stat by a value.
 
 function setSympathy(value) {
     if (sympathy == null) {
@@ -307,7 +406,7 @@ function setSympathy(value) {
     } else {
         sympathy += value;
     }
-}
+} //Increases the stat by a value.
 
 function printPlayerStatus() {
     console.log('\n' +
@@ -315,8 +414,17 @@ function printPlayerStatus() {
         'Sense          |' + sense       + '|    Intelligence    |' + intelligence + '|    Patience        |' + patience + '|\n' +
         'Versatility    |' + versatility + '|    Morality        |' + morality +     '|    Friendliness    |' + friendliness + '|\n' +
         'Imagination    |' + imagination + '|    Passion         |' + passion +      '|    Sympathy        |' + sympathy + '|');
-}
+} //Increases the stat by a value.
 
 //
 //storyFunctions
 //
+
+//
+//possiblyUsefulFunctions
+//
+
+/*
+const JANUARY = 1, FEBRUARY = 2, MARCH = 3, APRIL = 4, MAY = 5, JUNE = 6, JULY = 7, AUGUST = 8, SEPTEMBER = 9,
+    OCTOBER = 10, NOVEMBER = 11, DECEMBER = 12;
+*/
