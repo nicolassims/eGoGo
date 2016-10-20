@@ -1,7 +1,7 @@
 /**
- * @author Sims, Nicolas (sableye.nico@gmail.com)
- * @version 0.0.1
- * @summary A great adventure || created: 09.23.2016
+ * @author Sims, Nicolas (sableye nico@gmail com)
+ * @version 0 0 1
+ * @summary A great adventure || created: 09 23 2016
  * @todo
  */
 
@@ -10,11 +10,12 @@ const PROMPT = require('readline-sync');
 
 let chooseVar, adventure, sense, versatility, imagination, leadership, intelligence, morality, passion, hope, patience,
     friendliness, sympathy, dateMonth, dateDay;
-let fName, lName;
+let fName, lName, dateName;
 
 function main() {
     setDateMonth();
     setDateDay();
+    setDayName();
     wipeScreen();
     setAdventure();
     setSense();
@@ -36,6 +37,12 @@ function main() {
     printKnowSelf();
     setKnowPurpose();
     printKnowPurpose();
+
+
+
+
+
+    //
     wipeScreen();
 }
 
@@ -179,6 +186,8 @@ function printKnowPurpose() {
         'Not forever, not even for long, but I must begone--and you must too.\n ' +
         'When we meet again, you will possess knowledge beyond knowledge, and strength beyond strength.\n ' +
         'I await this occasion with bated breath. ');
+    chooseVar = PROMPT.question('                      Press Enter to Continue\n>');
+    process.stdout.write('\x1Bc');
 }
 
 //
@@ -187,61 +196,97 @@ function printKnowPurpose() {
 
 function setDateMonth() {
     if (dateMonth == null) {
-        dateMonth = 9;
+        //dateMonth = 9;
+        dateMonth = 19;
     } else {
         dateMonth += 1;
     }
-} //Increases dateMonth by one.
+} //Increases dateMonth by one 
 
 function setDateDay(value) {
     if (dateDay == null) {
+        //dateDay = 4;
         dateDay = 4;
     } else if (value != null) {
         dateDay = value;
     } else {
         dateDay += 1;
     }
-} //Increases dateDay by one unless given a value.
+} //Increases dateDay by one unless given a value 
+
+function setDayName () {
+    if (dateName == null || dateName == 'Saturday') {
+        //dateName = 'Sunday';
+        dateName = 'Tuesday';
+    } else if (dateName == 'Sunday') {
+        dateName = 'Monday';
+    } else if (dateName == 'Monday') {
+        dateName = 'Tuesday';
+    } else if (dateName == 'Tuesday') {
+        dateName = 'Wednesday';
+    } else if (dateName == 'Wednesday') {
+        dateName = 'Thursday';
+    } else if (dateName == 'Thursday') {
+        dateName = 'Friday';
+    } else {
+        dateName = 'Saturday';
+    }
+} //Moves the day up one 
 
 function wipeScreen() {
     process.stdout.write('\x1Bc');
     console.log('\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '..............................OOOOOOOOOOOOOO............................');
+        '                                OOOOOOOOOO                              \n' +
+        '                              OOOOOOOOOOOOOO                            ');
     if (dateMonth >= 10 && dateDay >= 10) {
-        console.log('.....' + dateMonth + '/' + dateDay + '...................OOOOOOOOOOOOOOOO...........................');
+        console.log('     ' + dateMonth + '/' + dateDay + '                   OOOOOOOOOOOOOOOO                           ');
     } else if (dateMonth >= 10 && dateDay < 10) {
-        console.log('.....' + dateMonth + '/' + dateDay + '....................OOOOOOOOOOOOOOOO...........................');
+        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO                           ');
     } else if (dateMonth < 10 && dateDay >= 10) {
-        console.log('.....' + dateMonth + '/' + dateDay + '....................OOOOOOOOOOOOOOOO...........................');
+        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO                           ');
     } else {
-        console.log('.....' + dateMonth + '/' + dateDay + '.....................OOOOOOOOOOOOOOOO...........................');
+        console.log('     ' + dateMonth + '/' + dateDay + '                     OOOOOOOOOOOOOOOO                           ');
+    }
+    if (dateName == 'Saturday') {
+        console.log('     Saturday                OOOOOOOOOOOOOOOO                           ');
+    } else if (dateName == 'Sunday') {
+        console.log('     Sunday                  OOOOOOOOOOOOOOOO                           ');
+    } else if (dateName == 'Monday') {
+        console.log('     Monday                  OOOOOOOOOOOOOOOO                           ');
+    } else if (dateName == 'Tuesday') {
+        console.log('     Tuesday                 OOOOOOOOOOOOOOOO                           ');
+    } else if (dateName == 'Wednesday') {
+        console.log('     Wednesday               OOOOOOOOOOOOOOOO                           ');
+    } else if (dateName == 'Thursday') {
+        console.log('     Thursday                OOOOOOOOOOOOOOOO                           ');
+    } else {
+        console.log('     Friday                  OOOOOOOOOOOOOOOO                           ');
     }
     console.log(
-        '............................O.OOOOOOOOOOOOOO.O..........................\n' +
-        '............................OO..OOOOOOOOOO..OO..........................\n' +
-        '............................OOO..I......I..OOO..........................\n' +
-        '.............................OOOOOOO..OOOOOOO...........................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '................................OOOOOOOOOO..............................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '..............................OOOOOOOOOOOOOO............................\n' +
-        '...............................OOOOOOOOOOOO.............................\n' +
-        '...............................O..OOOOOO..O.............................\n' +
-        '................................O...OO...O..............................\n' +
-        '................................OOO....OOO..............................\n' +
-        '..............................O.OOOOOOOOOO.O............................\n' +
-        '..............................O.OOOOOOOOOO.O............................\n' +
-        '.............................OO..OOOOOOOO..OO...........................\n' +
-        '...........................OOOO..OOOOOOOO..OOOO.........................\n' +
-        '..........................OOOOOO....OO....OOOOOO........................\n' +
-        '........................OOOOOOOOOOO....OOOOOOOOOO.......................\n' +
-        '......................OOOOOOOOOOOOOOOOOOOOOOOOOOOOO.....................\n');
-    chooseVar = PROMPT.question('                      Press Enter to Continue.\n>');
+        '                            O OOOOOOOOOOOOOO O                          \n' +
+        '                            OO  OOOOOOOOOO  OO                          \n' +
+        '                            OOO  I      I  OOO                          \n' +
+        '                             OOOOOOO  OOOOOOO                           \n' +
+        '                               OOOOOOOOOOOO                             \n' +
+        '  ###### ###### ######          OOOOOOOOOO      ###### ######  ##       \n' +
+        '  ###    ##     ##  ##          OOOOOOOOOO      ##     ##  ##  ##       \n' +
+        '  ###### ## ### ##  ## ###     OOOOOOOOOOOO     ## ### ##  ##  ##       \n' +
+        '  ###    ##  ## ##  ##        OOOOOOOOOOOOOO    ##  ## ##  ##           \n' +
+        '  ###### ###### ######         OOOOOOOOOOOO     ###### ######  ##       \n' +
+        '                               O  OOOOOO  O                             \n' +
+        '                                O   OO   O                              \n' +
+        '                                OOO    OOO                              \n' +
+        '                              O OOOOOOOOOO O                            \n' +
+        '                              O OOOOOOOOOO O                            \n' +
+        '                             OO  OOOOOOOO  OO                           \n' +
+        '                           OOOO  OOOOOOOO  OOOO                         \n' +
+        '                          OOOOOO    OO    OOOOOO                         \n' +
+        '                         OOOOOOOOO      OOOOOOOOOO                        \n' +
+        '                       OOOOOOOOOOOOOOOOOOOOOOOOOOOOO                      \n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
 
-} //Wipes screen, displays date.
+} //Wipes screen, displays date 
 
 function setAdventure(value) {
     if (adventure == null) {
@@ -249,7 +294,7 @@ function setAdventure(value) {
     } else {
         adventure += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setSense(value) {
     if (sense == null) {
@@ -257,7 +302,7 @@ function setSense(value) {
     } else {
         sense += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setVersatility(value) {
     if (versatility == null) {
@@ -265,7 +310,7 @@ function setVersatility(value) {
     } else {
         versatility += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setImagination(value) {
     if (imagination == null) {
@@ -273,7 +318,7 @@ function setImagination(value) {
     } else {
         imagination += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setLeadership(value) {
     if (leadership == null) {
@@ -281,7 +326,7 @@ function setLeadership(value) {
     } else {
         leadership += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setIntelligence(value) {
     if (intelligence == null) {
@@ -289,7 +334,7 @@ function setIntelligence(value) {
     } else {
         intelligence += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setMorality(value) {
     if (morality == null) {
@@ -297,7 +342,7 @@ function setMorality(value) {
     } else {
         morality += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setPassion(value) {
     if (passion == null) {
@@ -305,7 +350,7 @@ function setPassion(value) {
     } else {
         passion += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setHope(value) {
     if (hope == null) {
@@ -313,7 +358,7 @@ function setHope(value) {
     } else {
         hope += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setPatience(value) {
     if (patience == null) {
@@ -321,7 +366,7 @@ function setPatience(value) {
     } else {
         patience += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setFriendliness(value) {
     if (friendliness == null) {
@@ -329,7 +374,7 @@ function setFriendliness(value) {
     } else {
         friendliness += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function setSympathy(value) {
     if (sympathy == null) {
@@ -337,7 +382,7 @@ function setSympathy(value) {
     } else {
         sympathy += value;
     }
-} //Increases the stat by a value.
+} //Increases the stat by a value 
 
 function printPlayerStatus() {
     console.log('\n' +
@@ -345,7 +390,7 @@ function printPlayerStatus() {
         'Sense          |' + sense       + '|    Intelligence    |' + intelligence + '|    Patience        |' + patience + '|\n' +
         'Versatility    |' + versatility + '|    Morality        |' + morality +     '|    Friendliness    |' + friendliness + '|\n' +
         'Imagination    |' + imagination + '|    Passion         |' + passion +      '|    Sympathy        |' + sympathy + '|');
-} //Displays player status.
+} //Displays player status 
 
 //
 //storyFunctions
