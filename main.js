@@ -196,8 +196,7 @@ function printKnowPurpose() {
 
 function setDateMonth() {
     if (dateMonth == null) {
-        //dateMonth = 9;
-        dateMonth = 19;
+        dateMonth = 9;
     } else {
         dateMonth += 1;
     }
@@ -205,7 +204,6 @@ function setDateMonth() {
 
 function setDateDay(value) {
     if (dateDay == null) {
-        //dateDay = 4;
         dateDay = 4;
     } else if (value != null) {
         dateDay = value;
