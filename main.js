@@ -234,53 +234,52 @@ function setDayName () {
 function wipeScreen() {
     process.stdout.write('\x1Bc');
     console.log('\n' +
-        '                                OOOOOOOOOO                              \n' +
-        '                              OOOOOOOOOOOOOO                            ');
+        '                                OOOOOOOOOO\n' +
+        '                              OOOOOOOOOOOOOO');
     if (dateMonth >= 10 && dateDay >= 10) {
-        console.log('     ' + dateMonth + '/' + dateDay + '                   OOOOOOOOOOOOOOOO                           ');
+        console.log('     ' + dateMonth + '/' + dateDay + '                   OOOOOOOOOOOOOOOO');
     } else if (dateMonth >= 10 && dateDay < 10) {
-        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO                           ');
+        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO');
     } else if (dateMonth < 10 && dateDay >= 10) {
-        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO                           ');
+        console.log('     ' + dateMonth + '/' + dateDay + '                    OOOOOOOOOOOOOOOO');
     } else {
-        console.log('     ' + dateMonth + '/' + dateDay + '                     OOOOOOOOOOOOOOOO                           ');
+        console.log('     ' + dateMonth + '/' + dateDay + '                     OOOOOOOOOOOOOOOO');
     }
     if (dateName == 'Saturday') {
-        console.log('     Saturday                OOOOOOOOOOOOOOOO                           ');
+        console.log('     Saturday               O OOOOOOOOOOOOOO O');
     } else if (dateName == 'Sunday') {
-        console.log('     Sunday                  OOOOOOOOOOOOOOOO                           ');
+        console.log('     Sunday                 O OOOOOOOOOOOOOO O');
     } else if (dateName == 'Monday') {
-        console.log('     Monday                  OOOOOOOOOOOOOOOO                           ');
+        console.log('     Monday                 O OOOOOOOOOOOOOO O');
     } else if (dateName == 'Tuesday') {
-        console.log('     Tuesday                 OOOOOOOOOOOOOOOO                           ');
+        console.log('     Tuesday                O OOOOOOOOOOOOOO O');
     } else if (dateName == 'Wednesday') {
-        console.log('     Wednesday               OOOOOOOOOOOOOOOO                           ');
+        console.log('     Wednesday              O OOOOOOOOOOOOOO O');
     } else if (dateName == 'Thursday') {
-        console.log('     Thursday                OOOOOOOOOOOOOOOO                           ');
+        console.log('     Thursday               O OOOOOOOOOOOOOO O');
     } else {
-        console.log('     Friday                  OOOOOOOOOOOOOOOO                           ');
+        console.log('     Friday                 O OOOOOOOOOOOOOO O');
     }
     console.log(
-        '                            O OOOOOOOOOOOOOO O                          \n' +
-        '                            OO  OOOOOOOOOO  OO                          \n' +
-        '                            OOO  I      I  OOO                          \n' +
-        '                             OOOOOOO  OOOOOOO                           \n' +
-        '                               OOOOOOOOOOOO                             \n' +
-        '  ###### ###### ######          OOOOOOOOOO      ###### ######  ##       \n' +
-        '  ###    ##     ##  ##          OOOOOOOOOO      ##     ##  ##  ##       \n' +
-        '  ###### ## ### ##  ## ###     OOOOOOOOOOOO     ## ### ##  ##  ##       \n' +
-        '  ###    ##  ## ##  ##        OOOOOOOOOOOOOO    ##  ## ##  ##           \n' +
-        '  ###### ###### ######         OOOOOOOOOOOO     ###### ######  ##       \n' +
-        '                               O  OOOOOO  O                             \n' +
-        '                                O   OO   O                              \n' +
-        '                                OOO    OOO                              \n' +
-        '                              O OOOOOOOOOO O                            \n' +
-        '                              O OOOOOOOOOO O                            \n' +
-        '                             OO  OOOOOOOO  OO                           \n' +
-        '                           OOOO  OOOOOOOO  OOOO                         \n' +
-        '                          OOOOOO    OO    OOOOOO                         \n' +
-        '                         OOOOOOOOO      OOOOOOOOOO                        \n' +
-        '                       OOOOOOOOOOOOOOOOOOOOOOOOOOOOO                      \n');
+        '                            OO  OOOOOOOOOO  OO\n' +
+        '                            OOO  I      I  OOO\n' +
+        '                             OOOOOOO  OOOOOOO\n' +
+        '                               OOOOOOOOOOOO\n' +
+        '  ###### ###### ######          OOOOOOOOOO      ###### ######  ##\n' +
+        '  ###    ##     ##  ##          OOOOOOOOOO      ##     ##  ##  ##\n' +
+        '  ###### ## ### ##  ## ###     OOOOOOOOOOOO     ## ### ##  ##  ##\n' +
+        '  ###    ##  ## ##  ##        OOOOOOOOOOOOOO    ##  ## ##  ##\n' +
+        '  ###### ###### ######         OOOOOOOOOOOO     ###### ######  ##\n' +
+        '                               O  OOOOOO  O\n' +
+        '                                O   OO   O \n' +
+        '                                OOO    OOO \n' +
+        '                              O OOOOOOOOOO O\n' +
+        '                              O OOOOOOOOOO O\n' +
+        '                             OO  OOOOOOOO  OO\n' +
+        '                           OOOO  OOOOOOOO  OOOO\n' +
+        '                          OOOOOO    OO    OOOOOO\n' +
+        '                         OOOOOOOOO      OOOOOOOOOO\n' +
+        '                       OOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n');
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
 
