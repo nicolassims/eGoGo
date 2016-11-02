@@ -29,7 +29,6 @@ function main() {
     setPatience();
     setFriendliness();
     setSympathy();
-    displayZoe();
     printIntro();
     setFName();
     setLName();
@@ -38,10 +37,8 @@ function main() {
     printKnowSelf();
     setKnowPurpose();
     printKnowPurpose();
-
-
-
-
+    wipeScreen();
+    day1Part1();
 
     //
     wipeScreen();
@@ -422,6 +419,30 @@ function displayZoe() {
 //
 //storyFunctions
 //
+
+function day1Part1() {
+    console.log(
+        '                            OO  OOOOOOOOOO  OO                   \n' +
+        '                            OOO  I      I  OOO                   \n' +
+        '                             OOOOOOO  OOOOOOO                    \n' +
+        '                               OOOOOOOOOOOO                      \n' +
+        '  ###### ###### ######          OOOOOOOOOO      ###### ######  ##\n' +
+        '  ###    ##     ##  ##          OOOOOOOOOO      ##     ##  ##  ##\n' +
+        '  ###### ## ### ##  ## ###     OOOOOOOOOOOO     ## ### ##  ##  ##\n' +
+        '  ###    ##  ## ##  ##        OOOOOOOOOOOOOO    ##  ## ##  ##    \n' +
+        '  ###### ###### ######         OOOOOOOOOOOO     ###### ######  ##\n' +
+        '                               O  OOOOOO  O                      \n' +
+        '                                O  │  │  O                       \n' +
+        '                                ┌──┘  └──┐                       \n' +
+        '                              O │OOOOOOOO│ O                     \n' +
+        '                              O │OOOOOOOO│ O                     \n' +
+        '                             OO └──┘  └──┘ OO                    \n' +
+        '                           OOOO  OOOOOOOO  OOOO                  \n' +
+        '                          OOOOOO    OO    OOOOOO                 \n' +
+        '                         OOOOOOOOO      OOOOOOOOOO               \n' +
+        '                       OOOOOOOOOOOOOOOOOOOOOOOOOOOOO             \n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+}
 
 //
 //possiblyUsefulFunctions
