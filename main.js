@@ -422,25 +422,26 @@ function displayZoe() {
 
 function day1Part1() {
     console.log(
-        '                            OO  OOOOOOOOOO  OO                   \n' +
-        '                            OOO  I      I  OOO                   \n' +
-        '                             OOOOOOO  OOOOOOO                    \n' +
-        '                               OOOOOOOOOOOO                      \n' +
-        '  ###### ###### ######          OOOOOOOOOO      ###### ######  ##\n' +
-        '  ###    ##     ##  ##          OOOOOOOOOO      ##     ##  ##  ##\n' +
-        '  ###### ## ### ##  ## ###     OOOOOOOOOOOO     ## ### ##  ##  ##\n' +
-        '  ###    ##  ## ##  ##        OOOOOOOOOOOOOO    ##  ## ##  ##    \n' +
-        '  ###### ###### ######         OOOOOOOOOOOO     ###### ######  ##\n' +
-        '                               O  OOOOOO  O                      \n' +
-        '                                O  │  │  O                       \n' +
-        '                                ┌──┘  └──┐                       \n' +
-        '                              O │OOOOOOOO│ O                     \n' +
-        '                              O │OOOOOOOO│ O                     \n' +
-        '                             OO └──┘  └──┘ OO                    \n' +
-        '                           OOOO  OOOOOOOO  OOOO                  \n' +
-        '                          OOOOOO    OO    OOOOOO                 \n' +
-        '                         OOOOOOOOO      OOOOOOOOOO               \n' +
-        '                       OOOOOOOOOOOOOOOOOOOOOOOOOOOOO             \n');
+        '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
+        ' ┌─────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+        ' | <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+        ' |    ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+        ' |    └┐│     │¦ <3> |       │     HALL     │      │     │       \n' +
+        ' |     ¦│  │  │└┐    |       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+        ' |    ┌┘│     │ └────┘        O └──┐  ┌──┘ O       │     │ |    |\n' +
+        ' └────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+        '────────┘     └────────────────────┘  └────────────┘     │¦ <4> |\n' +
+        ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+        '                                O  ┌~~┐  O                 └────┘\n' +
+        '               O                ┌──┘  └──┐          O            \n' +
+        '                              O │BUS     │ O                     \n' +
+        '   O        O      O          O │STATION │ O             O       \n' +
+        '                             OO └───~~───┘ OO                    \n' +
+        '───────────────────────────────────┘  └──────────────────────────\n' +
+        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+        '─────────────────────────────────────────────────────────────────\n' +
+        '                                                                 \n');
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
 }
 
