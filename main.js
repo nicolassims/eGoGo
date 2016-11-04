@@ -16,7 +16,7 @@ function main() {
     setDateMonth();
     setDateDay();
     setDayName();
-    wipeScreen();
+    showPawn();
     setAdventure();
     setSense();
     setVersatility();
@@ -37,11 +37,11 @@ function main() {
     printKnowSelf();
     setKnowPurpose();
     printKnowPurpose();
-    wipeScreen();
+    showPawn();
     day1Part1();
 
     //
-    wipeScreen();
+    showPawn();
 }
 
 main();
@@ -61,6 +61,7 @@ function setLName() {
 }
 
 function printNameReaction() {
+    wipeScreen();
     console.log('\nSo... you are the ' + lName + ' they call ' + fName + '. Curious...\n ' +
         'Now... do you know why I am here? Do you know who I am?\n ' +
         'I\'d imagine not, but why don\'t you tell me?');
@@ -81,6 +82,7 @@ function setKnowSelf() {
 }
 
 function printKnowSelf() {
+    wipeScreen();
     if (chooseVar == 1) {
         console.log('\nFascinating.\n ' +
             'If you know me, then you must truly know yourself.\n ' +
@@ -136,48 +138,48 @@ function setKnowPurpose() {
 }
 
 function printKnowPurpose() {
-    console.log('\nFascinating. ');
+    wipeScreen();
     if (chooseVar == 1) {
-        console.log(' I admire your sense of adventure.');
+        console.log('I admire your sense of adventure.');
         setAdventure(10);
     } else if (chooseVar == 2) {
-        console.log(' I admire your calmheadedness.');
+        console.log('I admire your calmheadedness.');
         setSense(10);
     } else if (chooseVar == 3) {
-        console.log(' You\'re more of a versatile jack, then.\n ' +
+        console.log('You\'re more of a versatile jack, then.\n ' +
             'Admirable.');
         setVersatility(10);
     } else if (chooseVar == 4) {
-        console.log(' A free thinker?\n ' +
+        console.log('A free thinker?\n ' +
             'Admirable.');
         setImagination(10);
     } else if (chooseVar == 5) {
-        console.log(' A leader, are you?\n ' +
+        console.log('A leader, are you?\n ' +
             'Admirable, but remember not every lion roars.');
         setLeadership(10);
     } else if (chooseVar == 6) {
-        console.log(' Admirable, but remember somethings are best not known.');
+        console.log('Admirable, but remember somethings are best not known.');
         setIntelligence(10);
     } else if (chooseVar == 7) {
-        console.log(' You seek justice?\n ' +
+        console.log('You seek justice?\n ' +
             'You will make enemies, but I find that admirable.');
         setMorality(10);
     } else if (chooseVar == 8) {
-        console.log(' Your passion is clear to all who meet you.\n ' +
+        console.log('Your passion is clear to all who meet you.\n ' +
             'Admirable.');
         setPassion(10);
     } else if (chooseVar == 9) {
-        console.log(' And, in the same fashion, your allies will empower you.\n ' +
+        console.log('And, in the same fashion, your allies will empower you.\n ' +
             'Admirable.');
         setHope(10);
     } else if (chooseVar == 10) {
-        console.log(' Such patience... admirable.');
+        console.log('Such patience... admirable.');
         setPatience(10);
     } else if (chooseVar == 11) {
-        console.log(' An admirable goal such as that will ensure you will never suffer alone.');
+        console.log('An admirable goal such as that will ensure you will never suffer alone.');
         setFriendliness(10);
     } else if (chooseVar == 12) {
-        console.log(' To do so without expecting a reward is truly admirable.');
+        console.log('To do so without expecting a reward is truly admirable.');
         setSympathy(10);
     }
     console.log(' However, it is with great sadness that I inform you we must now part.\n ' +
@@ -229,7 +231,7 @@ function setDayName () {
     }
 } //Moves the day up one 
 
-function wipeScreen() {
+function showPawn() {
     process.stdout.write('\x1Bc');
     console.log('\n' +
         '                                OOOOOOOOOO\n' +
@@ -379,6 +381,10 @@ function setSympathy(value) {
     }
 } //Increases the stat by a value 
 
+function wipeScreen() {
+    process.stdout.write('\x1Bc');
+}
+
 function printPlayerStatus() {
     console.log('\n' +
         'Adventure      |' + adventure   + '|    Leadership      |' + leadership +   '|    Hope            |' + hope + '|\n' +
@@ -422,16 +428,16 @@ function displayZoe() {
 
 function day1Part1() {
     console.log(
-        '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
-        ' ┌─────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-        ' | <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-        ' |    ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-        ' |    └┐│     │¦ <3> |       │     HALL     │      │     │       \n' +
-        ' |     ¦│  │  │└┐    |       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-        ' |    ┌┘│     │ └────┘        O └──┐  ┌──┘ O       │     │ |    |\n' +
-        ' └────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
-        '────────┘     └────────────────────┘  └────────────┘     │¦ <4> |\n' +
-        ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+        '                                                                 \n' +
+        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
+        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
         '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
         '                                O  ┌~~┐  O                 └────┘\n' +
         '               O                ┌──┘  └──┐          O            \n' +
@@ -441,8 +447,91 @@ function day1Part1() {
         '───────────────────────────────────┘  └──────────────────────────\n' +
         ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
         '─────────────────────────────────────────────────────────────────\n' +
-        '                                                                 \n');
-    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+        '<1> = A Grand House\n' +
+        '<2> = A Small House\n' +
+        '<3> = McFriday\'s\n');
+    chooseVar = PROMPT.question('Welcome to Antiem.\n ' +
+        'Antiem is a perpetually hot, sleepy, and frankly boring town smack-dab in the middle of the state of ' +
+        'Kansas.\n ' +
+        'You\'ve been sent here by your parents to \"gain more appreciation for your American heritage.\"\n ' +
+        'You have little interest in your American heritage, though you appreciate being able to temporarily leave ' +
+        'your home country...\n ' +
+        'As a certain group of \"gentlemen\" back home would rather like to \"rough you up.\"\n' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    console.log(
+        '                                                                 \n' +
+        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
+        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
+        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+        '                                O  ┌~~┐  O                 └────┘\n' +
+        '               O                ┌──┘  └──┐          O            \n' +
+        '                              O │BUS     │ O                     \n' +
+        '   O        O      O          O │STATION │ O             O       \n' +
+        '                             OO └───~~───┘ OO                    \n' +
+        '───────────────────────────────────┘  └──────────────────────────\n' +
+        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+        '─────────────────────────────────────────────────────────────────\n' +
+        '<1> = A Grand House\n' +
+        '<2> = A Small House\n' +
+        '<3> = McFriday\'s\n');
+    chooseVar = PROMPT.question('Your parents have instructed you to find your Aunt and Uncle\'s house, at 108 ' +
+        'Leo Street.\n ' +
+        'From your position just north of the bus station, you can see the full length of Tin Street, where you are ' +
+        'currently standing.\n ' +
+        'To the west is a street leading to another street, which, in turn, leads to a couple of houses, one ' +
+        'noticeably more grand than the other.\n ' +
+        'To the east is that American paragon of fast food and fat people, McFriday\'s. You secretly love their ' +
+        'food, but choose not to reveal that fact.\n ' +
+        'Being half-American was already enough of a source of torment in your home country--you didn\'t want to ' +
+        'encourage any stereotypes.\n' +
+        '                          Press Enter to Continue\n>');
+    console.log(
+        '                                                                 \n' +
+        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
+        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
+        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+        '                                O  ┌~~┐  O                 └────┘\n' +
+        '               O                ┌──┘  └──┐          O            \n' +
+        '                              O │BUS     │ O                     \n' +
+        '   O        O      O          O │STATION │ O             O       \n' +
+        '                             OO └───~~───┘ OO                    \n' +
+        '───────────────────────────────────┘  └──────────────────────────\n' +
+        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+        '─────────────────────────────────────────────────────────────────\n' +
+        '<1> = A Grand House\n' +
+        '<2> = A Small House\n' +
+        '<3> = McFriday\'s\n');
+    chooseVar = PROMPT.question('Now, where would you like to go?' +
+        '<<(1) = Gawk at the grand house.>>\n' +
+        '<<(2) = Scope out the smaller house.>>\n' +
+        '<<(3) = Munch on something from McFriday\'s.>>\n' +
+        '<<(4) = Back up to the bus station.\'s.>>\n' +
+        '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+        '>');
+    while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
+        chooseVar = PROMPT.question('\nThat is not an option.\n' +
+            '<<(1) = Investigate the grand house.>>\n' +
+            '<<(2) = Scope out the smaller house.>>\n' +
+            '<<(3) = Grab something from McFriday\'s.>>\n' +
+            '<<(4) = Re-enter the bus station.\'s.>>\n' +
+            '<<(5) = Check out the town hall.\'s.>>\n' +
+            '>');
+    }
 }
 
 //
