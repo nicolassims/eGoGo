@@ -11,24 +11,14 @@ const PROMPT = require('readline-sync');
 let chooseVar, adventure, sense, versatility, imagination, leadership, intelligence, morality, passion, hope, patience,
     friendliness, sympathy, dateMonth, dateDay;
 let fName, lName, dateName;
+let playerStats = [];
 
 function main() {
     setDateMonth();
     setDateDay();
     setDayName();
     showPawn();
-    setAdventure();
-    setSense();
-    setVersatility();
-    setImagination();
-    setLeadership();
-    setIntelligence();
-    setMorality();
-    setPassion();
-    setHope();
-    setPatience();
-    setFriendliness();
-    setSympathy();
+    setInitialPlayerStats();
     printIntro();
     setFName();
     setLName();
@@ -141,47 +131,36 @@ function printKnowPurpose() {
     wipeScreen();
     if (chooseVar == 1) {
         console.log('I admire your sense of adventure.');
-        setAdventure(10);
     } else if (chooseVar == 2) {
         console.log('I admire your calmheadedness.');
-        setSense(10);
     } else if (chooseVar == 3) {
         console.log('You\'re more of a versatile jack, then.\n ' +
             'Admirable.');
-        setVersatility(10);
     } else if (chooseVar == 4) {
         console.log('A free thinker?\n ' +
             'Admirable.');
-        setImagination(10);
     } else if (chooseVar == 5) {
         console.log('A leader, are you?\n ' +
             'Admirable, but remember not every lion roars.');
-        setLeadership(10);
     } else if (chooseVar == 6) {
         console.log('Admirable, but remember somethings are best not known.');
-        setIntelligence(10);
     } else if (chooseVar == 7) {
         console.log('You seek justice?\n ' +
             'You will make enemies, but I find that admirable.');
-        setMorality(10);
     } else if (chooseVar == 8) {
         console.log('Your passion is clear to all who meet you.\n ' +
             'Admirable.');
-        setPassion(10);
     } else if (chooseVar == 9) {
         console.log('And, in the same fashion, your allies will empower you.\n ' +
             'Admirable.');
-        setHope(10);
     } else if (chooseVar == 10) {
         console.log('Such patience... admirable.');
-        setPatience(10);
     } else if (chooseVar == 11) {
         console.log('An admirable goal such as that will ensure you will never suffer alone.');
-        setFriendliness(10);
     } else if (chooseVar == 12) {
         console.log('To do so without expecting a reward is truly admirable.');
-        setSympathy(10);
     }
+    setPlayerStats(chooseVar, 10);
     console.log(' However, it is with great sadness that I inform you we must now part.\n ' +
         'Not forever, not even for long, but I must begone--and you must too.\n ' +
         'When we meet again, you will possess knowledge beyond knowledge, and strength beyond strength.\n ' +
@@ -283,103 +262,45 @@ function showPawn() {
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
 
-} //Wipes screen, displays date 
+} //Wipes screen, displays date
 
-function setAdventure(value) {
-    if (adventure == null) {
-        adventure = 10;
-    } else {
-        adventure += value;
+function setInitialPlayerStats() {
+    for (let i = 0; i < 13; i++) {
+        playerStats[i] = [];
+        playerStats[i][1] = 10;
     }
-} //Increases the stat by a value 
+    playerStats[0][0] = 'Courage';
+    playerStats[0][2] = 'Fortitude';
+    playerStats[0][4] = 'Spirit';
+    playerStats[0][6] = 'Heart';
+    playerStats[0][8] = 'Stat Total';
+    playerStats[0][10] = 'Level';
+    playerStats[1][0] = 'Adventure';
+    playerStats[2][0] = 'Sense';
+    playerStats[3][0] = 'Versatility';
+    playerStats[4][0] = 'Imagination';
+    playerStats[5][0] = 'Leadership';
+    playerStats[6][0] = 'Intelligence';
+    playerStats[7][0] = 'Morality';
+    playerStats[8][0] = 'Passion';
+    playerStats[9][0] = 'Hope';
+    playerStats[10][0] = 'Patience';
+    playerStats[11][0] = 'Friendliness';
+    playerStats[12][0] = 'Sympathy';
+}
 
-function setSense(value) {
-    if (sense == null) {
-        sense = 10;
-    } else {
-        sense += value;
+function setPlayerStats(stat, value) {
+    playerStats[stat][1] += value;
+    playerStats[0][9] = playerStats[1][0];
+    for (let i = 2; i < 13; i++) {
+        playerStats[0][9] = playerStats[0][9] - -playerStats[i][0];
     }
-} //Increases the stat by a value 
-
-function setVersatility(value) {
-    if (versatility == null) {
-        versatility = 10;
-    } else {
-        versatility += value;
-    }
-} //Increases the stat by a value 
-
-function setImagination(value) {
-    if (imagination == null) {
-        imagination = 10;
-    } else {
-        imagination += value;
-    }
-} //Increases the stat by a value 
-
-function setLeadership(value) {
-    if (leadership == null) {
-        leadership = 10;
-    } else {
-        leadership += value;
-    }
-} //Increases the stat by a value 
-
-function setIntelligence(value) {
-    if (intelligence == null) {
-        intelligence = 10;
-    } else {
-        intelligence += value;
-    }
-} //Increases the stat by a value 
-
-function setMorality(value) {
-    if (morality == null) {
-        morality = 10;
-    } else {
-        morality += value;
-    }
-} //Increases the stat by a value 
-
-function setPassion(value) {
-    if (passion == null) {
-        passion = 10;
-    } else {
-        passion += value;
-    }
-} //Increases the stat by a value 
-
-function setHope(value) {
-    if (hope == null) {
-        hope = 10;
-    } else {
-        hope += value;
-    }
-} //Increases the stat by a value 
-
-function setPatience(value) {
-    if (patience == null) {
-        patience = 10;
-    } else {
-        patience += value;
-    }
-} //Increases the stat by a value 
-
-function setFriendliness(value) {
-    if (friendliness == null) {
-        friendliness = 10;
-    } else {
-        friendliness += value;
-    }
-} //Increases the stat by a value 
-
-function setSympathy(value) {
-    if (sympathy == null) {
-        sympathy = 10;
-    } else {
-        sympathy += value;
-    }
-} //Increases the stat by a value 
+    playerStats[0][11] = playerStats[0][9]/10 - 11;
+    playerStats[0][1] = (playerStats[1][1] + playerStats[5][1] + playerStats[9][1]) * (playerStats[0][11]/10);
+    playerStats[0][3] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[0][11]/10);
+    playerStats[0][5] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[0][11]/10);
+    playerStats[0][7] = (playerStats[4][1] + playerStats[8][1] + playerStats[12][1]) * (playerStats[0][11]/10);
+}
 
 function wipeScreen() {
     process.stdout.write('\x1Bc');
@@ -493,6 +414,7 @@ function day1Part1() {
         'Being half-American was already enough of a source of torment in your home country--you didn\'t want to ' +
         'encourage any stereotypes.\n' +
         '                          Press Enter to Continue\n>');
+    wipeScreen();
     console.log(
         '                                                                 \n' +
         '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
@@ -525,12 +447,52 @@ function day1Part1() {
         '>');
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
         chooseVar = PROMPT.question('\nThat is not an option.\n' +
-            '<<(1) = Investigate the grand house.>>\n' +
+            '<<(1) = Gawk at the grand house.>>\n' +
             '<<(2) = Scope out the smaller house.>>\n' +
-            '<<(3) = Grab something from McFriday\'s.>>\n' +
-            '<<(4) = Re-enter the bus station.\'s.>>\n' +
-            '<<(5) = Check out the town hall.\'s.>>\n' +
+            '<<(3) = Munch on something from McFriday\'s.>>\n' +
+            '<<(4) = Back up to the bus station.\'s.>>\n' +
+            '<<(5) = Take a hike to the town hall.\'s.>>\n' +
             '>');
+    }
+    wipeScreen();
+    while (chooseVar != 1) {
+        if (chooseVar == 2) {
+            console.log(
+                '                                                                 \n' +
+                '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+                '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+                '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+                '|     └┐│    @│¦ <2> |       │     HALL     │      │     │       \n' +
+                '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+                '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+                '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+                '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+                ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+                '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+                '                                O  ┌~~┐  O                 └────┘\n' +
+                '               O                ┌──┘  └──┐          O            \n' +
+                '                              O │BUS     │ O                     \n' +
+                '   O        O      O          O │STATION │ O             O       \n' +
+                '                             OO └───~~───┘ OO                    \n' +
+                '───────────────────────────────────┘  └──────────────────────────\n' +
+                ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+                '─────────────────────────────────────────────────────────────────\n' +
+                '<1> = A Grand House\n' +
+                '<2> = A Small House\n' +
+                '<3> = McFriday\'s\n');
+            chooseVar = PROMPT.question('The house, already dwarfed by the far grander one just across the road, ' +
+                'looks even shabbier up close.\n ' +
+                'The wood it\'s made of is a dark red--grand, once, but having succumbed to the ravages of time ' +
+                'long ago, it gives off a pungent scent.\n ' +
+                'You could barely believe that someone could actually live there, but the sound of a large family is ' +
+                'clearly audible through the thin, wooden walls.\n ' +
+                'Through the window, you see a flash of green hair.\n ' +
+                'You remember deviant hair colors were quite popular with certain groups back home, and quickly walk ' +
+                'away.\n' +
+                '                          Press Enter to Continue\n>');
+        } else if (chooseVar == 3) {
+
+        }
     }
 }
 
