@@ -8,8 +8,7 @@
 "use strict";
 const PROMPT = require('readline-sync');
 
-let chooseVar, adventure, sense, versatility, imagination, leadership, intelligence, morality, passion, hope, patience,
-    friendliness, sympathy, dateMonth, dateDay;
+let chooseVar, adventure, sense, dateMonth, dateDay;
 let fName, lName, dateName;
 let playerStats = [];
 
@@ -31,7 +30,7 @@ function main() {
     day1Part1();
 
     //
-    showPawn();
+        showPawn();
 }
 
 main();
@@ -160,7 +159,7 @@ function printKnowPurpose() {
     } else if (chooseVar == 12) {
         console.log('To do so without expecting a reward is truly admirable.');
     }
-    setPlayerStats(chooseVar, 10);
+    setPlayerStats(10);
     console.log(' However, it is with great sadness that I inform you we must now part.\n ' +
         'Not forever, not even for long, but I must begone--and you must too.\n ' +
         'When we meet again, you will possess knowledge beyond knowledge, and strength beyond strength.\n ' +
@@ -289,13 +288,12 @@ function setInitialPlayerStats() {
     playerStats[12][0] = 'Sympathy';
 }
 
-function setPlayerStats(stat, value) {
-    playerStats[stat][1] += value;
-    playerStats[0][9] = playerStats[1][0];
-    for (let i = 2; i < 13; i++) {
-        playerStats[0][9] = playerStats[0][9] - -playerStats[i][0];
-    }
-    playerStats[0][11] = playerStats[0][9]/10 - 11;
+function setPlayerStats(value) {
+    playerStats[chooseVar][1] += value;
+    playerStats[0][9] = playerStats[1][1] + playerStats[2][1] + playerStats[3][1] + playerStats[4][1] + playerStats[5][1] +
+                        playerStats[6][1] + playerStats[7][1] + playerStats[8][1] + playerStats[9][1] + playerStats[10][1] +
+                        playerStats[11][1] + playerStats[12][1];
+    playerStats[0][11] = (playerStats[0][9]/10 - 11);
     playerStats[0][1] = (playerStats[1][1] + playerStats[5][1] + playerStats[9][1]) * (playerStats[0][11]/10);
     playerStats[0][3] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[0][11]/10);
     playerStats[0][5] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[0][11]/10);
@@ -308,11 +306,14 @@ function wipeScreen() {
 
 function printPlayerStatus() {
     console.log('\n' +
-        'Adventure      |' + adventure   + '|    Leadership      |' + leadership +   '|    Hope            |' + hope + '|\n' +
-        'Sense          |' + sense       + '|    Intelligence    |' + intelligence + '|    Patience        |' + patience + '|\n' +
-        'Versatility    |' + versatility + '|    Morality        |' + morality +     '|    Friendliness    |' + friendliness + '|\n' +
-        'Imagination    |' + imagination + '|    Passion         |' + passion +      '|    Sympathy        |' + sympathy + '|');
-} //Displays player status 
+        'Level          |' + Math.round(playerStats[0][11]) + '|    Stat Total      |' + Math.round(playerStats[0][9]) + '|\n' +
+        'Adventure      |' + Math.round(playerStats[1][1]) + '|    Leadership      |' + Math.round(playerStats[5][1]) + '|    Hope            |' + Math.round(playerStats[9][1]) + '|\n' +
+        'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
+        'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
+        'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n' +
+        '\nCOURAGE |' + Math.round(playerStats[0][1]) + '| FORTITUDE |' + Math.round(playerStats[0][3]) + '| SPIRIT |' + Math.round(playerStats[0][5]) + '| HEART |'
+        + Math.round(playerStats[0][7]) +'|\n');
+} //Displays player status
 
 function displayZoe() {
     console.log('\n' +
@@ -438,7 +439,7 @@ function day1Part1() {
         '<1> = A Grand House\n' +
         '<2> = A Small House\n' +
         '<3> = McFriday\'s\n');
-    chooseVar = PROMPT.question('Now, where would you like to go?' +
+    chooseVar = PROMPT.question('Now, where would you like to go?\n' +
         '<<(1) = Gawk at the grand house.>>\n' +
         '<<(2) = Scope out the smaller house.>>\n' +
         '<<(3) = Munch on something from McFriday\'s.>>\n' +
