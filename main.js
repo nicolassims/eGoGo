@@ -8,7 +8,7 @@
 "use strict";
 const PROMPT = require('readline-sync');
 
-let chooseVar, adventure, sense, dateMonth, dateDay;
+let chooseVar, adventure, sense, dateMonth, dateDay, antiemKnowledge;
 let fName, lName, dateName;
 let playerStats = [];
 
@@ -314,6 +314,93 @@ function printPlayerStatus() {
         'COURAGE |' + Math.round(playerStats[0][1]) + '| FORTITUDE |' + Math.round(playerStats[0][3]) + '| SPIRIT |' + Math.round(playerStats[0][5]) + '| HEART |' + Math.round(playerStats[0][7]) +'|\n');
 } //Displays player status
 
+
+
+//
+//storyFunctions
+//
+
+function day1Part1() {
+    displayAntiem();
+    chooseVar = PROMPT.question('Welcome to Antiem.\n ' +
+        'Antiem is a perpetually hot, sleepy, and frankly boring town smack-dab in the middle of the state of ' +
+        'Kansas.\n ' +
+        'You\'ve been sent here by your parents to \"gain more appreciation for your American heritage.\"\n ' +
+        'You have little interest in your American heritage, though you appreciate being able to temporarily leave ' +
+        'your home country...\n ' +
+        'As a certain group of \"gentlemen\" back home would rather like to \"rough you up.\"\n' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayAntiem();
+    chooseVar = PROMPT.question('Your parents have instructed you to find your Aunt and Uncle\'s house, at 108 ' +
+        'Leo Street.\n ' +
+        'From your position just north of the bus station, you can see the full length of Tin Street, where you are ' +
+        'currently standing.\n ' +
+        'To the west is a street leading to another street, which, in turn, leads to a couple of houses, one ' +
+        'noticeably more grand than the other.\n ' +
+        'To the east is that American paragon of fast food and fat people, McFriday\'s. You secretly love their ' +
+        'food, but choose not to reveal that fact.\n ' +
+        'Being half-American was already enough of a source of torment in your home country--you didn\'t want to ' +
+        'encourage any stereotypes.\n' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayAntiem();
+    chooseVar = PROMPT.question('Now, where would you like to go?\n' +
+        '<<(1) = Gawk at the grand house.>>\n' +
+        '<<(2) = Scope out the smaller house.>>\n' +
+        '<<(3) = Munch on something from McFriday\'s.>>\n' +
+        '<<(4) = Back up to the bus station.\'s.>>\n' +
+        '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+        '>');
+    while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
+        chooseVar = PROMPT.question('\nThat is not an option.\n' +
+            '<<(1) = Gawk at the grand house.>>\n' +
+            '<<(2) = Scope out the smaller house.>>\n' +
+            '<<(3) = Munch on something from McFriday\'s.>>\n' +
+            '<<(4) = Back up to the bus station.\'s.>>\n' +
+            '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+            '>');
+    }
+    wipeScreen();
+    while (chooseVar != 1) {
+        if (chooseVar == 2) {
+            displayAntiem(2);
+            chooseVar = PROMPT.question('You enter the RESIDENTIAL AREA.\n ' + 
+                'The house, already dwarfed by the far grander one just across the road, looks even shabbier up ' +
+                'close.\n ' +
+                'The wood it\'s made of is a dark red--grand, once, but having succumbed to the ravages of time ' +
+                'long ago, it gives off a pungent scent.\n ' +
+                'You could barely believe that someone could actually live there, but the sound of a young man ' +
+                'yelling is clearly audible through the thin, wooden walls.\n ' +
+                'Through the window, you see a flash of green hair.\n ' +
+                'You remember deviant hair colors were quite popular with certain groups back home, and quickly walk ' +
+                'away.\n' +
+                '                          Press Enter to Continue\n>');
+            displayAntiem(2);
+            chooseVar = PROMPT.question('Now, where would you like to go?\n' +
+                '<<(1) = Gawk at the grand house.>>\n' +
+                '<<(2) = Scope out the smaller house.>>\n' +
+                '<<(3) = Munch on something from McFriday\'s.>>\n' +
+                '<<(4) = Back up to the bus station.\'s.>>\n' +
+                '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+                '>');
+        } else if (chooseVar == 3) {
+            displayAntiem(3);
+            chooseVar = PROMPT.question('The McFriday\'s seems to be entirely empty, aside from a surly-looking girl ' +
+                'at the counter.\n ' +
+                'The red-and-white tiles, and 1970s diner aesthetic, makes you nostalgic for a time you weren\'t ' +
+                'on the right continent to experience.\n ' +
+                'Of course, you weren\'t even born yet, either.\n ' +
+                'You cautiously open the door and walk inside.\n ' +
+                '                          Press Enter to Continue\n>');
+        }
+    }
+}
+
+//
+//graphicsFunctions
+//
+
 function displayZoe() {
     console.log('\n' +
         '                /\n' +
@@ -343,156 +430,79 @@ function displayZoe() {
     process.stdout.write('\x1Bc');
 }
 
-//
-//storyFunctions
-//
-
-function day1Part1() {
-    console.log(
-        '                                                                 \n' +
-        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
-        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
-        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
-        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
-        '                                O  ┌~~┐  O                 └────┘\n' +
-        '               O                ┌──┘  └──┐          O            \n' +
-        '                              O │BUS     │ O                     \n' +
-        '   O        O      O          O │STATION │ O             O       \n' +
-        '                             OO └───~~───┘ OO                    \n' +
-        '───────────────────────────────────┘  └──────────────────────────\n' +
-        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
-        '─────────────────────────────────────────────────────────────────\n' +
-        '<1> = A Grand House\n' +
-        '<2> = A Small House\n' +
-        '<3> = McFriday\'s\n');
-    chooseVar = PROMPT.question('Welcome to Antiem.\n ' +
-        'Antiem is a perpetually hot, sleepy, and frankly boring town smack-dab in the middle of the state of ' +
-        'Kansas.\n ' +
-        'You\'ve been sent here by your parents to \"gain more appreciation for your American heritage.\"\n ' +
-        'You have little interest in your American heritage, though you appreciate being able to temporarily leave ' +
-        'your home country...\n ' +
-        'As a certain group of \"gentlemen\" back home would rather like to \"rough you up.\"\n' +
-        '                          Press Enter to Continue\n>');
-    wipeScreen();
-    console.log(
-        '                                                                 \n' +
-        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
-        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
-        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
-        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
-        '                                O  ┌~~┐  O                 └────┘\n' +
-        '               O                ┌──┘  └──┐          O            \n' +
-        '                              O │BUS     │ O                     \n' +
-        '   O        O      O          O │STATION │ O             O       \n' +
-        '                             OO └───~~───┘ OO                    \n' +
-        '───────────────────────────────────┘  └──────────────────────────\n' +
-        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
-        '─────────────────────────────────────────────────────────────────\n' +
-        '<1> = A Grand House\n' +
-        '<2> = A Small House\n' +
-        '<3> = McFriday\'s\n');
-    chooseVar = PROMPT.question('Your parents have instructed you to find your Aunt and Uncle\'s house, at 108 ' +
-        'Leo Street.\n ' +
-        'From your position just north of the bus station, you can see the full length of Tin Street, where you are ' +
-        'currently standing.\n ' +
-        'To the west is a street leading to another street, which, in turn, leads to a couple of houses, one ' +
-        'noticeably more grand than the other.\n ' +
-        'To the east is that American paragon of fast food and fat people, McFriday\'s. You secretly love their ' +
-        'food, but choose not to reveal that fact.\n ' +
-        'Being half-American was already enough of a source of torment in your home country--you didn\'t want to ' +
-        'encourage any stereotypes.\n' +
-        '                          Press Enter to Continue\n>');
-    wipeScreen();
-    console.log(
-        '                                                                 \n' +
-        '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-        '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-        '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-        '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-        '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-        '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-        '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
-        '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
-        ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
-        '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
-        '                                O  ┌~~┐  O                 └────┘\n' +
-        '               O                ┌──┘  └──┐          O            \n' +
-        '                              O │BUS     │ O                     \n' +
-        '   O        O      O          O │STATION │ O             O       \n' +
-        '                             OO └───~~───┘ OO                    \n' +
-        '───────────────────────────────────┘  └──────────────────────────\n' +
-        ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
-        '─────────────────────────────────────────────────────────────────\n' +
-        '<1> = A Grand House\n' +
-        '<2> = A Small House\n' +
-        '<3> = McFriday\'s\n');
-    chooseVar = PROMPT.question('Now, where would you like to go?\n' +
-        '<<(1) = Gawk at the grand house.>>\n' +
-        '<<(2) = Scope out the smaller house.>>\n' +
-        '<<(3) = Munch on something from McFriday\'s.>>\n' +
-        '<<(4) = Back up to the bus station.\'s.>>\n' +
-        '<<(5) = Take a hike to the town hall.\'s.>>\n' +
-        '>');
-    while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
-        chooseVar = PROMPT.question('\nThat is not an option.\n' +
-            '<<(1) = Gawk at the grand house.>>\n' +
-            '<<(2) = Scope out the smaller house.>>\n' +
-            '<<(3) = Munch on something from McFriday\'s.>>\n' +
-            '<<(4) = Back up to the bus station.\'s.>>\n' +
-            '<<(5) = Take a hike to the town hall.\'s.>>\n' +
-            '>');
-    }
-    wipeScreen();
-    while (chooseVar != 1) {
-        if (chooseVar == 2) {
-            console.log(
-                '                                                                 \n' +
-                '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-                '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-                '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-                '|     └┐│    @│¦ <2> |       │     HALL     │      │     │       \n' +
-                '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-                '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-                '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
-                '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
-                ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
-                '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
-                '                                O  ┌~~┐  O                 └────┘\n' +
-                '               O                ┌──┘  └──┐          O            \n' +
-                '                              O │BUS     │ O                     \n' +
-                '   O        O      O          O │STATION │ O             O       \n' +
-                '                             OO └───~~───┘ OO                    \n' +
-                '───────────────────────────────────┘  └──────────────────────────\n' +
-                ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
-                '─────────────────────────────────────────────────────────────────\n' +
-                '<1> = A Grand House\n' +
-                '<2> = A Small House\n' +
-                '<3> = McFriday\'s\n');
-            chooseVar = PROMPT.question('The house, already dwarfed by the far grander one just across the road, ' +
-                'looks even shabbier up close.\n ' +
-                'The wood it\'s made of is a dark red--grand, once, but having succumbed to the ravages of time ' +
-                'long ago, it gives off a pungent scent.\n ' +
-                'You could barely believe that someone could actually live there, but the sound of a large family is ' +
-                'clearly audible through the thin, wooden walls.\n ' +
-                'Through the window, you see a flash of green hair.\n ' +
-                'You remember deviant hair colors were quite popular with certain groups back home, and quickly walk ' +
-                'away.\n' +
-                '                          Press Enter to Continue\n>');
-        } else if (chooseVar == 3) {
-
-        }
+function displayAntiem(position) {
+    if (position == null || position == 0) {
+        console.log(
+            '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
+            '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+            '|  <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
+            '|      ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+            ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+            '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+            '                                O  ┌~~┐  O                 └────┘\n' +
+            '               O                ┌──┘  └──┐          O            \n' +
+            '                              O │BUS     │ O                     \n' +
+            '   O        O      O          O │STATION │ O             O       \n' +
+            '                             OO └───~~───┘ OO                    \n' +
+            '───────────────────────────────────┘  └──────────────────────────\n' +
+            ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+            '─────────────────────────────────────────────────────────────────\n' +
+            '<1> = A Grand House\n' +
+            '<2> = A Small House\n' +
+            '<3> = McFriday\'s\n');
+    } else if (position == 2) {
+        console.log(
+            '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
+            '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+            '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|     └┐│    @│¦ <2> |       │     HALL     │      │     │       \n' +
+            '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
+            ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+            '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+            '                                O  ┌~~┐  O                 └────┘\n' +
+            '               O                ┌──┘  └──┐          O            \n' +
+            '                              O │BUS     │ O                     \n' +
+            '   O        O      O          O │STATION │ O             O       \n' +
+            '                             OO └───~~───┘ OO                    \n' +
+            '───────────────────────────────────┘  └──────────────────────────\n' +
+            ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+            '─────────────────────────────────────────────────────────────────\n' +
+            '<1> = A Grand House\n' +
+            '<2> = A Small House\n' +
+            '<3> = McFriday\'s\n');
+    } else if (position == 3) {
+        console.log(
+            '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
+            '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
+            '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
+            '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '────────┘     └────────────────────┘  └────────────┘    @│¦ <3> |\n' +
+            ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
+            '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
+            '                                O  ┌~~┐  O                 └────┘\n' +
+            '               O                ┌──┘  └──┐          O            \n' +
+            '                              O │BUS     │ O                     \n' +
+            '   O        O      O          O │STATION │ O             O       \n' +
+            '                             OO └───~~───┘ OO                    \n' +
+            '───────────────────────────────────┘  └──────────────────────────\n' +
+            ' ─      ─       ─       ─       ─       ─       ─       ─      ─ \n' +
+            '─────────────────────────────────────────────────────────────────\n' +
+            '<1> = A Grand House\n' +
+            '<2> = A Small House\n' +
+            '<3> = McFriday\'s\n');
     }
 }
 
