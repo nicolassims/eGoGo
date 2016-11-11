@@ -386,12 +386,38 @@ function day1Part1() {
                 '>');
         } else if (chooseVar == 3) {
             displayAntiem(3);
-            chooseVar = PROMPT.question('The McFriday\'s seems to be entirely empty, aside from a surly-looking girl ' +
-                'at the counter.\n ' +
+            chooseVar = PROMPT.question('Through the windows, you see that the McFriday\'s seems to be entirely ' +
+                'empty, aside from a surly-looking girl at the counter.\n ' +
                 'The red-and-white tiles, and 1970s diner aesthetic, makes you nostalgic for a time you weren\'t ' +
                 'on the right continent to experience.\n ' +
                 'Of course, you weren\'t even born yet, either.\n ' +
                 'You cautiously open the door and walk inside.\n ' +
+                '                          Press Enter to Continue\n>');
+            displayMcFriday();
+            chooseVar = PROMPT.question('The diner\'s windows let you see most of the inside from the scorched ' +
+                'street outside, but there were a few things you didn\'t notice.\n ' +
+                'Immediately to your right is a one-armed bandit.\n ' +
+                'An American gambling machine, which seems very out of place in a McFriday\'s.\n ' +
+                'You notice the surly-looking girl at the counter, though clearly under eighteen, is smoking.\n ' +
+                'Perhaps this quite village has more in common with your home than you thought.\n ' +
+                'The girl waves you over.\n ' +
+                '                          Press Enter to Continue\n>');
+            displayMcFriday(1);
+            chooseVar = PROMPT.question('She speaks quickly, and you understand nothing she says.\n ' +
+                'She cottons on to this quickly, and instead repeats the same old script every McFriday\'s employee ' +
+                'knows by heart.\n ' +
+                'You still have no idea what she\'s saying, but you know what she\'s asking.\n ' +
+                'Over-enunciating your words, you order a Joyful Meal, McFriday\'s specialty.\n ' +
+                'The girl nods, then points at a seat, clearly inviting you to sit down.\n ' +
+                'You do so.\n ' +
+                '                          Press Enter to Continue\n>');
+            displayMcFriday(2);
+            chooseVar = PROMPT.question('The girl disappears into the kitchen.\n ' +
+                'You don\'t hear any further communications from the girl, so you assume she\'s alone.\n ' +
+                '                          Press Enter to Continue\n>');
+            displayMcFriday(1);
+            chooseVar = PROMPT.question('The girl comes back, and presents you with a fresh Joyful Meal.\n ' +
+                'You note, with some distaste, that she\'s still clutching her cigarette in her hand.\n ' +
                 '                          Press Enter to Continue\n>');
         }
     }
@@ -503,6 +529,70 @@ function displayAntiem(position) {
             '<1> = A Grand House\n' +
             '<2> = A Small House\n' +
             '<3> = McFriday\'s\n');
+    }
+}
+
+function displayMcFriday(position) {
+    if (position == null || position == 0) {
+        console.log(
+            '                        ┌──────────────────────────────┐\n' +
+            '                        │  ╔═══╗     ╔═══╗     ╔═══╗   |\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  │\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  |\n' +
+            '                        │  ╚═══╝     ╚═══╝     ╚═══╝   │\n' +
+            '                 ┌──────┘                              |\n' +
+            '                 |                                     │\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦        @                            |\n' +
+            '                 ¦                                     |\n' +
+            '                 |                                     |\n' +
+            '                 └──────┐            0    0    0    0  |\n' +
+            '                        |         ┌──────────────┬─┬───┤\n' +
+            '                        ├┐      0 | ┌────────────┴─┴───┤\n' +
+            '                        │|)       | |     D    0       ¦\n' +
+            '                        │|°     0 | |                  ¦\n' +
+            '                        └┴────────┴─┴──────────────────┘\n');
+    } else if (position == 1) {
+        console.log(
+            '                        ┌──────────────────────────────┐\n' +
+            '                        │  ╔═══╗     ╔═══╗     ╔═══╗   |\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  │\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  |\n' +
+            '                        │  ╚═══╝     ╚═══╝     ╚═══╝   │\n' +
+            '                 ┌──────┘                              |\n' +
+            '                 |                                     │\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 |                                     |\n' +
+            '                 └──────┐            0    @    0    0  |\n' +
+            '                        |         ┌──────────────┬─┬───┤\n' +
+            '                        ├┐      0 | ┌────────────┴─┴───┤\n' +
+            '                        │|)       | |     D    0       ¦\n' +
+            '                        │|°     0 | |                  ¦\n' +
+            '                        └┴────────┴─┴──────────────────┘\n');
+    } else if (position == 2) {
+        console.log(
+            '                        ┌──────────────────────────────┐\n' +
+            '                        │  ╔═══╗     ╔═══╗     ╔═══╗   |\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  │\n' +
+            '                        │ 0║   ║0   0║   ║0   0║   ║0  |\n' +
+            '                        │  ╚═══╝     ╚═══╝     ╚═══╝   │\n' +
+            '                 ┌──────┘                              |\n' +
+            '                 |                                     │\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 ¦                                     |\n' +
+            '                 |                                     |\n' +
+            '                 └──────┐            0    @    0    0  |\n' +
+            '                        |         ┌──────────────┬─┬───┤\n' +
+            '                        ├┐      0 | ┌────────────┴─┴───┤\n' +
+            '                        │|)       | |     0    0       ¦\n' +
+            '                        │|°     0 | |                  ¦\n' +
+            '                        └┴────────┴─┴──────────────────┘\n');
     }
 }
 
