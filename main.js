@@ -449,9 +449,9 @@ function displayZoe() {
         '             /   |°     |\n' +
         '            |    |°      \\\n' +
         '            |   /|\\°  ___ \\\n' +
-        '            |  |≡|≡\\° UUU  \'\\\n' +
-        '            |  |─┼──\\°       \\\n' +
-        '            |  | |\\  \\°       \\\n');
+        '            |  |≡|≡\\° UUU \'\\\n' +
+        '            |  |─┼─\\°       \\\n' +
+        '            |  | |  \\°       \\\n');
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
 }
