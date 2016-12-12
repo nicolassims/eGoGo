@@ -415,7 +415,7 @@ function displayDaniela() {
 }
 
 function displayOmo() {
-    
+
 }
 
 function displayAntiem(position) {
