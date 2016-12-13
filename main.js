@@ -16,6 +16,7 @@ function main() {
     setDateMonth();
     setDateDay();
     setDayName();
+    //displayOmo();
     //displayZoe();
     //displayDaniela();
     showPawn();
@@ -30,7 +31,6 @@ function main() {
     printKnowPurpose();
     showPawn();
     day1Part1();
-
     //
         showPawn();
 }
@@ -351,72 +351,13 @@ function day1Part1() {
         'sets... \n ' +
         'Although the blazing heat, coming from the sun, still full in the sky, indicates you\'re in no rush.\n ' +
         'You quickly dash down the length of Tin Street, turn onto Main Street, spot a curious black cat staring at ' +
-        'you cooly--\n ' +
+        'you cooly.\n ' +
         '                          Press Enter to Continue\n>');
-    
 }
 
 //
 //graphicsFunctions
 //
-
-function displayZoe() {
-    console.log('\n' +
-    '             _---^^--.__\n' +
-    '           /\'           \\               \n' +
-    '          /\'/\'\"\\ |\"\'\'\\   \\                \n' +
-    '          / |\"███\\███\"|^  |               \n' +
-    '          | \\    └     :| \\               \n' +
-    '          \\/*\\        |*   \\              \n' +
-    '          /   \\  ^   /     |              \n' +
-    '  ╬╬     |_\\/\\/\'────|_/\\/\\/               \n' +
-    ' ╬╬╬         ____| V |___               \n' +
-    '\\   \\      / /    /       \\               \n' +
-    ' \\   \\    / /    /°    \\    \\               \n' +
-    '  \\   \\__/ |    |°      |   |               \n' +
-    '   \\       _\\    \\°    /    |               \n' +
-    '    \\_____/╬╬|\'\'\'\'\'\'\'\'\'    /              \n' +
-    '            ╬|____________/               \n' +
-    '             /   |°     |               \n' +
-    '            |    |°      \\                \n' +
-    '            |   /|\\°  ___ \\               \n' +
-    '            |  |≡|≡\\° UUU \'\\            \n' +
-    '            |  |─┼─\\°       \\              \n' +
-    '            |  | |  \\°       \\             \n');
-    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
-    process.stdout.write('\x1Bc');
-}
-
-function displayDaniela() {
-    console.log('\n' +
-        '      ~~(^^^^)~~\n' +
-        '    (           )\n' +
-        '  (  (_(_(_(_(_  )\n' +
-        '  (  |  |   |  (  )\n' +
-        '   ( |          (   )\n' +
-        ' (    \\  ´      (    )\n' +
-        '(     \\   -  (      )\n' +
-        '  (_____\'──── (____)\n' +
-        '     ____|   |______\n' +
-        '    //\\_\\    /_/    \\\n' +
-        '   //  __\\┌┐/__      \\\n' +
-        '  ||   \\\./├┘\\\./      |\n' +
-        '  | \\__    \\__   |   |\n' +
-        '  |  |           |   |\n' +
-        '  |  |           |   |\n' +
-        '  |  |═══════════|   |\n' +
-        ' |  /____        |    |\n' +
-        ' | | |MF|        |   °|\n' +
-        ' |_| └──┘        |____|\n' +
-        '   |                 |\n' +
-        '   |                 |\n');
-    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
-    process.stdout.write('\x1Bc');
-}
-
-function displayOmo() {
-
-}
 
 function displayAntiem(position) {
     if (position == null || position == 0) {
@@ -516,6 +457,75 @@ function displayAntiem(position) {
             '<2> = A Small House\n' +
             '<3> = McFriday\'s\n');
     }
+}
+
+function displayOmo() {
+    console.log('\n' +
+        ' /\\     /\\\n' +
+        '{  \'---\'  }\n' +
+        '{ -■   ■- }\n' +
+        '>    V    <\n' +
+        ' \\   ┴   \/\n' +
+        '  \'-----\'____\n' +
+        '  /--×--\\    \\_\n' +
+        ' {       }\\  )_\\_   _\n' +
+        ' |  \\_/  |/ /  \\_\\_/ )\n' +
+        '  \\__/  /(_/     \\__/\n' +
+        '    (__/\n');
+}
+
+function displayZoe() {
+    console.log('\n' +
+    '             _---^^--.__\n' +
+    '           /\'           \\               \n' +
+    '          /\'/\'\"\\ |\"\'\'\\   \\                \n' +
+    '          / |\"███\\███\"|^  |               \n' +
+    '          | \\    └     :| \\               \n' +
+    '          \\/*\\        |*   \\              \n' +
+    '          /   \\  ^   /     |              \n' +
+    '  ╬╬     |_\\/\\/\'────|_/\\/\\/               \n' +
+    ' ╬╬╬         ____| V |___               \n' +
+    '\\   \\      / /    /       \\               \n' +
+    ' \\   \\    / /    /°    \\    \\               \n' +
+    '  \\   \\__/ |    |°      |   |               \n' +
+    '   \\       _\\    \\°    /    |               \n' +
+    '    \\_____/╬╬|\'\'\'\'\'\'\'\'\'    /              \n' +
+    '            ╬|____________/               \n' +
+    '             /   |°     |               \n' +
+    '            |    |°      \\                \n' +
+    '            |   /|\\°  ___ \\               \n' +
+    '            |  |≡|≡\\° UUU \'\\            \n' +
+    '            |  |─┼─\\°       \\              \n' +
+    '            |  | |  \\°       \\             \n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    process.stdout.write('\x1Bc');
+}
+
+function displayDaniela() {
+    console.log('\n' +
+        '      ~~(^^^^)~~\n' +
+        '    (           )\n' +
+        '  (  (_(_(_(_(_  )\n' +
+        '  (  |  |   |  (  )\n' +
+        '   ( |          (   )\n' +
+        ' (    \\  ´      (    )\n' +
+        '(     \\   -  (      )\n' +
+        '  (_____\'──── (____)\n' +
+        '     ____|   |______\n' +
+        '    //\\_\\    /_/    \\\n' +
+        '   //  __\\┌┐/__      \\\n' +
+        '  ||   \\\./├┘\\\./      |\n' +
+        '  | \\__    \\__   |   |\n' +
+        '  |  |           |   |\n' +
+        '  |  |           |   |\n' +
+        '  |  |═══════════|   |\n' +
+        ' |  /____        |    |\n' +
+        ' | | |MF|        |   °|\n' +
+        ' |_| └──┘        |____|\n' +
+        '   |                 |\n' +
+        '   |                 |\n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    process.stdout.write('\x1Bc');
 }
 
 function displayMcFriday(position) {
