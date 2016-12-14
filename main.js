@@ -16,9 +16,6 @@ function main() {
     setDateMonth();
     setDateDay();
     setDayName();
-    //displayOmo();
-    //displayZoe();
-    //displayDaniela();
     showPawn();
     setInitialPlayerStats();
     printIntro();
@@ -32,13 +29,14 @@ function main() {
     showPawn();
     day1Part1();
     //
+        printPlayerStatus();
         showPawn();
 }
 
 main();
 
 function printIntro() {
-    console.log('\nSpeakest thou thine name, caller of thy inner self.\n ' +
+    console.log('Speakest thou thine name, caller of thy inner self.\n ' +
         'What is the name bestowed upon thee by thy family?\n ' +
         'What is the name given to thee by thy friends?');
 }
@@ -53,7 +51,7 @@ function setLName() {
 
 function printNameReaction() {
     wipeScreen();
-    console.log('\nSo... you are the ' + lName + ' they call ' + fName + '. Curious...\n ' +
+    console.log('So... you are the ' + lName + ' they call ' + fName + '. Curious...\n ' +
         'Now... do you know why I am here? Do you know who I am?\n ' +
         'I\'d imagine not, but why don\'t you tell me?');
 }
@@ -75,16 +73,16 @@ function setKnowSelf() {
 function printKnowSelf() {
     wipeScreen();
     if (chooseVar == 1) {
-        console.log('\nFascinating.\n ' +
+        console.log('Fascinating.\n ' +
             'If you know me, then you must truly know yourself.\n ' +
             'An enviable quality.');
     } else if (chooseVar == 2) {
-        console.log('\nFew people do.\n ' +
+        console.log('Few people do.\n ' +
             'Pay it no mind.\n ' +
             'It is not a personal failing.\n ' +
             'You will, in time, learn of me.');
     } else if (chooseVar == 3) {
-        console.log('\n...?\n ' +
+        console.log('...?\n ' +
             'I see.\n ' +
             'Then be warned, arrogant one...\n ' +
             'You will, in time, learn of me.');
@@ -111,7 +109,7 @@ function setKnowPurpose() {
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5 && chooseVar != 6
     && chooseVar != 7 && chooseVar != 8 && chooseVar != 9 && chooseVar != 10 && chooseVar != 11
     && chooseVar != 12) {
-        chooseVar = PROMPT.question('\nTo strike your own path is a worthy aim... but not now.\n' +
+        chooseVar = PROMPT.question('To strike your own path is a worthy aim... but not now.\n' +
             '<<(1) = I am here to find that which has not been found.>>\n' +
             '<<(2) = I am here to bring sense to a crazed world.>>\n' +
             '<<(3) = I am here to do that which I can do.>>\n' +
@@ -314,6 +312,8 @@ function printPlayerStatus() {
         'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
         'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n\n' +
         'COURAGE |' + Math.round(playerStats[0][1]) + '| FORTITUDE |' + Math.round(playerStats[0][3]) + '| SPIRIT |' + Math.round(playerStats[0][5]) + '| HEART |' + Math.round(playerStats[0][7]) +'|\n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    process.stdout.write('\x1Bc');
 } //Displays player status
 
 
@@ -349,9 +349,51 @@ function day1Part1() {
     displayAntiem();
     chooseVar = PROMPT.question('You decide you should probably find your Aunt and Uncle\'s house before the sun ' +
         'sets... \n ' +
-        'Although the blazing heat, coming from the sun, still full in the sky, indicates you\'re in no rush.\n ' +
-        'You quickly dash down the length of Tin Street, turn onto Main Street, spot a curious black cat staring at ' +
-        'you cooly.\n ' +
+        'Although the blazing heat indicates you\'re in no rush.\n ' +
+        'You quickly dash down the length of Tin Street, turn onto Main Street, and spot a curious black cat staring ' +
+        'at you coolly.\n ' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayOmo();
+    chooseVar = PROMPT.question('The cat\'s eyes disturb you. Its glassy gaze MOCKS you.\n ' +
+        'What will you do?\n' +
+        '<<(1) = Intimidate it by puffing up your chest and growling.>>\n' +
+        '<<(6) = Try to get close to it, and sneak a peak at its collar.>>\n' +
+        '<<(11) = Walk up to it and give it a thorough petting.>>\n' +
+        '<<(12) = Throw the poor thing a chunk of bread, or something.>>\n' +
+        '>');
+    while (chooseVar != 1 && chooseVar != 6 && chooseVar != 11 && chooseVar != 12) {
+        chooseVar = PROMPT.question('\nThat is not an option.\n' +
+            'The cat\'s eyes disturb you. Its glassy gaze MOCKS you.\n ' +
+            'What will you do?\n' +
+            '<<(1) = Intimidate it by puffing up your chest and growling.>>\n' +
+            '<<(6) = Try to get close to it, and sneak a peak at its collar.>>\n' +
+            '<<(11) = Walk up to it and give it a thorough petting.>>\n' +
+            '<<(12) = Throw the poor thing a chunk of bread, or something.>>\n' +
+            '>');
+    }
+    setPlayerStats(1);
+    wipeScreen();
+    displayOmo();
+    if (chooseVar == 1) {
+        console.log('The cat is thoroughly unimpressed. But, really, what were you thinking?');
+    } else if (chooseVar == 6) {
+        console.log('It is entirely still until you are about a hand\'s width away.\n ' +
+        'This allows you to see, easily, that it has no collar.\n');
+    } else if (chooseVar == 11) {
+        console.log('You give the cat a thorough petting.\n ' +
+        'It doesn\'t purr, but it seems appreciative.');
+    } else if (chooseVar == 12) {
+        console.log('You do not have a chunk of bread--but it\'s the thought that counts.');
+    }
+    wipeScreen();
+    displayAntiem(1);
+    chooseVar = PROMPT.question(' The cat saunters away, leaving your life entirely unchanged.\n ' +
+        'You watch it leave, and see it settle down in the shade of a large wooden house absolutely covered in ' +
+        'vines.\n ' +
+        'A sign on the house bears the name EMERALD PLACE.\n ' +
+        'You vaguely remember your parents saying your aunt and uncle lived in a house called such.\n ' +
+        'You swiftly walk to the front door.\n ' +
         '                          Press Enter to Continue\n>');
 }
 
@@ -460,7 +502,7 @@ function displayAntiem(position) {
 }
 
 function displayOmo() {
-    console.log('\n' +
+    console.log(
         ' /\\     /\\\n' +
         '{  \'---\'  }\n' +
         '{ -■   ■- }\n' +
@@ -474,8 +516,30 @@ function displayOmo() {
         '    (__/\n');
 }
 
+function displayEmeraldPlace() {
+    console.log(
+        '                            _..-:-.._\n' +
+        '                     _..--\'\'    :    \`\`--.._\n' +
+        '              _..--\'\'           :           \`\`--.._\n' +
+        '        _..-\'\'                  :                .\'\`\`--.._\n' +
+        ' _..--\'\' \`.                     :              .\'         |\n' +
+        '|          \`.              _.-\'\'|\`\`-._       .\'           |\n' +
+        '|            \`.       _.-\'\'     |     \`\`-._.\'       _.-.  |\n' +
+        '|   |\`-._      \`._.-\'\'          |  ;._     |    _.-\'   |  |\n' +
+        '|   |    \`-._    |     _.-|     |  |  \`-.  |   |    _.-\'  |\n' +
+        '|_   \`-._    |   |    |   |     |  \`-._ |  |   |_.-\'   _.-\'   ..\n' +
+        '  \`-._   \`-._|   |    |.  |  _.-\'-._   \`\'  |       _.-\'   ..::::::..\n' +
+        '      \`-._       |    |  _|-\'  *    \`-._   |   _.-\'   ..::::::::\'\'\n' +
+        '          \`-._   |   _|-\'.::. \\|/  *    \`-.|.-\'   ..::::::::\'\'\n' +
+        '              \`-.|.-\' *\`:::::::.. \\|/  *      ..::::::::\'\'\n' +
+        '                     \\|/  *\`:::::::.. \\|/ ..::::::::\'\'\n' +
+        '                         \\|/  *\`:::::::.::::::::\'\'\n' +
+        '                             \\|/  *\`::::::::\'\'\n' +
+        '                                 \\|/  \`:\'\'\n');
+}
+
 function displayZoe() {
-    console.log('\n' +
+    console.log(
     '             _---^^--.__\n' +
     '           /\'           \\               \n' +
     '          /\'/\'\"\\ |\"\'\'\\   \\                \n' +
@@ -502,7 +566,7 @@ function displayZoe() {
 }
 
 function displayDaniela() {
-    console.log('\n' +
+    console.log(
         '      ~~(^^^^)~~\n' +
         '    (           )\n' +
         '  (  (_(_(_(_(_  )\n' +
@@ -681,3 +745,4 @@ while (chooseVar != 1) {
 
     }
 }*/
+
