@@ -16,6 +16,7 @@ function main() {
     setDateMonth();
     setDateDay();
     setDayName();
+        //pause();
     showPawn();
     setInitialPlayerStats();
     printIntro();
@@ -316,7 +317,10 @@ function printPlayerStatus() {
     process.stdout.write('\x1Bc');
 } //Displays player status
 
-
+function pause() {
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    process.stdout.write('\x1Bc');
+}
 
 //
 //storyFunctions
@@ -324,7 +328,7 @@ function printPlayerStatus() {
 
 function day1Part1() {
     displayAntiem();
-    chooseVar = PROMPT.question('Welcome to Antiem.\n ' +
+    chooseVar = PROMPT.question('Welcome to Antiem. You are the @.\n ' +
         'Antiem is a perpetually hot, sleepy, and frankly boring town smack-dab in the middle of the state of ' +
         'Kansas.\n ' +
         'You\'ve been sent here by your parents to \"gain more appreciation for your American heritage.\"\n ' +
@@ -395,6 +399,19 @@ function day1Part1() {
         'You vaguely remember your parents saying your aunt and uncle lived in a house called such.\n ' +
         'You swiftly walk to the front door.\n ' +
         '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayEmeraldPlace();
+    chooseVar = PROMPT.question('It\'s a beautiful house, you think. ' +
+        'In your home country, you might call it \"Victorian architecture.\" ' +
+        'You prepare to knock on the front door when...'+
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayEmeraldPlace(1);
+    chooseVar = PROMPT.question('...The front door swings open. ' +
+        'Standing in the doorframe is a large, cheerful-looking, middle-aged woman with deep red cheeks. ' +
+        'She\'s beaming at you brightly, and her arms are already extended for a hug.' +
+        'This is your aunt, Aunt Dee. Auntie Dorothy, for long.' +
+        '                          Press Enter to Continue\n>');
 }
 
 //
@@ -407,11 +424,11 @@ function displayAntiem(position) {
             '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
             '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
             '|  <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-            '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-            '|      ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '|      ││  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|    ┌─┘│     │¦ <2> |       │     HALL     │      │     │       \n' +
+            '|    │  │  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|    ¦::│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└────┘  │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
             '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
             ' ─     ─   ┴     ─      ─       ─    @  ─       ─     ┘  │└┐    |\n' +
             '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
@@ -430,12 +447,12 @@ function displayAntiem(position) {
         console.log(
             '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
             '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-            '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-            '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-            '|  <1> ¦│@ │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '|  <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|      ││  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|    ┌─┘│     │¦ <2> |       │     HALL     │      │     │       \n' +
+            '|    │  │  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|    ¦::│@    │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└────┘  │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
             '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
             ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
             '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
@@ -454,12 +471,12 @@ function displayAntiem(position) {
         console.log(
             '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
             '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-            '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-            '|     └┐│    @│¦ <2> |       │     HALL     │      │     │       \n' +
-            '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '|  <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|      ││  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|    ┌─┘│    @│¦ <2> |       │     HALL     │      │     │       \n' +
+            '|    │  │  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|    ¦::│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└────┘  │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
             '────────┘     └────────────────────┘  └────────────┘     │¦ <3> |\n' +
             ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
             '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
@@ -478,12 +495,12 @@ function displayAntiem(position) {
         console.log(
             '    RESIDENTIAL AREA                            BUSINESS AREA    \n' +
             '┌──────┐|  │  |              O┌────────────┐O      │  │  │       \n' +
-            '|      ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
-            '|     ┌┘│  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
-            '|     └┐│     │¦ <2> |       │     HALL     │      │     │       \n' +
-            '|  <1> ¦│  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
-            '|     ┌┘│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
-            '└─────┘ │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
+            '|  <1> ||     | ┌────┐      O┌┘   ANTIEM   └┐O     │     │       \n' +
+            '|      ││  │  │┌┘    |       │     TOWN     │      │  │  │       \n' +
+            '|    ┌─┘│     │¦ <2> |       │     HALL     │      │     │       \n' +
+            '|    │  │  │  │└─────┘       └──┐        ┌──┘      │  │  │ ┌────┐\n' +
+            '|    ¦::│     │ O             O └──┐  ┌──┘ O       │     │ |    |\n' +
+            '└────┘  │  │  │ O O O O        O O └~~┘ O O      O |  │  │┌┘    |\n' +
             '────────┘     └────────────────────┘  └────────────┘    @│¦ <3> |\n' +
             ' ─     ─   ┴     ─      ─       ─       ─       ─     ┘  │└┐    |\n' +
             '───────────────────────────────────┐  ┌──────────────────┘ |    |\n' +
@@ -516,26 +533,70 @@ function displayOmo() {
         '    (__/\n');
 }
 
-function displayEmeraldPlace() {
+function displayEmeraldPlace(position) {
+    if (position == null || position == 0) {
+        console.log(
+            '                            _..-:-.._\n' +
+            '                     _..--\'\'    :    \`\`--.._\n' +
+            '              _..--\'\'           :           \`\`--.._\n' +
+            '        _..-\'\'                  :                .\'\`\`--.._\n' +
+            ' _..--\'\' \`.                     :              .\'         |\n' +
+            '|          \`.              _.-\'\'|\`\`-._       .\'           |\n' +
+            '|            \`.       _.-\'\'     |     \`\`-._.\'       _.-.  |\n' +
+            '|   |\`-._      \`._.-\'\'          |  ;._     |    _.-\'   |  |\n' +
+            '|   |    \`-._    |     _.-|     |  |  \`-.  |   |    _.-\'  |\n' +
+            '|_   \`-._    |   |    |   |     |  \`-._ |  |   |_.-\'   _.-\'   ..\n' +
+            '  \`-._   \`-._|   |    |.  |  _.-\'-._   \`\'  |       _.-\'   ..::::::..\n' +
+            '      \`-._       |    |  _|-\'  *    \`-._   |   _.-\'   ..::::::::\'\'\n' +
+            '          \`-._   |   _|-\'.::. \\|/  *    \`-.|.-\'   ..::::::::\'\'\n' +
+            '              \`-.|.-\' *\`:::::::.. \\|/  *      ..::::::::\'\'\n' +
+            '                     \\|/  *\`:::::::.. \\|/ ..::::::::\'\'\n' +
+            '                         \\|/  *\`:::::::.::::::::\'\'\n' +
+            '                             \\|/  *\`::::::::\'\'\n' +
+            '                                 \\|/  \`:\'\'\n');
+    } else if (position == 1) {
+        console.log(
+            '                            _..-:-.._\n' +
+            '                     _..--\'\'    :    \`\`--.._\n' +
+            '              _..--\'\'           :           \`\`--.._\n' +
+            '        _..-\'\'                  :                .\'\`\`--.._\n' +
+            ' _..--\'\' \`.                     :              .\'         |\n' +
+            '|          \`.              _.-\'\'|\`\`-._       .\'           |\n' +
+            '|            \`.       _.-\'\'     |     \`\`-._.\'       _.-.  |\n' +
+            '|   |\`-._      \`._.-\'\'          |  ;._     |    _.-\'   |  |\n' +
+            '|   |    \`-._    |     _.-|     |  |  \`-.  |   |    _.-\'  |\n' +
+            '|_   \`-._    |   |    |O|.|     |  \`-._ |  |   |_.-\'   _.-\'   ..\n' +
+            '  \`-._   \`-._|   |    |┼| |  _.-\'-._   \`\'  |       _.-\'   ..::::::..\n' +
+            '      \`-._       |    |A└─|-\'  *    \`-._   |   _.-\'   ..::::::::\'\'\n' +
+            '          \`-._   |    |-\':::. \\|/  *    \`-.|.-\'   ..::::::::\'\'\n' +
+            '              \`-.|.-\' *\`:::::::.. \\|/  *      ..::::::::\'\'\n' +
+            '                     \\|/  *\`:::::::.. \\|/ ..::::::::\'\'\n' +
+            '                         \\|/  *\`:::::::.::::::::\'\'\n' +
+            '                             \\|/  *\`::::::::\'\'\n' +
+            '                                 \\|/  \`:\'\'\n');
+    }
+}
+
+function displayGeneric() {
     console.log(
-        '                            _..-:-.._\n' +
-        '                     _..--\'\'    :    \`\`--.._\n' +
-        '              _..--\'\'           :           \`\`--.._\n' +
-        '        _..-\'\'                  :                .\'\`\`--.._\n' +
-        ' _..--\'\' \`.                     :              .\'         |\n' +
-        '|          \`.              _.-\'\'|\`\`-._       .\'           |\n' +
-        '|            \`.       _.-\'\'     |     \`\`-._.\'       _.-.  |\n' +
-        '|   |\`-._      \`._.-\'\'          |  ;._     |    _.-\'   |  |\n' +
-        '|   |    \`-._    |     _.-|     |  |  \`-.  |   |    _.-\'  |\n' +
-        '|_   \`-._    |   |    |   |     |  \`-._ |  |   |_.-\'   _.-\'   ..\n' +
-        '  \`-._   \`-._|   |    |.  |  _.-\'-._   \`\'  |       _.-\'   ..::::::..\n' +
-        '      \`-._       |    |  _|-\'  *    \`-._   |   _.-\'   ..::::::::\'\'\n' +
-        '          \`-._   |   _|-\'.::. \\|/  *    \`-.|.-\'   ..::::::::\'\'\n' +
-        '              \`-.|.-\' *\`:::::::.. \\|/  *      ..::::::::\'\'\n' +
-        '                     \\|/  *\`:::::::.. \\|/ ..::::::::\'\'\n' +
-        '                         \\|/  *\`:::::::.::::::::\'\'\n' +
-        '                             \\|/  *\`::::::::\'\'\n' +
-        '                                 \\|/  \`:\'\'\n');
+        '     _______\n' +
+        '   _|       |_\n' +
+        '  |    ...    |\n' +
+        '  |    ...    |\n' +
+        '   |__     __|\n' +
+        '   ___|   |____\n' +
+        '  /            \\\n' +
+        ' /              \\\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n' +
+        '|                |\n');
 }
 
 function displayZoe() {
@@ -572,17 +633,17 @@ function displayDaniela() {
         '  (  (_(_(_(_(_  )\n' +
         '  (  |  |   |  (  )\n' +
         '   ( |          (   )\n' +
-        ' (    \\  ´      (    )\n' +
-        '(     \\   -  (      )\n' +
+        ' (    \\ ´      (    )\n' +
+        '(      \\  -  (      )\n' +
         '  (_____\'──── (____)\n' +
         '     ____|   |______\n' +
         '    //\\_\\    /_/    \\\n' +
         '   //  __\\┌┐/__      \\\n' +
-        '  ||   \\\./├┘\\\./      |\n' +
+        '  ||   \\\./└┘\\\./      |\n' +
         '  | \\__    \\__   |   |\n' +
         '  |  |           |   |\n' +
         '  |  |           |   |\n' +
-        '  |  |═══════════|   |\n' +
+        '  |__|═══════════|___|\n' +
         ' |  /____        |    |\n' +
         ' | | |MF|        |   °|\n' +
         ' |_| └──┘        |____|\n' +
@@ -745,4 +806,3 @@ while (chooseVar != 1) {
 
     }
 }*/
-
