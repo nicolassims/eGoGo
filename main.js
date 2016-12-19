@@ -44,10 +44,18 @@ function printIntro() {
 
 function setFName() {
     fName = PROMPT.question('<<What is your first name, or nickname?>>\n>');
+    while (fName == '') {
+        fName = PROMPT.question('\nAnswer truthfully.\n' +
+            '<<What is your first name, or nickname?>>\n>');
+    }
 }
 
 function setLName() {
     lName = PROMPT.question('\n<<What is your last name?>>\n>');
+    while (lName == '') {
+        lName = PROMPT.question('\nAnswer truthfully.\n' +
+            '<<What is your last name?>>\n>');
+    }
 }
 
 function printNameReaction() {
@@ -110,7 +118,7 @@ function setKnowPurpose() {
     while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5 && chooseVar != 6
     && chooseVar != 7 && chooseVar != 8 && chooseVar != 9 && chooseVar != 10 && chooseVar != 11
     && chooseVar != 12) {
-        chooseVar = PROMPT.question('To strike your own path is a worthy aim... but not now.\n' +
+        chooseVar = PROMPT.question('\nTo strike your own path is a worthy aim... but not now.\n' +
             '<<(1) = I am here to find that which has not been found.>>\n' +
             '<<(2) = I am here to bring sense to a crazed world.>>\n' +
             '<<(3) = I am here to do that which I can do.>>\n' +
@@ -403,14 +411,14 @@ function day1Part1() {
     displayEmeraldPlace();
     chooseVar = PROMPT.question('It\'s a beautiful house, you think. ' +
         'In your home country, you might call it \"Victorian architecture.\" ' +
-        'You prepare to knock on the front door when...'+
+        'You prepare to knock on the front door when...\n'+
         '                          Press Enter to Continue\n>');
     wipeScreen();
     displayEmeraldPlace(1);
-    chooseVar = PROMPT.question('...The front door swings open. ' +
-        'Standing in the doorframe is a large, cheerful-looking, middle-aged woman with deep red cheeks. ' +
-        'She\'s beaming at you brightly, and her arms are already extended for a hug.' +
-        'This is your aunt, Aunt Dee. Auntie Dorothy, for long.' +
+    chooseVar = PROMPT.question('...The front door swings open.\n ' +
+        'Standing in the doorframe is a large, cheerful-looking, middle-aged woman with deep red cheeks.\n ' +
+        'She\'s beaming at you brightly, and her arms are already extended for a hug.\n ' +
+        'This is your aunt, Aunt Dee. Auntie Dorothy, for long.\n' +
         '                          Press Enter to Continue\n>');
 }
 
