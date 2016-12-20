@@ -379,7 +379,7 @@ function day1Part1() {
             'The cat\'s eyes disturb you. Its glassy gaze MOCKS you.\n ' +
             'What will you do?\n' +
             '<<(1) = Intimidate it by puffing up your chest and growling.>>\n' +
-            '<<(6) = Try to get close to it, and sneak a peak at its collar.>>\n' +
+            '<<(6) = Try to get close to it, and sneak a peek at its collar.>>\n' +
             '<<(11) = Walk up to it and give it a thorough petting.>>\n' +
             '<<(12) = Throw the poor thing a chunk of bread, or something.>>\n' +
             '>');
@@ -391,35 +391,219 @@ function day1Part1() {
         console.log('The cat is thoroughly unimpressed. But, really, what were you thinking?');
     } else if (chooseVar == 6) {
         console.log('It is entirely still until you are about a hand\'s width away.\n ' +
-        'This allows you to see, easily, that it has no collar.\n');
+        'This allows you to see, easily, that it has no collar.');
     } else if (chooseVar == 11) {
         console.log('You give the cat a thorough petting.\n ' +
         'It doesn\'t purr, but it seems appreciative.');
     } else if (chooseVar == 12) {
         console.log('You do not have a chunk of bread--but it\'s the thought that counts.');
     }
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     wipeScreen();
     displayAntiem(1);
-    chooseVar = PROMPT.question(' The cat saunters away, leaving your life entirely unchanged.\n ' +
+    chooseVar = PROMPT.question('The cat saunters away, leaving your life entirely unchanged.\n ' +
         'You watch it leave, and see it settle down in the shade of a large wooden house absolutely covered in ' +
         'vines.\n ' +
         'A sign on the house bears the name EMERALD PLACE.\n ' +
-        'You vaguely remember your parents saying your aunt and uncle lived in a house called such.\n ' +
+        'You vaguely remember your parents saying your aunt and uncle lived in a house called as such.\n ' +
         'You swiftly walk to the front door.\n ' +
         '                          Press Enter to Continue\n>');
     wipeScreen();
     displayEmeraldPlace();
     chooseVar = PROMPT.question('It\'s a beautiful house, you think. ' +
-        'In your home country, you might call it \"Victorian architecture.\" ' +
-        'You prepare to knock on the front door when...\n'+
+        'In your home country, you might call it \"Victorian architecture.\"\n ' +
+        'You prepare to knock on the front door when...\n '+
         '                          Press Enter to Continue\n>');
     wipeScreen();
     displayEmeraldPlace(1);
     chooseVar = PROMPT.question('...The front door swings open.\n ' +
         'Standing in the doorframe is a large, cheerful-looking, middle-aged woman with deep red cheeks.\n ' +
         'She\'s beaming at you brightly, and her arms are already extended for a hug.\n ' +
-        'This is your aunt, Aunt Dee. Auntie Dorothy, for long.\n' +
+        'This is your aunt, Aunt Dee. Auntie Dorothy, for long.\n ' +
         '                          Press Enter to Continue\n>');
+    wipeScreen();
+    console.log(
+        '                                      _______\n' +
+        '                                    _|       |_\n' +
+        '                                   |    ...    |\n' +
+        '                                   |    ...    |\n' +
+        '                                    |__     __|\n' +
+        '                                    ___|   |____\n' +
+        '                                   /            \\\n' +
+        '                                  /              \\\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        ' ┌────────────────┐              |                |\n' +
+        ' |Aunt Dee        |              |                | \n' +
+        '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+        '|>Ah, there you are! I\'ve been waiting for you forever!         |\n' +
+        '|>So, how are you? Your mother told me that you\'ve been...      |\n' +
+        '|>Well, nevermind that. I\'m just glad you\'re finally here.      |\n' +
+        '|>Come in, come in! You haven\'t seen me or your uncle in years! |\n' +
+        '|>Ah, I remember the last time I saw you. You were knee-high to |\n' +
+        '| a bedbug!                                                     |\n' +
+        '└───────────────────────────────────────────────────────────────┘\n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayEmeraldPlace();
+    chooseVar = PROMPT.question('You follow your Aunt into the house.\n ' +
+        'She yells, loudly \"Ozzy! ' + fName + ' is here!\"' +
+        'A stern-looking man floats down the stairs.\n ' +
+        'He has a pointed nose, a pointed pencil-moustache...\n ' +
+        'And he\'s staring at you pointedly.\n ' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    console.log(
+        '                                      _______\n' +
+        '                                    _|       |_\n' +
+        '                                   |    ...    |\n' +
+        '                                   |    ...    |\n' +
+        '                                    |__     __|\n' +
+        '                                    ___|   |____\n' +
+        '                                   /            \\\n' +
+        '                                  /              \\\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        ' ┌────────────────┐              |                |\n' +
+        ' |Ozzy?           |              |                | \n' +
+        '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+        '|>I\'ve been expecting you.                                      |\n' +
+        '|>I\'ll have you know I have no fondness for children.           |\n' +
+        '|>As long as you do not interfere in my work, I will not be too |\n' +
+        '| obstructive, in turn.                                         |\n' +
+        '|>Know, though, that I have no tolerance for meddlers.          |\n' +
+        '|>Furthermore... my name is Uncle Ozymandias.                   |\n' +
+        '└───────────────────────────────────────────────────────────────┘\n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    wipeScreen();
+    console.log(
+        '                                      _______\n' +
+        '                                    _|       |_\n' +
+        '                                   |    ...    |\n' +
+        '                                   |    ...    |\n' +
+        '                                    |__     __|\n' +
+        '                                    ___|   |____\n' +
+        '                                   /            \\\n' +
+        '                                  /              \\\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        '                                 |                |\n' +
+        ' ┌────────────────┐              |                |\n' +
+        ' |Uncle Ozymandias|              |                | \n' +
+        '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+        '|>You will refer to me as such.                                 |\n' +
+        '|                                                               |\n' +
+        '|                                                               |\n' +
+        '|                                                               |\n' +
+        '|                                                               |\n' +
+        '|                                                               |\n' +
+        '└───────────────────────────────────────────────────────────────┘\n');
+    chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayEmeraldPlace(1);
+    chooseVar = PROMPT.question('Uncle Ozymandias throws on a coat and leaves the house.\n ' +
+        '                          Press Enter to Continue\n>');
+    chooseVar = PROMPT.question('Aunt Dee is staring at you, worriedly.\n ' +
+        'She\'s playing with some sort of necklace, but it seems she\'s doing it just to keep her hands busy.\n ' +
+        'Will you say something to diffuse the awkwardness?\n' +
+        '<<(2) = \"Bad day? Happens to everyone.\">>\n' +
+        '<<(4) = \"Well, I\'ll just have to think of something to make him like me, right?\">>\n' +
+        '<<(9) = \"Oh, I\'m sure he\'ll warm up to me.\">>\n' +
+        '<<(10) = \"Someone needs to remove a stick from their butt.\">>\n' +
+        '>');
+    while (chooseVar != 2 && chooseVar != 4 && chooseVar != 9 && chooseVar != 10) {
+        chooseVar = PROMPT.question('\nThat is not an option.\n' +
+            'Aunt Dee is staring at you, worriedly.\n ' +
+            'She\'s playing with some sort of necklace, but it seems she\'s doing it just to keep her hands busy.\n ' +
+            'Will you say something to diffuse the awkwardness?\n' +
+            '<<(2) = \"Bad day? Happens to everyone.\">>\n' +
+            '<<(4) = \"Well, I\'ll just have to think of something to make him like me, right?\">>\n' +
+            '<<(9) = \"Oh, I\'m sure he\'ll warm up to me.\">>\n' +
+            '<<(10) = \"Someone needs to remove a stick from their butt.\">>\n' +
+            '>');
+    }
+    setPlayerStats(1);
+    wipeScreen();
+    if (chooseVar == 2) {
+        console.log(
+            '                                      _______\n' +
+            '                                    _|       |_\n' +
+            '                                   |    ...    |\n' +
+            '                                   |    ...    |\n' +
+            '                                    |__     __|\n' +
+            '                                    ___|   |____\n' +
+            '                                   /            \\\n' +
+            '                                  /              \\\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            ' ┌────────────────┐              |                |\n' +
+            ' |Aunt Dee        |              |                | \n' +
+            '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+            '|>Yeah... sorry about your uncle.                               |\n' +
+            '|>He\'s just very stressed.                                      |\n' +
+            '|>And, um, has no sense of humor.                               |\n' +
+            '|>And has a multitude of bad experiences with children.         |\n' +
+            '|>And got basically no sleep last night, because I was running  |\n' +
+            '| around the house, getting ready for you, until midnight.      |\n' +
+            '└───────────────────────────────────────────────────────────────┘\n');
+        chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    } else if (chooseVar == 4) {
+        console.log(
+            '                                      _______\n' +
+            '                                    _|       |_\n' +
+            '                                   |    ...    |\n' +
+            '                                   |    ...    |\n' +
+            '                                    |__     __|\n' +
+            '                                    ___|   |____\n' +
+            '                                   /            \\\n' +
+            '                                  /              \\\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            ' ┌────────────────┐              |                |\n' +
+            ' |Aunt Dee        |              |                | \n' +
+            '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+            '|>That\'s a very positive attitude!                              |\n' +
+            '|>But don\'t worry, it\'s not up to you.                          |\n' +
+            '|>I\'ll talk to him.                                             |\n' +
+            '|>Although, um, perhaps you should also try your idea.          |\n' +
+            '|>I mean, it can\'t really hurt.                                |\n' +
+            '|>Unless you do something to piss him off more.                 |\n' +
+            '└───────────────────────────────────────────────────────────────┘\n');
+        chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+        console.log(
+            '                                      _______\n' +
+            '                                    _|       |_\n' +
+            '                                   |    ...    |\n' +
+            '                                   |    ...    |\n' +
+            '                                    |__     __|\n' +
+            '                                    ___|   |____\n' +
+            '                                   /            \\\n' +
+            '                                  /              \\\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            '                                 |                |\n' +
+            ' ┌────────────────┐              |                |\n' +
+            ' |Aunt Dee        |              |                | \n' +
+            '┌┴────────────────┴─────────────────────────────────────────────┐\n' +
+            '|>!                                                             |\n' +
+            '|>...Pardon my French.                                          |\n' +
+            '|                                                               |\n' +
+            '|                                                               |\n' +
+            '|                                                               |\n' +
+            '|                                                               |\n' +
+            '└───────────────────────────────────────────────────────────────┘\n');
+        chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
+    } else if (chooseVar == 9) {
+        console.log('You give the cat a thorough petting.\n ' +
+            'It doesn\'t purr, but it seems appreciative.');
+    } else if (chooseVar == 10) {
+        console.log('You do not have a chunk of bread--but it\'s the thought that counts.');
+    }
+
 }
 
 //
