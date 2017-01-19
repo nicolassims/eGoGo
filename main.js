@@ -13,22 +13,9 @@ let fName, lName, dateName;
 let playerStats = [];
 
 function main() {
-    setDateMonth();
-    setDateDay();
-    setDayName();
-        //pause();
-    showPawn();
-    setInitialPlayerStats();
-    printIntro();
-    setFName();
-    setLName();
-    printNameReaction();
-    setKnowSelf();
-    printKnowSelf();
-    setKnowPurpose();
-    printKnowPurpose();
-    showPawn();
-    day1Part1();
+    day1part3();
+    day1part1();
+    day1part2();
     //
         printPlayerStatus();
         showPawn();
@@ -334,7 +321,24 @@ function pause() {
 //storyFunctions
 //
 
-function day1Part1() {
+function day1part1() {
+    setDateMonth();
+    setDateDay();
+    setDayName();
+    showPawn();
+    setInitialPlayerStats();
+    printIntro();
+    setFName();
+    setLName();
+    printNameReaction();
+    setKnowSelf();
+    printKnowSelf();
+    setKnowPurpose();
+    printKnowPurpose();
+    showPawn();
+}
+
+function day1part2() {
     displayAntiem();
     chooseVar = PROMPT.question('Welcome to Antiem. You are the @.\n ' +
         'Antiem is a perpetually hot, sleepy, and frankly boring town smack-dab in the middle of the state of ' +
@@ -623,7 +627,7 @@ function day1Part1() {
             '|>Of course, he\'s always awake all night, and... oh, nevermind. |\n' +
             '└───────────────────────────────────────────────────────────────┘\n');
         chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
-    } else if (chooseVar == 10) {
+    } else if (chooseVar == 8) {
         console.log(
             '                                      _______\n' +
             '                                    _|       |_\n' +
@@ -861,6 +865,39 @@ function day1Part1() {
 
 }
 
+function day1part3() {
+    displayBed();
+    chooseVar = PROMPT.question('Your new room looks enormous, warm, and comfy.\n ' +
+        'Also, in your new attic-room, are your chess sets, starwatching kits, action figures, and an easy-bake oven ' +
+        'you still haven\'t thrown away.\n ' +
+        'On the left, as you open the door, is your private bathroom.\n ' +
+        'The only thing that interests you right now, however, is your bed.\n ' +
+        'You eagerly approach it.\n ' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayHeart();
+    chooseVar = PROMPT.question('And then you have a heart attack.\n ' +
+        '\n ' +
+        '\n ' +
+        '\n ' +
+        'Bummer.\n ' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    chooseVar = PROMPT.question('...\n');
+    chooseVar = PROMPT.question('...\n');
+    chooseVar = PROMPT.question('...\n');
+    wipeScreen();
+    chooseVar = PROMPT.question('Of course, your story doesn\'t end this way.\n ' +
+        'You are the hero of this story, after all, and what kind of story would it be if the hero died of a heart ' +
+        'attack?\n ' +
+        'So, needless to say, you aren\'t actually dead.\n ' +
+        'You are, however, somewhere you have never seen before.\n ' +
+        'Bummer.\n ' +
+        '                          Press Enter to Continue\n>');
+
+
+}
+
 //
 //graphicsFunctions
 //
@@ -1022,6 +1059,67 @@ function displayEmeraldPlace(position) {
             '                             \\|/  *\`::::::::\'\'\n' +
             '                                 \\|/  \`:\'\'\n');
     }
+}
+
+function displayBed() {
+    console.log('\n' +
+        ' .::\"\"-,                      .::\"\"-.\n' +
+        '/::     \\                    /::     \\\n' +
+        '|::     |   _..--\"\"\"\"--.._   |::     |\n' +
+        '\'\\:.__ /  .\'              \'.  \\:.__ /\n' +
+        ' ||____|.\'                  \'.||____|\n' +
+        ' ||:.  |                       |:.  |\n' +
+        ' ||:.  |                       |:.  |\n' +
+        ' ||:.  |                       |:.  |\n' +
+        ' ||:.  |  _..---\"````````\'---. |:.  |\n' +
+        ' ||:.  | `                     |:.  |\n' +
+        ' ||:.  |: :                .--._.-\"\"-;\n' +
+        ' ||:.  |: : _.---``````---/    \'.   _.`.\n' +
+        ' ||:.  | .-\'  _,\'```\'-...\'   _ .-\'.\'    \'-.\n' +
+        ' ||:. .-\'   .\'        \'. . \'      \'.      `\'.\n' +
+        ' ||: ;.\' .`\'        _. \'`\'-.         \'.   . \'\'-._\n' +
+        ' ||:. :   \'.     .\'          \'.  . \' \' \'.`       \'._\n' +
+        ' ||:. :    \'. .\'     .::\"\"-: .\'\'.        \' .   . \' \' :::\"\"-.\n' +
+        ' ||:. \'     ..\' .    /::     \\    \'.        . \'.    /::     \\\n' +
+        ' ||:  :  . .\'      \'.|::     |    _.:---\"\"---.._\'   |::     |\n' +
+        ' ||.  ;  .:          \'\\:.__ /   .\'              \'.   \\:.__ /\n' +
+        ' ||:  ;  : \'.       . ||____|_.\'                  \'._||____|\n' +
+        ' ||:  ;__:   \'.   .\'  ||:.  |                        ||:.  |\n' +
+        ' ||:___| \\     \'. :   ||:.  |                        ||:.  |\n' +
+        ' [[____]  \'.     \'.-._||:.  |                        ||:.  |\n' +
+        '            \'.    :   ||:.  |                        ||:.  |\n' +
+        '              \'.  :   ||:.  |                        ||:.  |\n' +
+        '                \'-:   ||:.  |                        ||:.  |\n' +
+        '                   \'._||:.  |________________________||:.  |\n' +
+        '                      ||:___|\'-.-\'-.-\'-.-\'-.-\'-.-\'-.-||:___|\n' +
+        '                      [[____]                        [[____]\n');
+}
+
+function displayHeart() {
+    console.log('\n' +
+        '       ...e$e.$...e$                 ...e$e.$...e\n' +
+        '     !$6lkasd!$6lkasd!$6l          !$6lkasd!$6lkasd!\n' +
+        '   ;,a1wert;,a1wert;,a1wert     ;,a1wert;,a1wert;,a1we\n' +
+        ' .asxzcvb.asxzcvb.asxzcvb.as   .asxzcvb.asxzcvb.asxzcvb.\n' +
+        'qaswedfqas1wedfqas1wedfqas1w/dfqas1wedfqas1edfqas1ewdfqa\n' +
+        ':lkjhgfdlkj:hgfdlkj:hgfdlkj://fdlkj:hgfdlkj:gfdhlkj:gfdhlk\n' +
+        'edcvfr4edc3vfr4edc3vfr4edc///r4edc3vfr4edc3fr4vedc3fr4ved\n' +
+        '234ewqa2341ewqa2341ewqa23////a2341ewqa2341wqa2341weqa234\n' +
+        '[piuytr[piouytr[piouytr[/////r[piouytr[pioytru[pioytru[p\n' +
+        '/xcvbnm/xczvbnm/xczvbn//////bnm/xczvbnm/xczbnmv/xczbnmv/x\n' +
+        ' \`1qazxs\`1qazxs\`1wqazs\`1w//////1qazwxs1qa\`zws1qa\`zwsx1qa\`\n' +
+        '  mznxbcvfmznxbcvfmzxbcnvfz//////zxvbmnfzcxvbmnfzcxvbmnf\n' +
+        '   %t^y&ujm%t^y&ujm%^y&tuj%/////u%^yj&tum%^yj&tum%^yj&t\n' +
+        '     )oiuytre)oiuytr)oieuyr////eur)oyieutr)oyieutr)oyi\n' +
+        '      z.xcvgy7z.xcvg7z.yxcg///.yxc7zv.ygxc7zv.ygxc7z\n' +
+        '        q[wertyuq[weryuq[we//yuq[wetyurq[wetyurq[w\n' +
+        '           a;sdfghja;sdfghj//sdfghja;sdfghja;sdf\n' +
+        '              qmprootiqmproo\\improotqimproot\n' +
+        '                 mtu1qaz@mtu1\\a@mtuz1qa@m\n' +
+        '                    !qwe$rty!/we$rty!q\n' +
+        '                       -p=oiu\\t-p=o\n' +
+        '                           as/fg\n' +
+        '                             l\n');
 }
 
 function displayGeneric() {
