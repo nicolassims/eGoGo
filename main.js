@@ -6,16 +6,17 @@
  */
 
 "use strict";
-const PROMPT = require('readline-sync');
+const PROMPT = require('readline-sync'), IO = require(`fs`);
 
-let chooseVar, adventure, sense, dateMonth, dateDay, antiemKnowledge;
+let chooseVar, adventure, sense, dateMonth, dateDay;
 let fName, lName, dateName;
-let playerStats = [];
+let playerStats = [], activePlayers = [], enemyTypes = [];
 
 function main() {
-    day1part3();
+
     day1part1();
     day1part2();
+    day1part3();
     //
         printPlayerStatus();
         showPawn();
@@ -284,6 +285,21 @@ function setInitialPlayerStats() {
     playerStats[12][0] = 'Sympathy';
 }
 
+function setInitialActivePlayers() {
+    activePlayers[0] = 1;
+    activePlayers[1] = 0;
+    activePlayers[2] = 0;
+    activePlayers[3] = 0;
+}
+
+function setEnemyTypes() {
+    let fileReader = IO.readFileSync(`enemylist.csv`, `utf8`);
+    let tempArray = fileReader.toString().split(/\r?\n/);
+    for (let i = 0; i < tempArray.length; i++) {
+       enemyTypes.push(tempArray[i].toString().split(/,/));
+    }
+}
+
 function setPlayerStats(value) {
     playerStats[chooseVar][1] += value;
     playerStats[0][9] = playerStats[1][1] + playerStats[2][1] + playerStats[3][1] + playerStats[4][1] + playerStats[5][1] +
@@ -312,6 +328,24 @@ function printPlayerStatus() {
     process.stdout.write('\x1Bc');
 } //Displays player status
 
+function battleScript(enemyTeam) {
+    if (enemyTeam == null) {
+        let numberEnemies = Math.floor((Math.random() * 4) + 1);
+        console.log(numberEnemies + ' enemies appeared!');
+            pause();
+            wipeScreen();
+        //FIX THIS
+        for (let i = 0; i < numberEnemies; i++) {
+            enemyTeam[i] = Math.floor((Math.random() * enemyTypes.length) + 1);
+            //You'll have to change this when you introduce specific enemy types. FIX THIS
+        }
+        for (let i = 0; i < numberEnemies; i++) {
+            console.log(enemyTeam[i] + ' is a ' + enemyTypes[enemyTeam[i]] + '!\n');
+        }
+        pause();
+    }
+}
+
 function pause() {
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
@@ -327,6 +361,8 @@ function day1part1() {
     setDayName();
     showPawn();
     setInitialPlayerStats();
+    setInitialActivePlayers();
+    setEnemyTypes();
     printIntro();
     setFName();
     setLName();
@@ -894,8 +930,7 @@ function day1part3() {
         'You are, however, somewhere you have never seen before.\n ' +
         'Bummer.\n ' +
         '                          Press Enter to Continue\n>');
-
-
+    battleScript();
 }
 
 //
