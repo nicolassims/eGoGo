@@ -10,9 +10,12 @@ const PROMPT = require('readline-sync'), IO = require(`fs`);
 
 let chooseVar, adventure, sense, dateMonth, dateDay;
 let fName, lName, dateName;
-let playerStats = [], activePlayers = [], enemyTypes = [];
+let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [];
 
 function main() {
+    setEnemyTypes();
+    battleScript();
+
 
     day1part1();
     day1part2();
@@ -328,21 +331,24 @@ function printPlayerStatus() {
     process.stdout.write('\x1Bc');
 } //Displays player status
 
-function battleScript(enemyTeam) {
-    if (enemyTeam == null) {
-        let numberEnemies = Math.floor((Math.random() * 4) + 1);
+function battleScript() {
+    let enemyTeamStats = [];
+    if (enemyTeam == null || enemyTeam == 0) {
+        let numberEnemies = Math.floor((Math.random() * 12) + 1);
         console.log(numberEnemies + ' enemies appeared!');
-            pause();
-            wipeScreen();
-        //FIX THIS
         for (let i = 0; i < numberEnemies; i++) {
-            enemyTeam[i] = Math.floor((Math.random() * enemyTypes.length) + 1);
+
+            enemyTeam[i] = Math.floor((Math.random() * enemyTypes.length) + 1) - 1;
+            console.log('Enemy #' + (i + 1) + ' is a ' + enemyTypes[enemyTeam[i]][0] + '!');
             //You'll have to change this when you introduce specific enemy types. FIX THIS
         }
-        for (let i = 0; i < numberEnemies; i++) {
-            console.log(enemyTeam[i] + ' is a ' + enemyTypes[enemyTeam[i]] + '!\n');
-        }
         pause();
+    }
+    for (let i = 0; i < enemyTeam.length; i++) {
+        enemyTeamStats[i] = [];
+        for (let j = 0; j < 12; j++) {
+            enemyTeamStats[i][j] = enemyTypes[enemyTeam[i]][j];
+        }
     }
 }
 
@@ -930,7 +936,6 @@ function day1part3() {
         'You are, however, somewhere you have never seen before.\n ' +
         'Bummer.\n ' +
         '                          Press Enter to Continue\n>');
-    battleScript();
 }
 
 //
