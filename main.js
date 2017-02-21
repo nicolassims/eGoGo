@@ -10,9 +10,11 @@ const PROMPT = require('readline-sync'), IO = require(`fs`);
 
 let chooseVar, adventure, sense, dateMonth, dateDay;
 let fName, lName, dateName;
-let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [];
+let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [], moveList = [];
 
 function main() {
+    setInitialPlayerStats();
+    setMoveList();
     setEnemyTypes();
     battleScript();
 
@@ -296,10 +298,18 @@ function setInitialActivePlayers() {
 }
 
 function setEnemyTypes() {
-    let fileReader = IO.readFileSync(`enemylist.csv`, `utf8`);
+    let fileReader = IO.readFileSync(`data/enemylist.csv`, `utf8`);
     let tempArray = fileReader.toString().split(/\r?\n/);
     for (let i = 0; i < tempArray.length; i++) {
        enemyTypes.push(tempArray[i].toString().split(/,/));
+    }
+}
+
+function setMoveList(){
+    let fileReader = IO.readFileSync(`data/moveset.csv`, `utf8`);
+    let tempArray = fileReader.toString().split(/\r?\n/);
+    for (let i = 0; i < tempArray.length; i++) {
+        moveList.push(tempArray[i].toString().split(/,/));
     }
 }
 
@@ -332,24 +342,36 @@ function printPlayerStatus() {
 } //Displays player status
 
 function battleScript() {
-    let enemyTeamStats = [];
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
         console.log(numberEnemies + ' enemies appeared!');
         for (let i = 0; i < numberEnemies; i++) {
-
             enemyTeam[i] = Math.floor((Math.random() * enemyTypes.length) + 1) - 1;
             console.log('Enemy #' + (i + 1) + ' is a ' + enemyTypes[enemyTeam[i]][0] + '!');
-            //You'll have to change this when you introduce specific enemy types. FIX THIS
+        }
+        for (let i = 0; i < enemyTeam.length; i++) {
+            enemyTeam[i] = enemyTypes[enemyTeam[i]];
         }
         pause();
+    } else {
+        //Unique enemy appears here. FIX THIS
     }
-    for (let i = 0; i < enemyTeam.length; i++) {
-        enemyTeamStats[i] = [];
-        for (let j = 0; j < 12; j++) {
-            enemyTeamStats[i][j] = enemyTypes[enemyTeam[i]][j];
+    let moveCompatibility = 1;
+    for (let i = 0; i < moveList.length; i++) {
+        moveCompatibility = 1;
+        if (playerStats[1][1] < moveList[i][1] || playerStats[2][1] < moveList[i][2] ||
+            playerStats[3][1] < moveList[i][3] || playerStats[4][1] < moveList[i][4] ||
+            playerStats[5][1] < moveList[i][5] || playerStats[6][1] < moveList[i][6] ||
+            playerStats[7][1] < moveList[i][7] || playerStats[8][1] < moveList[i][8] ||
+            playerStats[9][1] < moveList[i][9] || playerStats[10][1] < moveList[i][10] ||
+            playerStats[11][1] < moveList[i][11] || playerStats[12][1] < moveList[i][12]) {
+            moveCompatibility = 0;
+        }
+        if (moveCompatibility == 1) {
+            console.log(moveList[i][0]+'\n'+moveList[i][15]);
         }
     }
+    pause();
 }
 
 function pause() {
@@ -369,6 +391,7 @@ function day1part1() {
     setInitialPlayerStats();
     setInitialActivePlayers();
     setEnemyTypes();
+    setMoveList();
     printIntro();
     setFName();
     setLName();

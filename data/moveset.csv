@@ -1,0 +1,17 @@
+FlameSoul,15,0,0,0,15,0,0,0,15,0,0,0,20,0,Fire-20        Release your flaming spirit.
+EarthSoul,0,15,0,0,0,15,0,0,0,15,0,0,20,0,Earth-20       Release your earthen spirit.
+WindySoul,0,0,15,0,0,0,15,0,0,0,15,0,20,0,Air-20         Release your windy spirit.
+WaterSoul,0,0,0,15,0,0,0,15,0,0,0,15,20,0,Water-20       Release your stormy spirit.
+Leap Out!,15,0,0,0,0,0,0,0,0,0,0,0,10,0,Fire-10        Leap at the foe's weak point.
+Tactikill,0,15,0,0,0,0,0,0,0,0,0,0,10,0,Earth-10       Sneak behind the foe--and attack!
+JackKnife,0,0,15,0,0,0,0,0,0,0,0,0,10,0,Air-10         Attack with an improvised weapon.
+Mentality,0,0,0,15,0,0,0,0,0,0,0,0,10,0,Water-10       Attack the foe in a creative fashion.
+Charge!!!,0,0,0,0,15,0,0,0,0,0,0,0,10,0,Fire-10        Lead a charge towards the foe.
+BrainFrze,0,0,0,0,0,15,0,0,0,0,0,0,10,0,Earth-10       Target the foe's head with a precise attack.
+Scale Tip,0,0,0,0,0,0,15,0,0,0,0,0,10,0,Air-10         Pay back the foe's misdeeds!
+Hot Blood,0,0,0,0,0,0,0,15,0,0,0,0,10,0,Water-10       Go wild on the foe.
+Optimism!,0,0,0,0,0,0,0,0,15,0,0,0,10,0,Fire-10        Strike without fear of retribution.
+SlwAttack,0,0,0,0,0,0,0,0,0,15,0,0,10,0,Earth-10       Wait for an opening--then strike!
+BuddyBlow,0,0,0,0,0,0,0,0,0,0,15,0,10,0,Air-10         Attack together with your Ego.
+Heart&Sol,0,0,0,0,0,0,0,0,0,0,0,15,10,0,Water-10       Attack with a flaming blow.
+FeebleAtk,0,0,0,0,0,0,0,0,0,0,0,0,5,0,Null-5         Do what you can...

@@ -16,3 +16,17 @@ activePlayers
 0=None
 1=Player
 2=Zoe
+
+Movename(10) ,...requiredamountofstat...,power,effectcode,description
+1=Adventure,Fire
+2=Sense,Earth,
+3=Versatility,Air
+4=Imagination,Water
+5=leadership,Fire
+6=Intelligence,Earth
+7=Morality,Air
+8=Passion,Water
+9=Hope,Fire
+10=Patience,Earth
+11=Friendliness,Air
+12=Sympathy,Water
