@@ -2,7 +2,7 @@ FlameSoul,15,0,0,0,15,0,0,0,15,0,0,0,20,0,Fire-20          Release your explosiv
 EarthSoul,0,15,0,0,0,15,0,0,0,15,0,0,20,0,Earth-20          Release your solid spirit, doing medium damage.
 WindySoul,0,0,15,0,0,0,15,0,0,0,15,0,20,0,Air-20          Release your free spirit, doing medium damage.
 WaterSoul,0,0,0,15,0,0,0,15,0,0,0,15,20,0,Water-20          Release your raging spirit, doing medium damage.
-Mastery++,0,15,15,0,0,0,0,0,0,0,0,0,15,0,Gravity-15          Masterfully strike your foe, medium damage.
+Mastery++,0,15,15,0,0,0,0,0,0,0,0,0,15,0,Gravity-15          Masterfully strike your foe, doing medium damage.
 Leap Out!,15,0,0,0,0,0,0,0,0,0,0,0,10,0,Fire-10          Leap at the weak point of the foe.
 Tactikill,0,15,0,0,0,0,0,0,0,0,0,0,10,0,Earth-10          Sneak behind the foe--and attack!
 JackKnife,0,0,15,0,0,0,0,0,0,0,0,0,10,0,Air-10          Attack with an improvised weapon.
