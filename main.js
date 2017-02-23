@@ -342,6 +342,12 @@ function printPlayerStatus() {
 } //Displays player status
 
 function battleScript() {
+    let moveCompatibility = 1;
+    let modifiers = [];
+    let activeMoves = [];
+    let enemyStatTotal = [];
+    let enemyLevel = [];
+    let j = 0;
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
         console.log(numberEnemies + ' enemies appeared!');
@@ -356,9 +362,27 @@ function battleScript() {
     } else {
         //Unique enemy appears here. FIX THIS
     }
-    let moveCompatibility = 1;
-    let activeMoves = [];
-    let j = 0;
+    for (let i = 0; i < enemyTeam.length; i++) {
+        modifiers[i] = [];
+        enemyStatTotal[i] = Number(enemyTeam[i][1]) + Number(enemyTeam[i][2]) + Number(enemyTeam[i][3]) +
+            Number(enemyTeam[i][4]) + Number(enemyTeam[i][5]) + Number(enemyTeam[i][6]) + Number(enemyTeam[i][7]) +
+            Number(enemyTeam[i][8]) + Number(enemyTeam[i][9]) + Number(enemyTeam[i][10]) + Number(enemyTeam[i][11]) +
+            Number(enemyTeam[i][12]);
+        if (enemyStatTotal[i] < 120) {
+            enemyLevel[i] = Number(enemyStatTotal[i])/10 - 5;
+        } else {
+            enemyLevel[i] = Number(enemyStatTotal[i])/10 - 11;
+        }
+        modifiers[i][0] = 1;
+        modifiers[i][1] = 1;
+        modifiers[i][2] = (Number(enemyTeam[i][1]) + Number(enemyTeam[i][5]) + Number(enemyTeam[i][9])) * (Number(enemyLevel[i])/10);
+        modifiers[i][3] = (Number(enemyTeam[i][2]) + Number(enemyTeam[i][6]) + Number(enemyTeam[i][10])) * (Number(enemyLevel[i])/10);
+        modifiers[i][4] = (Number(enemyTeam[i][3]) + Number(enemyTeam[i][7]) + Number(enemyTeam[i][11])) * (Number(enemyLevel[i])/10);
+        modifiers[i][5] = (Number(enemyTeam[i][4]) + Number(enemyTeam[i][8]) + Number(enemyTeam[i][12])) * (Number(enemyLevel[i])/10);
+    }
+    console.log(modifiers);
+    console.log(enemyStatTotal);
+    console.log('Select a move.\n');
     for (let i = 0; i < moveList.length; i++) {
         moveCompatibility = 1;
         if (playerStats[1][1] < moveList[i][1] || playerStats[2][1] < moveList[i][2] || playerStats[3][1] <
@@ -374,7 +398,21 @@ function battleScript() {
             j++;
         }
     }
-    pause();
+    let moveVar = PROMPT.question('>');
+    while (activeMoves[moveVar] == null) {
+        moveVar = PROMPT.question('That is not an option.\n' +
+            '>');
+    }
+    console.log('Select an enemy to target.\n');
+    for (let i = 0; i < enemyTeam.length; i++) {
+        console.log(i + ' - ' + enemyTeam[i][0]);
+    }
+    let enemyVar = PROMPT.question('Select an enemy.\n' +
+        '>');
+    while (enemyTeam[enemyVar] == null) {
+        enemyVar = PROMPT.question('That is not an option.\n' +
+            '>');
+    }
 }
 
 function pause() {
