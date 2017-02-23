@@ -357,18 +357,21 @@ function battleScript() {
         //Unique enemy appears here. FIX THIS
     }
     let moveCompatibility = 1;
+    let activeMoves = [];
+    let j = 0;
     for (let i = 0; i < moveList.length; i++) {
         moveCompatibility = 1;
-        if (playerStats[1][1] < moveList[i][1] || playerStats[2][1] < moveList[i][2] ||
-            playerStats[3][1] < moveList[i][3] || playerStats[4][1] < moveList[i][4] ||
-            playerStats[5][1] < moveList[i][5] || playerStats[6][1] < moveList[i][6] ||
-            playerStats[7][1] < moveList[i][7] || playerStats[8][1] < moveList[i][8] ||
-            playerStats[9][1] < moveList[i][9] || playerStats[10][1] < moveList[i][10] ||
+        if (playerStats[1][1] < moveList[i][1] || playerStats[2][1] < moveList[i][2] || playerStats[3][1] <
+            moveList[i][3] || playerStats[4][1] < moveList[i][4] || playerStats[5][1] < moveList[i][5] ||
+            playerStats[6][1] < moveList[i][6] || playerStats[7][1] < moveList[i][7] || playerStats[8][1] <
+            moveList[i][8] || playerStats[9][1] < moveList[i][9] || playerStats[10][1] < moveList[i][10] ||
             playerStats[11][1] < moveList[i][11] || playerStats[12][1] < moveList[i][12]) {
             moveCompatibility = 0;
         }
         if (moveCompatibility == 1) {
-            console.log(moveList[i][0]+'\n'+moveList[i][15]);
+            activeMoves[j] = moveList[i];
+            console.log(j + ' - ' + activeMoves[j][0]);
+            j++;
         }
     }
     pause();
