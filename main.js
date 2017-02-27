@@ -415,29 +415,30 @@ function battleScript() {
         enemyVar = PROMPT.question('That is not an option.\n' +
             '>');
     }
+    console.log(activeMoves[moveVar][14]);
     if (activeMoves[moveVar][14] == 0) {
+        let DMG;
         if (activeMoves[moveVar][14].charAt(0) == "F" || activeMoves[moveVar][14].charAt(0) == "E") {
-            let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+            DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
         } else if (activeMoves[moveVar][14].charAt(0) == "W" || activeMoves[moveVar][14].charAt(0) == "A") {
-            let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+            DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
         } else if (activeMoves[moveVar][14].charAt(1) == "e") {
             if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
-                let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+                DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
             } else {
-                let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+                DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
             }
         } else if (activeMoves[moveVar][14].charAt(0) == "G") {
             if (playerStats[0][1] > playerStats[0][5]) {
-                let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+                DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
             } else {
-                let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+                DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
             }
         } else {
-            let DMG = Number(activeMoves[moveVar][14] + playerStats[0][11]);
+            DMG = Number(activeMoves[moveVar][13] + playerStats[0][11]);
         }
-
-        console.log('Did ' + DMG + ' damage!');
-        modifiers[enemyVar][6] = modifiers[enemyVar][6] - DMG
+        console.log('Did ' + Math.round(DMG) + ' damage!');
+        modifiers[enemyVar][6] = modifiers[enemyVar][6] - DMG;
 
     } else {
         //Different move effects go here. FIX THIS
