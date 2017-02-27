@@ -415,30 +415,38 @@ function battleScript() {
         enemyVar = PROMPT.question('That is not an option.\n' +
             '>');
     }
-    console.log(activeMoves[moveVar][14]);
+    console.log(playerStats[0][1] + ' + ' + playerStats[0][11]+ ' - ' +modifiers[enemyVar][3]+ ' * ' +activeMoves[moveVar][13]);
+
     if (activeMoves[moveVar][14] == 0) {
         let DMG;
         if (activeMoves[moveVar][14].charAt(0) == "F" || activeMoves[moveVar][14].charAt(0) == "E") {
-            DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
+            DMG = Number((Number(playerStats[0][1]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][3])) * activeMoves[moveVar][13]);
+            console.log('You lash out courageously!');
         } else if (activeMoves[moveVar][14].charAt(0) == "W" || activeMoves[moveVar][14].charAt(0) == "A") {
-            DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
+            DMG = Number((Number(playerStats[0][5]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][5])) * activeMoves[moveVar][13]);
+            console.log('Your spirit unleashes a mighty blast!');
         } else if (activeMoves[moveVar][14].charAt(1) == "e") {
             if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
-                DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
+                DMG = Number((Number(playerStats[0][1]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][3])) * activeMoves[moveVar][13]);
             } else {
-                DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
+                DMG = Number((Number(playerStats[0][5]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][5])) * activeMoves[moveVar][13]);
             }
+            console.log('You melt the foe\'s defenses with a cruel attack!');
         } else if (activeMoves[moveVar][14].charAt(0) == "G") {
             if (playerStats[0][1] > playerStats[0][5]) {
-                DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][13]);
+                DMG = Number((Number(playerStats[0][1]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][3])) * activeMoves[moveVar][13]);
             } else {
-                DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][13]);
+                DMG = Number((Number(playerStats[0][5]) + Number(playerStats[0][11]) - Number(modifiers[enemyVar][5])) * activeMoves[moveVar][13]);
             }
+            console.log('You put all of your energy into an overclocked attack!');
         } else {
-            DMG = Number(activeMoves[moveVar][13] + playerStats[0][11]);
+            DMG = Number(Number(activeMoves[moveVar][13]) + Number(playerStats[0][11]));
+            console.log('You cautiously chip away at the foe!');
         }
         console.log('Did ' + Math.round(DMG) + ' damage!');
         modifiers[enemyVar][6] = modifiers[enemyVar][6] - DMG;
+
+        //ALWAYS RUNNING ELSE FIX THIS
 
     } else {
         //Different move effects go here. FIX THIS
