@@ -13,12 +13,6 @@ let fName, lName, dateName;
 let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [], moveList = [];
 
 function main() {
-    setInitialPlayerStats();
-    setMoveList();
-    setEnemyTypes();
-    battleScript();
-
-
     day1part1();
     day1part2();
     day1part3();
@@ -277,6 +271,10 @@ function setInitialPlayerStats() {
     playerStats[0][8] = 'Stat Total';
     playerStats[0][10] = 'Level';
     playerStats[1][0] = 'Adventure';
+    playerStats[1][2] = 'Ego';
+    playerStats[1][3] = Number(playerStats[0][5] + playerStats [0][7]);
+    playerStats[1][4] = 'Life';
+    playerStats[1][5] = Number((playerStats[0][1] + playerStats [0][3]) * 3);
     playerStats[2][0] = 'Sense';
     playerStats[3][0] = 'Versatility';
     playerStats[4][0] = 'Imagination';
@@ -323,6 +321,8 @@ function setPlayerStats(value) {
     playerStats[0][3] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[0][11]/10);
     playerStats[0][5] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[0][11]/10);
     playerStats[0][7] = (playerStats[4][1] + playerStats[8][1] + playerStats[12][1]) * (playerStats[0][11]/10);
+    playerStats[1][3] = Number(playerStats[0][5] + playerStats [0][7]);
+    playerStats[1][5] = Number((playerStats[0][1] + playerStats [0][3]) * 3);
 }
 
 function wipeScreen() {
@@ -336,6 +336,7 @@ function printPlayerStatus() {
         'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
         'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
         'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n\n' +
+        'EGO     |' + Math.round(playerStats[1][3]) + '| LIFE      |' + Math.round(playerStats[1][5]) + '|\n' +
         'COURAGE |' + Math.round(playerStats[0][1]) + '| FORTITUDE |' + Math.round(playerStats[0][3]) + '| SPIRIT |' + Math.round(playerStats[0][5]) + '| HEART |' + Math.round(playerStats[0][7]) +'|\n');
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
     process.stdout.write('\x1Bc');
@@ -362,6 +363,7 @@ function battleScript() {
     } else {
         //Unique enemy appears here. FIX THIS
     }
+
     for (let i = 0; i < enemyTeam.length; i++) {
         modifiers[i] = [];
         enemyStatTotal[i] = Number(enemyTeam[i][1]) + Number(enemyTeam[i][2]) + Number(enemyTeam[i][3]) +
@@ -379,9 +381,9 @@ function battleScript() {
         modifiers[i][3] = (Number(enemyTeam[i][2]) + Number(enemyTeam[i][6]) + Number(enemyTeam[i][10])) * (Number(enemyLevel[i])/10);
         modifiers[i][4] = (Number(enemyTeam[i][3]) + Number(enemyTeam[i][7]) + Number(enemyTeam[i][11])) * (Number(enemyLevel[i])/10);
         modifiers[i][5] = (Number(enemyTeam[i][4]) + Number(enemyTeam[i][8]) + Number(enemyTeam[i][12])) * (Number(enemyLevel[i])/10);
+        modifiers[i][6] = Number(modifiers[i][4] + modifiers[i][5]);
+        modifiers[i][7] = Number((modifiers[i][4] + modifiers[i][5]) * 3);
     }
-    console.log(modifiers);
-    console.log(enemyStatTotal);
     console.log('Select a move.\n');
     for (let i = 0; i < moveList.length; i++) {
         moveCompatibility = 1;
@@ -412,6 +414,33 @@ function battleScript() {
     while (enemyTeam[enemyVar] == null) {
         enemyVar = PROMPT.question('That is not an option.\n' +
             '>');
+    }
+    if (activeMoves[moveVar][14] == 0) {
+        if (activeMoves[moveVar][14].charAt(0) == "F" || activeMoves[moveVar][14].charAt(0) == "E") {
+            let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+        } else if (activeMoves[moveVar][14].charAt(0) == "W" || activeMoves[moveVar][14].charAt(0) == "A") {
+            let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+        } else if (activeMoves[moveVar][14].charAt(1) == "e") {
+            if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
+                let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+            } else {
+                let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+            }
+        } else if (activeMoves[moveVar][14].charAt(0) == "G") {
+            if (playerStats[0][1] > playerStats[0][5]) {
+                let DMG = Number((playerStats[0][1] + playerStats[0][11] - modifiers[enemyVar][3]) * activeMoves[moveVar][14]);
+            } else {
+                let DMG = Number((playerStats[0][5] + playerStats[0][11] - modifiers[enemyVar][5]) * activeMoves[moveVar][14]);
+            }
+        } else {
+            let DMG = Number(activeMoves[moveVar][14] + playerStats[0][11]);
+        }
+
+        console.log('Did ' + DMG + ' damage!');
+        modifiers[enemyVar][6] = modifiers[enemyVar][6] - DMG
+
+    } else {
+        //Different move effects go here. FIX THIS
     }
 }
 
@@ -1000,6 +1029,7 @@ function day1part3() {
         'You are, however, somewhere you have never seen before.\n ' +
         'Bummer.\n ' +
         '                          Press Enter to Continue\n>');
+    battleScript();
 }
 
 //
