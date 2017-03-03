@@ -531,7 +531,7 @@ function battleScript() {
                             DMG = Math.round((modifiers[i][4] + 10 - playerStats[0][7]) * modifiers[i][8]);
                             // SPIRIT + 10 - FoeHEART * LEVEL
                         }
-                        console.log('Your foe bypasses your defenses with sneaky blow!');
+                        console.log('Your foe bypasses your defenses with a sneaky blow!');
                     } else if (enemyTeam[i][13].charAt(0) == "G") {
                         if (modifiers[i][2] > modifiers[i][4]) {
                             DMG = Math.round((modifiers[i][2] + 10 - playerStats[0][3]) * modifiers[i][8]);
