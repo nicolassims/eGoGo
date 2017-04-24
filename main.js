@@ -263,17 +263,7 @@ function setInitialPlayerStats() {
         playerStats[i] = [];
         playerStats[i][1] = 10;
     }
-    playerStats[0][0] = 'Courage';
-    playerStats[0][2] = 'Fortitude';
-    playerStats[0][4] = 'Spirit';
-    playerStats[0][6] = 'Heart';
-    playerStats[0][8] = 'Stat Total';
-    playerStats[0][10] = 'Level';
     playerStats[1][0] = 'Adventure';
-    playerStats[1][2] = 'Ego';
-    playerStats[1][3] = Number(playerStats[0][5] + playerStats[0][7]);
-    playerStats[1][4] = 'Life';
-    playerStats[1][5] = Number((playerStats[0][1] + playerStats[0][3]) * 2);
     playerStats[2][0] = 'Sense';
     playerStats[3][0] = 'Versatility';
     playerStats[4][0] = 'Imagination';
@@ -285,6 +275,16 @@ function setInitialPlayerStats() {
     playerStats[10][0] = 'Patience';
     playerStats[11][0] = 'Friendliness';
     playerStats[12][0] = 'Sympathy';
+    playerStats[13][0] = 'Courage';
+    playerStats[14][0] = 'Fortitude';
+    playerStats[15][0] = 'Spirit';
+    playerStats[16][0] = 'Heart';
+    playerStats[17][0] = 'Stat Total';
+    playerStats[18][0] = 'Level';
+    playerStats[19][0] = 'Ego';
+    playerStats[19][1] = Number(playerStats[15][1] + playerStats[16][1]);
+    playerStats[20][0] = 'Life';
+    playerStats[20][1] = Number((playerStats[13][1] + playerStats[14][1]) * 2);
 }
 
 function setInitialActivePlayers() {
@@ -312,16 +312,16 @@ function setMoveList(){
 
 function setPlayerStats(value) {
     playerStats[chooseVar][1] += value;
-    playerStats[0][9] = playerStats[1][1] + playerStats[2][1] + playerStats[3][1] + playerStats[4][1] + playerStats[5][1] +
+    playerStats[17][1] = playerStats[1][1] + playerStats[2][1] + playerStats[3][1] + playerStats[4][1] + playerStats[5][1] +
                         playerStats[6][1] + playerStats[7][1] + playerStats[8][1] + playerStats[9][1] + playerStats[10][1] +
                         playerStats[11][1] + playerStats[12][1];
-    playerStats[0][11] = (playerStats[0][9]/10 - 11);
-    playerStats[0][1] = (playerStats[1][1] + playerStats[5][1] + playerStats[9][1]) * (playerStats[0][11]/10);
-    playerStats[0][3] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[0][11]/10);
-    playerStats[0][5] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[0][11]/10);
-    playerStats[0][7] = (playerStats[4][1] + playerStats[8][1] + playerStats[12][1]) * (playerStats[0][11]/10);
-    playerStats[1][3] = Number(playerStats[0][5] + playerStats[0][7]);
-    playerStats[1][5] = Number((playerStats[0][1] + playerStats[0][3]) * 2);
+    playerStats[18][1] = (playerStats[17][1]/10 - 11);
+    playerStats[13][1] = (playerStats[1][1] + playerStats[5][1] + playerStats[9][1]) * (playerStats[18][1]/10);
+    playerStats[14][1] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[18][1]/10);
+    playerStats[15][1] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[18][1]/10);
+    playerStats[16][1] = (playerStats[4][1] + playerStats[8][1] + playerStats[12][1]) * (playerStats[18][1]/10);
+    playerStats[19][1] = Number(playerStats[15][1] + playerStats[16][1]);
+    playerStats[20][1] = Number((playerStats[13][1] + playerStats[14][1]) * 2);
 }
 
 function wipeScreen() {
@@ -336,8 +336,8 @@ function printPlayerStatus() {
         'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
         'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
         'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n\n' +
-        'EGO     |' + Math.round(playerStats[1][3]) + '| LIFE      |' + Math.round(playerStats[1][5]) + '|\n' +
-        'COURAGE |' + Math.round(playerStats[0][1]) + '| FORTITUDE |' + Math.round(playerStats[0][3]) + '| SPIRIT |' + Math.round(playerStats[0][5]) + '| HEART |' + Math.round(playerStats[0][7]) +'|\n');
+        'EGO     |' + Math.round(playerStats[19][1]) + '| LIFE      |' + Math.round(playerStats[20][1]) + '|\n' +
+        'COURAGE |' + Math.round(playerStats[13][1]) + '| FORTITUDE |' + Math.round(playerStats[14][1]) + '| SPIRIT |' + Math.round(playerStats[15][1]) + '| HEART |' + Math.round(playerStats[16][1]) +'|\n');
     pause();
 } //Displays player status
 
