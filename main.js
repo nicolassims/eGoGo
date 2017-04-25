@@ -259,7 +259,7 @@ function showPawn() {
 } //Wipes screen, displays date
 
 function setInitialPlayerStats() {
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 21; i++) {
         playerStats[i] = [];
         playerStats[i][1] = 10;
     }
@@ -329,9 +329,8 @@ function wipeScreen() {
 }
 
 function printPlayerStatus() {
-    console.log(playerStats);
     console.log('\n' +
-        'Level          |' + Math.round(playerStats[0][11]) + '|    Stat Total      |' + Math.round(playerStats[0][9]) + '|\n' +
+        'Level          |' + Math.round(playerStats[18][1]) + '|    Stat Total      |' + Math.round(playerStats[17][1]) + '|\n' +
         'Adventure      |' + Math.round(playerStats[1][1]) + '|    Leadership      |' + Math.round(playerStats[5][1]) + '|    Hope            |' + Math.round(playerStats[9][1]) + '|\n' +
         'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
         'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
@@ -350,7 +349,7 @@ function battleScript() {
     let playerModifiers = playerStats;
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
-        while (numberEnemies > playerModifiers[0][11]) {
+        while (numberEnemies > playerModifiers[18][1]) {
             numberEnemies = Math.floor((Math.random() * 12) + 1);
         }
         if (numberEnemies != 1) {
@@ -360,6 +359,7 @@ function battleScript() {
                 console.log('Enemy #' + (i + 1) + ' is a ' + enemyTypes[enemyTeam[i]][0] + '!');
             }
         } else {
+            enemyTeam[0] = Math.floor((Math.random() * enemyTypes.length) + 1) - 1;
             console.log('An enemy appeared! It\'s a ' + enemyTypes[enemyTeam[0]][0] + '!');
         }
         for (let i = 0; i < enemyTeam.length; i++) {
@@ -426,33 +426,33 @@ function battleScript() {
         let DMG;
         if (activeMoves[moveVar][14] == 0) {
             if (activeMoves[moveVar][15].charAt(0) == "F" || activeMoves[moveVar][15].charAt(0) == "E") {
-                DMG = Math.round((playerModifiers[0][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[0][11]);
+                DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
                 // COURAGE + Power - FoeFORTITUDE * LEVEL
                 console.log('You lash out courageously!');
             } else if (activeMoves[moveVar][15].charAt(0) == "W" || activeMoves[moveVar][15].charAt(0) == "A") {
-                DMG = Math.round((playerModifiers[0][5] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[0][11]);
+                DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                 // SPIRIT + Power - FoeHeart * LEVEL
                 console.log('Your spirit unleashes a mighty blast!');
             } else if (activeMoves[moveVar][15].charAt(1) == "e") {
                 if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
-                    DMG = Math.round((playerModifiers[0][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[0][11]);
+                    DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
                     // COURAGE + Power - FoeFORTITUDE * LEVEL
                 } else {
-                    DMG = Math.round((playerModifiers[0][5] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[0][11]);
+                    DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                     // SPIRIT + Power - FoeHeart * LEVEL
                 }
                 console.log('You melt the foe\'s defenses with a cruel attack!');
             } else if (activeMoves[moveVar][15].charAt(0) == "G") {
                 if (playerModifiers[0][1] > playerModifiers[0][5]) {
-                    DMG = Math.round((playerModifiers[0][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[0][11]);
+                    DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
                     // COURAGE + Power - FoeFORTITUDE * LEVEL
                 } else {
-                    DMG = Math.round((playerModifiers[0][5] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[0][11]);
+                    DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                     // SPIRIT + Power - FoeHeart * LEVEL
                 }
                 console.log('You put all of your energy into an all-out attack!');
             } else {
-                DMG = Math.round(Number(activeMoves[moveVar][13]) + Number(playerModifiers[0][11]));
+                DMG = Math.round(Number(activeMoves[moveVar][13]) + Number(playerModifiers[18][1]));
                 console.log('You cautiously chip away at the foe!');
                 // Power + Level
             }
@@ -509,50 +509,50 @@ function battleScript() {
             if (modifiers[i][7] > 0) {
                 if (enemyTeam[i][14] == 0) {
                     if (enemyTeam[i][13].charAt(0) == "F" || enemyTeam[i][13].charAt(0) == "E") {
-                        DMG = Math.round((modifiers[i][2] - playerModifiers[0][3]) * modifiers[i][8]) + 10;
+                        DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
                         // COURAGE - FoeFORTITUDE * LEVEL
                         console.log('Your foe gathers up their courage and attacks!');
                     } else if (enemyTeam[i][13].charAt(0) == "W" || enemyTeam[i][13].charAt(0) == "A") {
-                        DMG = Math.round((modifiers[i][4] - playerModifiers[0][7]) * modifiers[i][8]) + 10;
+                        DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
                         // SPIRIT - FoeHEART * LEVEL
                         console.log('Your foe harnesses ancient magics and attacks!');
                     } else if (enemyTeam[i][13].charAt(1) == "e") {
                         if (playerModifiers[0][3] < playerModifiers[0][7]) {
-                            DMG = Math.round((modifiers[i][2] - playerModifiers[0][3]) * modifiers[i][8]) + 10;
+                            DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
                             // COURAGE - FoeFORTITUDE * LEVEL
                         } else {
-                            DMG = Math.round((modifiers[i][4] - playerModifiers[0][7]) * modifiers[i][8]) + 10;
+                            DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
                             // SPIRIT - FoeHEART * LEVEL
                         }
                         console.log('Your foe bypasses your defenses with a sneaky blow!');
                     } else if (enemyTeam[i][13].charAt(0) == "G") {
                         if (modifiers[i][2] > modifiers[i][4]) {
-                            DMG = Math.round((modifiers[i][2] - playerModifiers[0][3]) * modifiers[i][8]) + 10;
+                            DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
                             // COURAGE - FoeFORTITUDE * LEVEL
                         } else {
-                            DMG = Math.round((modifiers[i][4] - playerModifiers[0][7]) * modifiers[i][8]) + 10;
+                            DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
                             // SPIRIT - FoeHEART * LEVEL
                         }
                         console.log('Your foe throws caution to the wind in a brutal attack!');
                     } else {
                         DMG = Math.round(Number(modifiers[i][8])) + 10;
-                        console.log('Your foe cautiously leaps in and out!');
+                        console.log('Your foe attacks with unmitigable force!');
                         //Level
                     }
                 } else {
                     //other enemytypes go here. FIX THIS.
                 }
                 console.log('The enemy ' + enemyTeam[i][0] + ' does ' + DMG + ' damage!');
-                if (playerModifiers[1][3] > 0) {
-                    playerModifiers[1][3] = playerModifiers[1][3] - DMG;
+                if (playerModifiers[19][1] > 0) {
+                    playerModifiers[19][1] = playerModifiers[19][1] - DMG;
                     console.log('Your Ego blocks the damage!');
-                    if (playerModifiers[1][3] <= 0) {
+                    if (playerModifiers[19][1] <= 0) {
                         console.log('But... it just dissipated...');
                     }
                 } else {
-                    playerModifiers[1][5] = playerModifiers[1][5] - DMG;
+                    playerModifiers[20][1] = playerModifiers[20][1] - DMG;
                     console.log('Ugh...');
-                    if (playerModifiers[1][5] <= 0) {
+                    if (playerModifiers[20][1] <= 0) {
                         console.log('The light is fading...');
                     }
                 }
