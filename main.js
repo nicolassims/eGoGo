@@ -341,12 +341,12 @@ function printPlayerStatus() {
 } //Displays player status
 
 function battleScript() {
+    let playerModifiers = JSON.parse(JSON.stringify(playerStats));
     let moveCompatibility = 1, moveNumber = 0, battleOver = 0;
     let modifiers = [];
     let activeMoves = [];
     let enemyStatTotal = [];
     let enemyLevel = [];
-    let playerModifiers = playerStats;
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
         while (numberEnemies > playerModifiers[18][1]) {
@@ -544,13 +544,13 @@ function battleScript() {
                 }
                 console.log('The enemy ' + enemyTeam[i][0] + ' does ' + DMG + ' damage!');
                 if (playerModifiers[19][1] > 0) {
-                    playerModifiers[19][1] = playerModifiers[19][1] - DMG;
+                    playerModifiers[19][1] -= DMG;
                     console.log('Your Ego blocks the damage!');
                     if (playerModifiers[19][1] <= 0) {
                         console.log('But... it just dissipated...');
                     }
                 } else {
-                    playerModifiers[20][1] = playerModifiers[20][1] - DMG;
+                    playerModifiers[20][1] -= DMG;
                     console.log('Ugh...');
                     if (playerModifiers[20][1] <= 0) {
                         console.log('The light is fading...');
