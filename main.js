@@ -275,20 +275,12 @@ function setInitialPlayerStats() {
     playerStats[10][0] = 'Patience';
     playerStats[11][0] = 'Friendliness';
     playerStats[12][0] = 'Sympathy';
-    playerStats[13][0] = 'Courage';
-    playerStats[14][0] = 'Fortitude';
-    playerStats[15][0] = 'Spirit';
-    playerStats[16][0] = 'Heart';
     playerStats[17][0] = 'Stat Total';
     playerStats[18][0] = 'Level';
-    playerStats[19][0] = 'Ego';
-    playerStats[19][1] = Number(playerStats[15][1] + playerStats[16][1]);
-    playerStats[20][0] = 'Life';
-    playerStats[20][1] = Number((playerStats[13][1] + playerStats[14][1]) * 2);
 }
 
 function setInitialActivePlayers() {
-    activePlayers[0] = 1;
+    activePlayers[0] = playerStats;
     activePlayers[1] = 0;
     activePlayers[2] = 0;
     activePlayers[3] = 0;
@@ -316,12 +308,6 @@ function setPlayerStats(value) {
                         playerStats[6][1] + playerStats[7][1] + playerStats[8][1] + playerStats[9][1] + playerStats[10][1] +
                         playerStats[11][1] + playerStats[12][1];
     playerStats[18][1] = (playerStats[17][1]/10 - 11);
-    playerStats[13][1] = (playerStats[1][1] + playerStats[5][1] + playerStats[9][1]) * (playerStats[18][1]/10);
-    playerStats[14][1] = (playerStats[2][1] + playerStats[6][1] + playerStats[10][1]) * (playerStats[18][1]/10);
-    playerStats[15][1] = (playerStats[3][1] + playerStats[7][1] + playerStats[11][1]) * (playerStats[18][1]/10);
-    playerStats[16][1] = (playerStats[4][1] + playerStats[8][1] + playerStats[12][1]) * (playerStats[18][1]/10);
-    playerStats[19][1] = Number(playerStats[15][1] + playerStats[16][1]);
-    playerStats[20][1] = Number((playerStats[13][1] + playerStats[14][1]) * 2);
 }
 
 function wipeScreen() {
@@ -334,9 +320,7 @@ function printPlayerStatus() {
         'Adventure      |' + Math.round(playerStats[1][1]) + '|    Leadership      |' + Math.round(playerStats[5][1]) + '|    Hope            |' + Math.round(playerStats[9][1]) + '|\n' +
         'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
         'Versatility    |' + Math.round(playerStats[3][1]) + '|    Morality        |' + Math.round(playerStats[7][1]) + '|    Friendliness    |' + Math.round(playerStats[11][1]) + '|\n' +
-        'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n\n' +
-        'EGO     |' + Math.round(playerStats[19][1]) + '| LIFE      |' + Math.round(playerStats[20][1]) + '|\n' +
-        'COURAGE |' + Math.round(playerStats[13][1]) + '| FORTITUDE |' + Math.round(playerStats[14][1]) + '| SPIRIT |' + Math.round(playerStats[15][1]) + '| HEART |' + Math.round(playerStats[16][1]) +'|\n');
+        'Imagination    |' + Math.round(playerStats[4][1]) + '|    Passion         |' + Math.round(playerStats[8][1]) + '|    Sympathy        |' + Math.round(playerStats[12][1]) + '|\n');
     pause();
 } //Displays player status
 
@@ -345,8 +329,6 @@ function battleScript() {
     let moveCompatibility = 1, moveNumber = 0, battleOver = 0;
     let modifiers = [];
     let activeMoves = [];
-    let enemyStatTotal = [];
-    let enemyLevel = [];
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
         while (numberEnemies > playerModifiers[18][1]) {
@@ -370,24 +352,33 @@ function battleScript() {
         //Unique enemy appears here. FIX THIS
     }
     for (let i = 0; i < enemyTeam.length; i++) {
-        modifiers[i] = [];
-        enemyStatTotal[i] = Number(enemyTeam[i][1]) + Number(enemyTeam[i][2]) + Number(enemyTeam[i][3]) +
-            Number(enemyTeam[i][4]) + Number(enemyTeam[i][5]) + Number(enemyTeam[i][6]) + Number(enemyTeam[i][7]) +
-            Number(enemyTeam[i][8]) + Number(enemyTeam[i][9]) + Number(enemyTeam[i][10]) + Number(enemyTeam[i][11]) +
-            Number(enemyTeam[i][12]);
-        if (enemyStatTotal[i] < 120) {
-            enemyLevel[i] = Number(enemyStatTotal[i])/10 - 5;
-        }
-        modifiers[i][0] = 1;
-        modifiers[i][1] = 1;
-        modifiers[i][2] = (Number(enemyTeam[i][1]) + Number(enemyTeam[i][5]) + Number(enemyTeam[i][9])) * (Number(enemyLevel[i])/10);
-        modifiers[i][3] = (Number(enemyTeam[i][2]) + Number(enemyTeam[i][6]) + Number(enemyTeam[i][10])) * (Number(enemyLevel[i])/10);
-        modifiers[i][4] = (Number(enemyTeam[i][3]) + Number(enemyTeam[i][7]) + Number(enemyTeam[i][11])) * (Number(enemyLevel[i])/10);
-        modifiers[i][5] = (Number(enemyTeam[i][4]) + Number(enemyTeam[i][8]) + Number(enemyTeam[i][12])) * (Number(enemyLevel[i])/10);
-        modifiers[i][6] = Number(modifiers[i][4] + modifiers[i][5]);
-        modifiers[i][7] = Number((modifiers[i][4] + modifiers[i][5]) * 2);
-        modifiers[i][8] = enemyLevel[i];
+        modifiers[i] = JSON.parse(JSON.stringify(enemyTeam));
     }
+
+    let allCombatants = [];
+    for (let i = 0; i < activePlayers.length; i++) {
+        if (activePlayers[i] != 0) {
+            allCombatants[i] = activePlayers[i];
+            if (allCombatants[i] = playerStats) {
+                allCombatants[i] = playerModifiers;
+            }
+        }
+    }
+    let marker = 0;
+    while (allCombatants[marker] != null) {
+        marker++;
+    }
+    for (let i = 0; i < enemyTeam.length; i++, marker++) {
+        allCombatants[marker] = enemyTeam[i];
+    }
+    console.log(allCombatants); //WORKING UP TO THIS POINT FIX THIS
+
+
+
+
+
+
+
     while (battleOver == 0) {
         console.log('Select a move.\n');
         for (let i = 0; i < moveList.length; i++) {
@@ -560,6 +551,18 @@ function battleScript() {
         }
     }
 }
+
+function printPlayerModifiers() {
+    console.log('\n' +
+        'Level          |' + Math.round(playerModifiers[18][1]) + '|    Stat Total      |' + Math.round(playerModifiers[17][1]) + '|\n' +
+        'Adventure      |' + Math.round(playerModifiers[1][1]) + '|    Leadership      |' + Math.round(playerModifiers[5][1]) + '|    Hope            |' + Math.round(playerModifiers[9][1]) + '|\n' +
+        'Sense          |' + Math.round(playerModifiers[2][1]) + '|    Intelligence    |' + Math.round(playerModifiers[6][1]) + '|    Patience        |' + Math.round(playerModifiers[10][1]) + '|\n' +
+        'Versatility    |' + Math.round(playerModifiers[3][1]) + '|    Morality        |' + Math.round(playerModifiers[7][1]) + '|    Friendliness    |' + Math.round(playerModifiers[11][1]) + '|\n' +
+        'Imagination    |' + Math.round(playerModifiers[4][1]) + '|    Passion         |' + Math.round(playerModifiers[8][1]) + '|    Sympathy        |' + Math.round(playerModifiers[12][1]) + '|\n\n' +
+        'EGO     |' + Math.round(playerModifiers[19][1]) + '| LIFE      |' + Math.round(playerModifiers[20][1]) + '|\n' +
+        'COURAGE |' + Math.round(playerModifiers[13][1]) + '| FORTITUDE |' + Math.round(playerModifiers[14][1]) + '| SPIRIT |' + Math.round(playerModifiers[15][1]) + '| HEART |' + Math.round(playerModifiers[16][1]) +'|\n');
+    pause();
+} //Displays player status during battles
 
 function pause() {
     chooseVar = PROMPT.question('                          Press Enter to Continue\n>');
