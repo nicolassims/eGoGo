@@ -263,6 +263,8 @@ function setInitialPlayerStats() {
         playerStats[i] = [];
         playerStats[i][1] = 10;
     }
+    playerStats[0][0] = fName;
+    playerStats[0][1] = lName;
     playerStats[1][0] = 'Adventure';
     playerStats[2][0] = 'Sense';
     playerStats[3][0] = 'Versatility';
@@ -275,6 +277,7 @@ function setInitialPlayerStats() {
     playerStats[10][0] = 'Patience';
     playerStats[11][0] = 'Friendliness';
     playerStats[12][0] = 'Sympathy';
+    playerStats[15][0] = '101';
     playerStats[17][0] = 'Stat Total';
     playerStats[18][0] = 'Level';
 }
@@ -327,7 +330,8 @@ function printPlayerStatus() {
 function battleScript() {
     let playerModifiers = JSON.parse(JSON.stringify(playerStats));
     let moveCompatibility = 1, moveNumber = 0, battleOver = 0;
-    let modifiers = [];
+    let modifiers;
+    let noneAtThousand;
     let activeMoves = [];
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
@@ -351,27 +355,52 @@ function battleScript() {
     } else {
         //Unique enemy appears here. FIX THIS
     }
-    for (let i = 0; i < enemyTeam.length; i++) {
-        modifiers[i] = JSON.parse(JSON.stringify(enemyTeam));
-    }
 
-    let allCombatants = [];
-    for (let i = 0; i < activePlayers.length; i++) {
-        if (activePlayers[i] != 0) {
-            allCombatants[i] = activePlayers[i];
-            if (allCombatants[i] = playerStats) {
-                allCombatants[i] = playerModifiers;
+
+
+
+    for (let i = 0; i < enemyTeam.length; i++) {
+        modifiers = JSON.parse(JSON.stringify(enemyTeam));
+    }
+    for (let i = 0; i < modifiers.length; i++) {
+        modifiers[i][15] = Math.random();
+    }
+    let speedTiers = [];
+    let marker = 0;
+    for (let i = 0; i < modifiers.length; i++, marker++) {
+        speedTiers[i] = [];
+        speedTiers[i][0] = modifiers[i][3];
+        speedTiers[i][1] = modifiers[i][15];
+    }
+    //CREATE A UNIQUE ONE OF THESE FOR EVERY PLAYER CHARACTER FIX THIS
+    speedTiers[marker] = [];
+    speedTiers[marker][0] = playerModifiers[3][1];
+    speedTiers[marker][1] = playerModifiers[15][0];
+    //
+    noneAtThousand = 0;
+    while (noneAtThousand == 0) {
+        for (let i = 0; i < speedTiers.length; i++, marker++) {
+            speedTiers[i][0] = speedTiers[i][0] * 2;
+            if (speedTiers[i][0] >= 1000) {
+                noneAtThousand = 1;
             }
         }
     }
-    let marker = 0;
-    while (allCombatants[marker] != null) {
-        marker++;
+    noneAtThousand = 0;
+    for (let i = 0; i < speedTiers.length; i++) {
+        if (i != 0) {
+            if (speedTiers[i][0] > speedTiers[i - 1][0]) {
+                let holder = speedTiers[i - 1];
+                speedTiers[i - 1] = speedTiers[i];
+                speedTiers[i] = holder;
+                i = 0;
+            }
+        }
     }
-    for (let i = 0; i < enemyTeam.length; i++, marker++) {
-        allCombatants[marker] = enemyTeam[i];
-    }
-    console.log(allCombatants); //WORKING UP TO THIS POINT FIX THIS
+    console.log(speedTiers);
+
+
+
 
 
 
@@ -380,6 +409,7 @@ function battleScript() {
 
 
     while (battleOver == 0) {
+
         console.log('Select a move.\n');
         for (let i = 0; i < moveList.length; i++) {
             moveCompatibility = 1;
@@ -496,6 +526,7 @@ function battleScript() {
                 battleOver = 0;
             }
         }
+
         for (let i = 0; i < enemyTeam.length; i++) {
             if (modifiers[i][7] > 0) {
                 if (enemyTeam[i][14] == 0) {
@@ -578,13 +609,13 @@ function day1part1() {
     setDateDay();
     setDayName();
     showPawn();
-    setInitialPlayerStats();
     setInitialActivePlayers();
     setEnemyTypes();
     setMoveList();
     printIntro();
     setFName();
     setLName();
+    setInitialPlayerStats();
     printNameReaction();
     setKnowSelf();
     printKnowSelf();
