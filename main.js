@@ -410,9 +410,8 @@ function battleScript() {
         noneAtThousand = 0;
         while (noneAtThousand == 0) {
             for (let i = 0; i < speedTiers.length; i++, marker++) {
-                speedTiers[i][0] = speedTiers[i][0] * 2;
-                if (speedTiers[i][0] >= 1000) {
-                    speedTiers[i][0] -= 1000;
+                speedTiers[i][0] = speedTiers[i][0] * 1.5 + 100;
+                if (speedTiers[i][0] > 1000) {
                     noneAtThousand = 1;
                 }
             }
@@ -427,8 +426,8 @@ function battleScript() {
                 }
             }
         }
-        console.log(speedTiers);
-        if (speedTiers[0][0] == 101) {
+        if (speedTiers[0][1] == 101) {
+            speedTiers[0][0] -= 1000;
             console.log('Select a move.\n');
             for (let i = 0; i < moveList.length; i++) {
                 moveCompatibility = 1;
@@ -465,29 +464,30 @@ function battleScript() {
             }
             if (activeMoves[moveVar][14] == 0) {
                 if (activeMoves[moveVar][15].charAt(0) == "F" || activeMoves[moveVar][15].charAt(0) == "E") {
-                    DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
-                    // COURAGE + Power - FoeFORTITUDE * LEVEL
+                    DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
+                    // Adventure + Power - FoeLeadership * LEVEL
                     console.log('You lash out courageously!');
+                    console.log(playerModifiers[1][1]+'+'+activeMoves[moveVar][13]+'-'+modifiers[enemyVar][5]+'*'+playerModifiers[18][1])
                 } else if (activeMoves[moveVar][15].charAt(0) == "W" || activeMoves[moveVar][15].charAt(0) == "A") {
-                    DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
-                    // SPIRIT + Power - FoeHeart * LEVEL
+                    DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
+                    // Intelligence + Power - FoeSense * Level
                     console.log('Your spirit unleashes a mighty blast!');
                 } else if (activeMoves[moveVar][15].charAt(1) == "e") {
                     if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
-                        DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
-                        // COURAGE + Power - FoeFORTITUDE * LEVEL
+                        DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
+                        // Adventure + Power - FoeLeadership * LEVEL
                     } else {
-                        DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
-                        // SPIRIT + Power - FoeHeart * LEVEL
+                        DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
+                        // Intelligence + Power - FoeSense * Level
                     }
                     console.log('You melt the foe\'s defenses with a cruel attack!');
                 } else if (activeMoves[moveVar][15].charAt(0) == "G") {
                     if (playerModifiers[0][1] > playerModifiers[0][5]) {
-                        DMG = Math.round((playerModifiers[13][1] + activeMoves[moveVar][13] - modifiers[enemyVar][3]) * playerModifiers[18][1]);
-                        // COURAGE + Power - FoeFORTITUDE * LEVEL
+                        DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
+                        // Adventure + Power - FoeLeadership * LEVEL
                     } else {
-                        DMG = Math.round((playerModifiers[15][1] + activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
-                        // SPIRIT + Power - FoeHeart * LEVEL
+                        DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
+                        // Intelligence + Power - FoeSense * Level
                     }
                     console.log('You put all of your energy into an all-out attack!');
                 } else {
@@ -544,50 +544,52 @@ function battleScript() {
                     battleOver = 0;
                 }
             }
-            //ADD SPEEDTIER CODES FOR ALL PLAYERS HERE.
-        } else if (speedTiers[0][0] == 'something else') {
-
-        }
-
-
-        for (let i = 0; i < enemyTeam.length; i++) {
-            if (modifiers[i][7] > 0) {
-                if (enemyTeam[i][14] == 0) {
-                    if (enemyTeam[i][13].charAt(0) == "F" || enemyTeam[i][13].charAt(0) == "E") {
-                        DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
-                        // COURAGE - FoeFORTITUDE * LEVEL
-                        console.log('Your foe gathers up their courage and attacks!');
-                    } else if (enemyTeam[i][13].charAt(0) == "W" || enemyTeam[i][13].charAt(0) == "A") {
-                        DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
-                        // SPIRIT - FoeHEART * LEVEL
-                        console.log('Your foe harnesses ancient magics and attacks!');
-                    } else if (enemyTeam[i][13].charAt(1) == "e") {
+            //ADD SPEEDTIER CODES FOR ALL PLAYERS HERE. FIX THIS
+        } else if (speedTiers[0][1] < 1) {
+            let activeFoeNumber;
+            for (let i = 0; i < modifiers.length; i++) {
+                if (speedTiers[0][1] == modifiers[i][15]) {
+                    activeFoeNumber = i;
+                }
+            }
+            speedTiers[0][0] -= 1000;
+            if (modifiers[activeFoeNumber][7] > 0) {
+                if (enemyTeam[activeFoeNumber][14] == 0) {
+                    if (enemyTeam[activeFoeNumber][13].charAt(0) == "F" || enemyTeam[activeFoeNumber][13].charAt(0) == "E") {
+                        DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                        // (Adventure + 10 - FoeLeadership) * Level + 10
+                        console.log('The foe ' + modifiers[0][0] +' gathers up their courage and attacks!');
+                    } else if (enemyTeam[activeFoeNumber][13].charAt(0) == "W" || enemyTeam[activeFoeNumber][13].charAt(0) == "A") {
+                        DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                        // (Intelligence + 10 - FoeLeadership) * Level + 10
+                        console.log('The foe ' + modifiers[0][0] +' harnesses ancient magics and attacks!');
+                    } else if (enemyTeam[activeFoeNumber][13].charAt(1) == "e") {
                         if (playerModifiers[0][3] < playerModifiers[0][7]) {
-                            DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
-                            // COURAGE - FoeFORTITUDE * LEVEL
+                            DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            // (Adventure + 10 - FoeLeadership) * Level + 10
                         } else {
-                            DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
-                            // SPIRIT - FoeHEART * LEVEL
+                            DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            // (Intelligence + 10 - FoeLeadership) * Level + 10
                         }
-                        console.log('Your foe bypasses your defenses with a sneaky blow!');
-                    } else if (enemyTeam[i][13].charAt(0) == "G") {
-                        if (modifiers[i][2] > modifiers[i][4]) {
-                            DMG = Math.round((modifiers[i][2] - playerModifiers[14][1]) * modifiers[i][8]) + 10;
-                            // COURAGE - FoeFORTITUDE * LEVEL
+                        console.log('The foe ' + modifiers[0][0] +' bypasses your defenses with a sneaky blow!');
+                    } else if (enemyTeam[activeFoeNumber][13].charAt(0) == "G") {
+                        if (modifiers[activeFoeNumber][2] > modifiers[activeFoeNumber][4]) {
+                            DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            // (Adventure + 10 - FoeLeadership) * Level + 10
                         } else {
-                            DMG = Math.round((modifiers[i][4] - playerModifiers[16][1]) * modifiers[i][8]) + 10;
-                            // SPIRIT - FoeHEART * LEVEL
+                            DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            // (Intelligence + 10 - FoeLeadership) * Level + 10
                         }
-                        console.log('Your foe throws caution to the wind in a brutal attack!');
+                        console.log('The foe ' + modifiers[0][0] +' throws caution to the wind in a brutal attack!');
                     } else {
-                        DMG = Math.round(Number(modifiers[i][8])) + 10;
-                        console.log('Your foe attacks with unmitigable force!');
-                        //Level
+                        DMG = Math.round(Number(modifiers[activeFoeNumber][8])) + 10;
+                        console.log('The foe ' + modifiers[0][0] +' attacks with unmitigable force!');
+                        //Level + 10
                     }
                 } else {
                     //other enemytypes go here. FIX THIS.
                 }
-                console.log('The enemy ' + enemyTeam[i][0] + ' does ' + DMG + ' damage!');
+                console.log('The enemy ' + enemyTeam[activeFoeNumber][0] + ' does ' + DMG + ' damage!');
                 if (playerModifiers[19][1] > 0) {
                     playerModifiers[19][1] -= DMG;
                     console.log('Your Ego blocks the damage!');
@@ -599,9 +601,12 @@ function battleScript() {
                     console.log('Ugh...');
                     if (playerModifiers[20][1] <= 0) {
                         console.log('The light is fading...');
+                        //add a proper exit strategy! FIX THIS
+                        process.exit();
                     }
                 }
             }
+
         }
     }
 }
