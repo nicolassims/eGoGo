@@ -329,12 +329,14 @@ function printPlayerStatus() {
 
 function battleScript() {
     let playerModifiers = JSON.parse(JSON.stringify(playerStats));
+    playerModifiers[11][1] = playerModifiers[11][1] * 5;
+    playerModifiers[12][1] = playerModifiers[12][1] * 20;
     let moveCompatibility = 1, moveNumber = 0, battleOver = 0;
     let DMG, modifiers, noneAtThousand;
     let activeMoves = [];
     if (enemyTeam == null || enemyTeam == 0) {
         let numberEnemies = Math.floor((Math.random() * 12) + 1);
-        while (numberEnemies > playerModifiers[18][1]) {
+        while (numberEnemies > playerStats[18][1]) {
             numberEnemies = Math.floor((Math.random() * 12) + 1);
         }
         if (numberEnemies != 1) {
@@ -354,13 +356,12 @@ function battleScript() {
     } else {
         //Unique enemy appears here. FIX THIS
     }
-
-
-
-
+    modifiers = JSON.parse(JSON.stringify(enemyTeam));
     for (let i = 0; i < enemyTeam.length; i++) {
-        modifiers = JSON.parse(JSON.stringify(enemyTeam));
+        modifiers[i][11] = modifiers[i][11] * 5;
+        modifiers[i][12] = modifiers[i][12] * 20;
     }
+    console.log(modifiers);
     for (let i = 0; i < modifiers.length; i++) {
         modifiers[i][15] = Math.random();
     }
@@ -395,17 +396,6 @@ function battleScript() {
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     while (battleOver == 0) {
         noneAtThousand = 0;
         while (noneAtThousand == 0) {
@@ -431,11 +421,11 @@ function battleScript() {
             console.log('Select a move.\n');
             for (let i = 0; i < moveList.length; i++) {
                 moveCompatibility = 1;
-                if (playerModifiers[1][1] < moveList[i][1] || playerModifiers[2][1] < moveList[i][2] || playerModifiers[3][1] <
-                    moveList[i][3] || playerModifiers[4][1] < moveList[i][4] || playerModifiers[5][1] < moveList[i][5] ||
-                    playerModifiers[6][1] < moveList[i][6] || playerModifiers[7][1] < moveList[i][7] || playerModifiers[8][1] <
-                    moveList[i][8] || playerModifiers[9][1] < moveList[i][9] || playerModifiers[10][1] < moveList[i][10] ||
-                    playerModifiers[11][1] < moveList[i][11] || playerModifiers[12][1] < moveList[i][12]) {
+                if (playerStats[1][1] < moveList[i][1] || playerStats[2][1] < moveList[i][2] || playerStats[3][1] <
+                    moveList[i][3] || playerStats[4][1] < moveList[i][4] || playerStats[5][1] < moveList[i][5] ||
+                    playerStats[6][1] < moveList[i][6] || playerStats[7][1] < moveList[i][7] || playerStats[8][1] <
+                    moveList[i][8] || playerStats[9][1] < moveList[i][9] || playerStats[10][1] < moveList[i][10] ||
+                    playerStats[11][1] < moveList[i][11] || playerStats[12][1] < moveList[i][12]) {
                     moveCompatibility = 0;
                 }
                 if (moveCompatibility == 1) {
@@ -467,7 +457,6 @@ function battleScript() {
                     DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                     // Adventure + Power - FoeLeadership * LEVEL
                     console.log('You lash out courageously!');
-                    console.log(playerModifiers[1][1]+'+'+activeMoves[moveVar][13]+'-'+modifiers[enemyVar][5]+'*'+playerModifiers[18][1])
                 } else if (activeMoves[moveVar][15].charAt(0) == "W" || activeMoves[moveVar][15].charAt(0) == "A") {
                     DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
                     // Intelligence + Power - FoeSense * Level
@@ -498,12 +487,12 @@ function battleScript() {
             } else {
                 //Different move effects go here. FIX THIS
             }
-            modifiers[enemyVar][7] = modifiers[enemyVar][7] - DMG;
-            if (modifiers[enemyVar][7] <= 0) {
+            modifiers[enemyVar][12] = modifiers[enemyVar][12] - DMG;
+            if (modifiers[enemyVar][12] <= 0) {
                 console.log(' Did ' + Math.round(DMG) + ' damage!\n ' +
                     'The foe crumbles to clay.\n');
                 let statsGain = Math.floor((Math.random() * 12) + 1);
-                let randomVar = Math.floor((Math.random() * 100) + 1);
+                let randomVar = Math.floor((Math.random() * 100));
                 if (enemyTeam[enemyVar][statsGain] > randomVar) {
                     chooseVar = statsGain;
                     setPlayerStats(1);
@@ -540,7 +529,7 @@ function battleScript() {
             battleOver = 1;
             moveNumber = 0;
             for (let i = 0; i < enemyTeam.length; i++) {
-                if (modifiers[i][7] > 0) {
+                if (modifiers[i][12] > 0) {
                     battleOver = 0;
                 }
             }
@@ -553,54 +542,54 @@ function battleScript() {
                 }
             }
             speedTiers[0][0] -= 1000;
-            if (modifiers[activeFoeNumber][7] > 0) {
+            if (modifiers[activeFoeNumber][12] > 0) {
                 if (enemyTeam[activeFoeNumber][14] == 0) {
                     if (enemyTeam[activeFoeNumber][13].charAt(0) == "F" || enemyTeam[activeFoeNumber][13].charAt(0) == "E") {
-                        DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                        DMG = Math.round((modifiers[activeFoeNumber][1] - -10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                         // (Adventure + 10 - FoeLeadership) * Level + 10
-                        console.log('The foe ' + modifiers[0][0] +' gathers up their courage and attacks!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' gathers up their courage and attacks!');
                     } else if (enemyTeam[activeFoeNumber][13].charAt(0) == "W" || enemyTeam[activeFoeNumber][13].charAt(0) == "A") {
-                        DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                        DMG = Math.round((modifiers[activeFoeNumber][6] - -10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                         // (Intelligence + 10 - FoeLeadership) * Level + 10
-                        console.log('The foe ' + modifiers[0][0] +' harnesses ancient magics and attacks!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' harnesses ancient magics and attacks!');
                     } else if (enemyTeam[activeFoeNumber][13].charAt(1) == "e") {
                         if (playerModifiers[0][3] < playerModifiers[0][7]) {
-                            DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            DMG = Math.round((modifiers[activeFoeNumber][1] - -10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                             // (Adventure + 10 - FoeLeadership) * Level + 10
                         } else {
-                            DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            DMG = Math.round((modifiers[activeFoeNumber][6] - -10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                             // (Intelligence + 10 - FoeLeadership) * Level + 10
                         }
-                        console.log('The foe ' + modifiers[0][0] +' bypasses your defenses with a sneaky blow!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' bypasses your defenses with a sneaky blow!');
                     } else if (enemyTeam[activeFoeNumber][13].charAt(0) == "G") {
                         if (modifiers[activeFoeNumber][2] > modifiers[activeFoeNumber][4]) {
-                            DMG = Math.round((modifiers[activeFoeNumber][1] + 10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            DMG = Math.round((modifiers[activeFoeNumber][1] - -10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                             // (Adventure + 10 - FoeLeadership) * Level + 10
                         } else {
-                            DMG = Math.round((modifiers[activeFoeNumber][6] + 10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) + 10;
+                            DMG = Math.round((modifiers[activeFoeNumber][6] - -10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                             // (Intelligence + 10 - FoeLeadership) * Level + 10
                         }
-                        console.log('The foe ' + modifiers[0][0] +' throws caution to the wind in a brutal attack!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] + ' throws caution to the wind in a brutal attack!');
                     } else {
                         DMG = Math.round(Number(modifiers[activeFoeNumber][8])) + 10;
-                        console.log('The foe ' + modifiers[0][0] +' attacks with unmitigable force!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' attacks with unmitigable force!');
                         //Level + 10
                     }
                 } else {
                     //other enemytypes go here. FIX THIS.
                 }
                 console.log('The enemy ' + enemyTeam[activeFoeNumber][0] + ' does ' + DMG + ' damage!');
-                if (playerModifiers[19][1] > 0) {
-                    playerModifiers[19][1] -= DMG;
+                if (playerModifiers[11][1] > 0) {
+                    playerModifiers[11][1] -= DMG;
                     console.log('Your Ego blocks the damage!');
-                    if (playerModifiers[19][1] <= 0) {
+                    if (playerModifiers[11][1] <= 0) {
                         console.log('But... it just dissipated...');
                     }
                 } else {
-                    playerModifiers[20][1] -= DMG;
+                    playerModifiers[12][1] -= DMG;
                     console.log('Ugh...');
-                    if (playerModifiers[20][1] <= 0) {
-                        console.log('The light is fading...');
+                    if (playerModifiers[12][1] <= 0) {
+                        console.log('Not... like... this...!');
                         //add a proper exit strategy! FIX THIS
                         process.exit();
                     }
