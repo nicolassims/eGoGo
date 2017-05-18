@@ -319,6 +319,7 @@ function wipeScreen() {
 
 function printPlayerStatus() {
     console.log('\n' +
+        playerStats[0][0] + ' ' + playerStats[0][1] + '\n' +
         'Level          |' + Math.round(playerStats[18][1]) + '|    Stat Total      |' + Math.round(playerStats[17][1]) + '|\n' +
         'Adventure      |' + Math.round(playerStats[1][1]) + '|    Leadership      |' + Math.round(playerStats[5][1]) + '|    Hope            |' + Math.round(playerStats[9][1]) + '|\n' +
         'Sense          |' + Math.round(playerStats[2][1]) + '|    Intelligence    |' + Math.round(playerStats[6][1]) + '|    Patience        |' + Math.round(playerStats[10][1]) + '|\n' +
@@ -361,7 +362,6 @@ function battleScript() {
         modifiers[i][11] = modifiers[i][11] * 5;
         modifiers[i][12] = modifiers[i][12] * 20;
     }
-    console.log(modifiers);
     for (let i = 0; i < modifiers.length; i++) {
         modifiers[i][15] = Math.random();
     }
@@ -441,14 +441,14 @@ function battleScript() {
             }
             console.log('Select an enemy to target.\n');
             for (let i = 0; i < enemyTeam.length; i++) {
-                if (modifiers[i][7] > 0) {
+                if (modifiers[i][12] > 0) {
                     console.log(i + ' - ' + enemyTeam[i][0]);
                 } else {
                     console.log(i + ' - A shattered ' + enemyTeam[i][0]);
                 }
             }
             let enemyVar = PROMPT.question('>');
-            while (enemyTeam[enemyVar] == null || modifiers[enemyVar][7] <= 0) {
+            while (enemyTeam[enemyVar] == null || modifiers[enemyVar][12] <= 0) {
                 enemyVar = PROMPT.question('That is not an option.\n' +
                     '>');
             }
@@ -547,7 +547,7 @@ function battleScript() {
                     if (enemyTeam[activeFoeNumber][13].charAt(0) == "F" || enemyTeam[activeFoeNumber][13].charAt(0) == "E") {
                         DMG = Math.round((modifiers[activeFoeNumber][1] - -10 - playerModifiers[5][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                         // (Adventure + 10 - FoeLeadership) * Level + 10
-                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' gathers up their courage and attacks!');
+                        console.log('The foe ' + modifiers[activeFoeNumber][0] +' executes a lunging attack!');
                     } else if (enemyTeam[activeFoeNumber][13].charAt(0) == "W" || enemyTeam[activeFoeNumber][13].charAt(0) == "A") {
                         DMG = Math.round((modifiers[activeFoeNumber][6] - -10 - playerModifiers[2][1]) * Math.round(Number(modifiers[activeFoeNumber][8]))) - -10;
                         // (Intelligence + 10 - FoeLeadership) * Level + 10
@@ -595,12 +595,11 @@ function battleScript() {
                     }
                 }
             }
-
         }
     }
 }
 
-function printPlayerModifiers() {
+function printBattleStatus(playerModifiers) {
     console.log('\n' +
         'Level          |' + Math.round(playerModifiers[18][1]) + '|    Stat Total      |' + Math.round(playerModifiers[17][1]) + '|\n' +
         'Adventure      |' + Math.round(playerModifiers[1][1]) + '|    Leadership      |' + Math.round(playerModifiers[5][1]) + '|    Hope            |' + Math.round(playerModifiers[9][1]) + '|\n' +
@@ -1198,6 +1197,7 @@ function day1part3() {
         'Bummer.\n ' +
         '                          Press Enter to Continue\n>');
     battleScript();
+    printPlayerStatus();
 }
 
 //
