@@ -456,11 +456,27 @@ function battleScript() {
                 if (activeMoves[moveVar][15].charAt(0) == "F" || activeMoves[moveVar][15].charAt(0) == "E") {
                     DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                     // Adventure + Power - FoeLeadership * LEVEL
-                    console.log('You lash out courageously!');
+                    if (activeMoves[moveVar][15].charAt(0) == "F" && modifiers[enemyVar][13].charAt(0) == "E") {
+                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        console.log('Your burning spirit infuses your strike with extra strength!');
+                    } else if (activeMoves[moveVar][15].charAt(0) == "E" && modifiers[enemyVar][13].charAt(0) == "A") {
+                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        console.log('Your rugged determination crushes your foes!');
+                    } else {
+                        console.log('You lash out courageously!');
+                    }
                 } else if (activeMoves[moveVar][15].charAt(0) == "W" || activeMoves[moveVar][15].charAt(0) == "A") {
                     DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
                     // Intelligence + Power - FoeSense * Level
-                    console.log('Your spirit unleashes a mighty blast!');
+                    if (activeMoves[moveVar][15].charAt(0) == "A" && modifiers[enemyVar][13].charAt(0) == "W") {
+                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        console.log('Your magic blows away your foes!');
+                    } else if (activeMoves[moveVar][15].charAt(0) == "W" && modifiers[enemyVar][13].charAt(0) == "F") {
+                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        console.log('Your magic washes away the enemies!');
+                    } else {
+                        console.log('Your spirit unleashes a mighty blast!');
+                    }
                 } else if (activeMoves[moveVar][15].charAt(1) == "e") {
                     if (modifiers[enemyVar][3] < modifiers[enemyVar][5]) {
                         DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
