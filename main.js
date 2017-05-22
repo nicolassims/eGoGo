@@ -330,8 +330,8 @@ function printPlayerStatus() {
 
 function battleScript() {
     let playerModifiers = JSON.parse(JSON.stringify(playerStats));
-    playerModifiers[11][1] = playerModifiers[11][1] * 5;
-    playerModifiers[12][1] = playerModifiers[12][1] * 20;
+    playerModifiers[11][1] = playerModifiers[11][1] * 10;
+    playerModifiers[12][1] = playerModifiers[12][1] * 15;
     let moveCompatibility = 1, moveNumber = 0, battleOver = 0;
     let DMG, modifiers, noneAtThousand;
     let activeMoves = [];
@@ -344,11 +344,19 @@ function battleScript() {
             console.log(numberEnemies + ' enemies appeared!');
             for (let i = 0; i < numberEnemies; i++) {
                 enemyTeam[i] = Math.floor((Math.random() * enemyTypes.length) + 1) - 1;
-                console.log('Enemy #' + (i + 1) + ' is a ' + enemyTypes[enemyTeam[i]][0] + '!');
+                if (enemyTypes[enemyTeam[i]][0].charAt(0) == 'A' || enemyTypes[enemyTeam[i]][0].charAt(0) == 'E'|| enemyTypes[enemyTeam[i]][0].charAt(0) == 'I' || enemyTypes[enemyTeam[i]][0].charAt(0) == 'O'|| enemyTypes[enemyTeam[i]][0].charAt(0) == 'U') {
+                    console.log('Enemy #' + (i + 1) + ' is an ' + enemyTypes[enemyTeam[i]][0] + '!');
+                } else {
+                    console.log('Enemy #' + (i + 1) + ' is a ' + enemyTypes[enemyTeam[i]][0] + '!');
+                }
             }
         } else {
             enemyTeam[0] = Math.floor((Math.random() * enemyTypes.length) + 1) - 1;
-            console.log('An enemy appeared! It\'s a ' + enemyTypes[enemyTeam[0]][0] + '!');
+            if (enemyTypes[enemyTeam[0]][0].charAt(0) == 'A' || enemyTypes[enemyTeam[0]][0].charAt(0) == 'E'|| enemyTypes[enemyTeam[0]][0].charAt(0) == 'I' || enemyTypes[enemyTeam[0]][0].charAt(0) == 'O'|| enemyTypes[enemyTeam[0]][0].charAt(0) == 'U') {
+                console.log('An enemy appeared! It\'s an ' + enemyTypes[enemyTeam[0]][0] + '!');
+            } else {
+                console.log('An enemy appeared! It\'s a ' + enemyTypes[enemyTeam[0]][0] + '!');
+            }
         }
         for (let i = 0; i < enemyTeam.length; i++) {
             enemyTeam[i] = enemyTypes[enemyTeam[i]];
@@ -359,10 +367,8 @@ function battleScript() {
     }
     modifiers = JSON.parse(JSON.stringify(enemyTeam));
     for (let i = 0; i < enemyTeam.length; i++) {
-        modifiers[i][11] = modifiers[i][11] * 5;
-        modifiers[i][12] = modifiers[i][12] * 20;
-    }
-    for (let i = 0; i < modifiers.length; i++) {
+        modifiers[i][11] = modifiers[i][11] * 10;
+        modifiers[i][12] = modifiers[i][12] * 15;
         modifiers[i][15] = Math.random();
     }
     let speedTiers = [];
@@ -371,17 +377,19 @@ function battleScript() {
         speedTiers[i] = [];
         speedTiers[i][0] = modifiers[i][3];
         speedTiers[i][1] = modifiers[i][15];
+        speedTiers[i][5] = speedTiers[i][0];
     }
-    //CREATE A UNIQUE ONE OF THESE FOR EVERY PLAYER CHARACTER FIX THIS
+    //CREATE A UNIQUE ONE OF THESE FOR EVERY PLAYER CHARACTER
     speedTiers[marker] = [];
     speedTiers[marker][0] = playerModifiers[3][1];
     speedTiers[marker][1] = playerModifiers[15][0];
-    //
+    speedTiers[marker][5] = speedTiers[marker][0];
+    //FIX THIS
     noneAtThousand = 0;
     while (noneAtThousand == 0) {
         for (let i = 0; i < speedTiers.length; i++, marker++) {
-            speedTiers[i][0] = speedTiers[i][0] * 2;
-            if (speedTiers[i][0] >= 1000) {
+            speedTiers[i][0] = speedTiers[i][0] - -speedTiers[i][5];
+            if (speedTiers[i][0] >= 500) {
                 noneAtThousand = 1;
             }
         }
@@ -397,11 +405,12 @@ function battleScript() {
         }
     }
     while (battleOver == 0) {
+        //FIX THIS
         noneAtThousand = 0;
         while (noneAtThousand == 0) {
             for (let i = 0; i < speedTiers.length; i++, marker++) {
-                speedTiers[i][0] = speedTiers[i][0] * 1.5 + 100;
-                if (speedTiers[i][0] > 1000) {
+                speedTiers[i][0] = speedTiers[i][0] - -speedTiers[i][5];
+                if (speedTiers[i][0] > 500) {
                     noneAtThousand = 1;
                 }
             }
@@ -417,7 +426,7 @@ function battleScript() {
             }
         }
         if (speedTiers[0][1] == 101) {
-            speedTiers[0][0] -= 1000;
+            speedTiers[0][0] -= 500;
             console.log('Select a move.\n');
             for (let i = 0; i < moveList.length; i++) {
                 moveCompatibility = 1;
@@ -457,10 +466,10 @@ function battleScript() {
                     DMG = Math.round((playerModifiers[1][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][5]) * playerModifiers[18][1]);
                     // Adventure + Power - FoeLeadership * LEVEL
                     if (activeMoves[moveVar][15].charAt(0) == "F" && modifiers[enemyVar][13].charAt(0) == "E") {
-                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        DMG = Math.pow(DMG, 1 + playerModifiers[4][1]/100);
                         console.log('Your burning spirit infuses your strike with extra strength!');
                     } else if (activeMoves[moveVar][15].charAt(0) == "E" && modifiers[enemyVar][13].charAt(0) == "A") {
-                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        DMG = Math.pow(DMG, 1 + playerModifiers[4][1]/100);
                         console.log('Your rugged determination crushes your foes!');
                     } else {
                         console.log('You lash out courageously!');
@@ -469,10 +478,10 @@ function battleScript() {
                     DMG = Math.round((playerModifiers[6][1] - -activeMoves[moveVar][13] - modifiers[enemyVar][2]) * playerModifiers[18][1]);
                     // Intelligence + Power - FoeSense * Level
                     if (activeMoves[moveVar][15].charAt(0) == "A" && modifiers[enemyVar][13].charAt(0) == "W") {
-                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        DMG = Math.pow(DMG, 1 + playerModifiers[4][1]/100);
                         console.log('Your magic blows away your foes!');
                     } else if (activeMoves[moveVar][15].charAt(0) == "W" && modifiers[enemyVar][13].charAt(0) == "F") {
-                        DMG = DMG^(1 + playerModifiers[4][1]/100);
+                        DMG = Math.pow(DMG, 1 + playerModifiers[4][1]/100);
                         console.log('Your magic washes away the enemies!');
                     } else {
                         console.log('Your spirit unleashes a mighty blast!');
@@ -557,7 +566,7 @@ function battleScript() {
                     activeFoeNumber = i;
                 }
             }
-            speedTiers[0][0] -= 1000;
+            speedTiers[0][0] -= 500;
             if (modifiers[activeFoeNumber][12] > 0) {
                 if (enemyTeam[activeFoeNumber][14] == 0) {
                     if (enemyTeam[activeFoeNumber][13].charAt(0) == "F" || enemyTeam[activeFoeNumber][13].charAt(0) == "E") {
