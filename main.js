@@ -328,6 +328,13 @@ function printPlayerStatus() {
     pause();
 } //Displays player status
 
+function navigateDream(partOfDream, position) {
+    if (partOfDream == 0 && position == null) {
+        position = [11, 5];
+
+    }
+}
+
 function battleScript() {
     let playerModifiers = JSON.parse(JSON.stringify(playerStats));
     playerModifiers[11][1] = playerModifiers[11][1] * 10;
@@ -512,7 +519,13 @@ function battleScript() {
             } else {
                 //Different move effects go here. FIX THIS
             }
-            modifiers[enemyVar][12] = modifiers[enemyVar][12] - DMG;
+            let critRate = Math.floor((Math.random() * 200));
+            if (playerModifiers[8][1] >= critRate) {
+                modifiers[enemyVar][12] = modifiers[enemyVar][12] - DMG * 2;
+                console.log('A devastating hit!');
+            } else {
+                modifiers[enemyVar][12] = modifiers[enemyVar][12] - DMG;
+            }
             if (modifiers[enemyVar][12] <= 0) {
                 console.log(' Did ' + Math.round(DMG) + ' damage!\n ' +
                     'The foe crumbles to clay.\n');
@@ -602,6 +615,11 @@ function battleScript() {
                     }
                 } else {
                     //other enemytypes go here. FIX THIS.
+                }
+                let critRate = Math.floor((Math.random() * 200));
+                if (modifiers[activeFoeNumber][8] >= critRate) {
+                    DMG = DMG * 2;
+                    console.log('A devastating hit!');
                 }
                 console.log('The enemy ' + enemyTeam[activeFoeNumber][0] + ' does ' + DMG + ' damage!');
                 if (playerModifiers[11][1] > 0) {
@@ -1219,10 +1237,21 @@ function day1part3() {
         'attack?\n ' +
         'So, needless to say, you aren\'t actually dead.\n ' +
         'You are, however, somewhere you have never seen before.\n ' +
-        'Bummer.\n ' +
         '                          Press Enter to Continue\n>');
-    battleScript();
-    printPlayerStatus();
+    displayDream(0);
+    chooseVar = PROMPT.question('You appear to be facing a wall of some kind.\n ' +
+        'It is pitch black, far too dark to see normally, but the surface is rough, and spotted with sharp edges.\n ' +
+        'You confirm the walls, and the floor beneath your feet, are all made of the same rough material.\n ' +
+        'You also notice you are wearing new clothes, though it is too dark to see what.\n ' +
+        '...It feels silky. And lacey. And supremely comfortable.\n ' +
+        '                          Press Enter to Continue\n>');
+    wipeScreen();
+    displayDream(0);
+    chooseVar = PROMPT.question('You decide to try to find some light.\n ' +
+        'At the very least, you want to know what you\'re wearing.\n ' +
+        'Although finding out where you are would be nice, too.\n ' +
+        '                          Press Enter to Continue\n>');
+    navigateDream(0);
 }
 
 //
