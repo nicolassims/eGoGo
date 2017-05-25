@@ -17,8 +17,8 @@ function main() {
     day1part2();
     day1part3();
     //
-        printPlayerStatus();
-        showPawn();
+    printPlayerStatus();
+    showPawn();
 }
 
 main();
@@ -174,7 +174,7 @@ function setDateMonth() {
     } else {
         dateMonth += 1;
     }
-} //Increases dateMonth by one 
+} //Increases dateMonth by one
 
 function setDateDay(value) {
     if (dateDay == null) {
@@ -184,7 +184,7 @@ function setDateDay(value) {
     } else {
         dateDay += 1;
     }
-} //Increases dateDay by one unless given a value 
+} //Increases dateDay by one unless given a value
 
 function setDayName () {
     if (dateName == null || dateName == 'Saturday') {
@@ -203,7 +203,7 @@ function setDayName () {
     } else {
         dateName = 'Saturday';
     }
-} //Moves the day up one 
+} //Moves the day up one
 
 function showPawn() {
     process.stdout.write('\x1Bc');
@@ -293,7 +293,7 @@ function setEnemyTypes() {
     let fileReader = IO.readFileSync(`data/enemylist.csv`, `utf8`);
     let tempArray = fileReader.toString().split(/\r?\n/);
     for (let i = 0; i < tempArray.length; i++) {
-       enemyTypes.push(tempArray[i].toString().split(/,/));
+        enemyTypes.push(tempArray[i].toString().split(/,/));
     }
 }
 
@@ -308,8 +308,8 @@ function setMoveList(){
 function setPlayerStats(value) {
     playerStats[chooseVar][1] += value;
     playerStats[17][1] = playerStats[1][1] + playerStats[2][1] + playerStats[3][1] + playerStats[4][1] + playerStats[5][1] +
-                        playerStats[6][1] + playerStats[7][1] + playerStats[8][1] + playerStats[9][1] + playerStats[10][1] +
-                        playerStats[11][1] + playerStats[12][1];
+        playerStats[6][1] + playerStats[7][1] + playerStats[8][1] + playerStats[9][1] + playerStats[10][1] +
+        playerStats[11][1] + playerStats[12][1];
     playerStats[18][1] = (playerStats[17][1]/10 - 11);
 }
 
@@ -740,10 +740,10 @@ function day1part2() {
         console.log('The cat is thoroughly unimpressed. But, really, what were you thinking?');
     } else if (chooseVar == 6) {
         console.log('It is entirely still until you are about a hand\'s width away.\n ' +
-        'This allows you to see, easily, that it has no collar.');
+            'This allows you to see, easily, that it has no collar.');
     } else if (chooseVar == 11) {
         console.log('You give the cat a thorough petting.\n ' +
-        'It doesn\'t purr, but it seems appreciative.');
+            'It doesn\'t purr, but it seems appreciative.');
     } else if (chooseVar == 12) {
         console.log('You do not have a chunk of bread--but it\'s the thought that counts.');
     }
@@ -1502,27 +1502,27 @@ function displayGeneric() {
 
 function displayZoe() {
     console.log(
-    '             _---^^--.__\n' +
-    '           /\'           \\               \n' +
-    '          /\'/\'\"\\ |\"\'\'\\   \\                \n' +
-    '          / |\"███\\███\"|^  |               \n' +
-    '          | \\    └     :| \\               \n' +
-    '          \\/*\\        |*   \\              \n' +
-    '          /   \\  ^   /     |              \n' +
-    '  ╬╬     |_\\/\\/\'────|_/\\/\\/               \n' +
-    ' ╬╬╬         ____| V |___               \n' +
-    '\\   \\      / /    /       \\               \n' +
-    ' \\   \\    / /    /°    \\    \\               \n' +
-    '  \\   \\__/ |    |°      |   |               \n' +
-    '   \\       _\\    \\°    /    |               \n' +
-    '    \\_____/╬╬|\'\'\'\'\'\'\'\'\'    /              \n' +
-    '            ╬|____________/               \n' +
-    '             /   |°     |               \n' +
-    '            |    |°      \\                \n' +
-    '            |   /|\\°  ___ \\               \n' +
-    '            |  |≡|≡\\° UUU \'\\            \n' +
-    '            |  |─┼─\\°       \\              \n' +
-    '            |  | |  \\°       \\             \n');
+        '             _---^^--.__\n' +
+        '           /\'           \\               \n' +
+        '          /\'/\'\"\\ |\"\'\'\\   \\                \n' +
+        '          / |\"███\\███\"|^  |               \n' +
+        '          | \\    └     :| \\               \n' +
+        '          \\/*\\        |*   \\              \n' +
+        '          /   \\  ^   /     |              \n' +
+        '  ╬╬     |_\\/\\/\'────|_/\\/\\/               \n' +
+        ' ╬╬╬         ____| V |___               \n' +
+        '\\   \\      / /    /       \\               \n' +
+        ' \\   \\    / /    /°    \\    \\               \n' +
+        '  \\   \\__/ |    |°      |   |               \n' +
+        '   \\       _\\    \\°    /    |               \n' +
+        '    \\_____/╬╬|\'\'\'\'\'\'\'\'\'    /              \n' +
+        '            ╬|____________/               \n' +
+        '             /   |°     |               \n' +
+        '            |    |°      \\                \n' +
+        '            |   /|\\°  ___ \\               \n' +
+        '            |  |≡|≡\\° UUU \'\\            \n' +
+        '            |  |─┼─\\°       \\              \n' +
+        '            |  | |  \\°       \\             \n');
     pause();
 }
 
@@ -1780,87 +1780,87 @@ function displayDream(position) {
 //
 
 /*
-const JANUARY = 1, FEBRUARY = 2, MARCH = 3, APRIL = 4, MAY = 5, JUNE = 6, JULY = 7, AUGUST = 8, SEPTEMBER = 9,
-    OCTOBER = 10, NOVEMBER = 11, DECEMBER = 12;
-*/
+ const JANUARY = 1, FEBRUARY = 2, MARCH = 3, APRIL = 4, MAY = 5, JUNE = 6, JULY = 7, AUGUST = 8, SEPTEMBER = 9,
+ OCTOBER = 10, NOVEMBER = 11, DECEMBER = 12;
+ */
 /*
-chooseVar = PROMPT.question('Now, where would you like to go?\n' +
-    '<<(1) = Gawk at the grand house.>>\n' +
-    '<<(2) = Scope out the smaller house.>>\n' +
-    '<<(3) = Munch on something from McFriday\'s.>>\n' +
-    '<<(4) = Back up to the bus station.\'s.>>\n' +
-    '<<(5) = Take a hike to the town hall.\'s.>>\n' +
-    '>');
-while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
-    chooseVar = PROMPT.question('\nThat is not an option.\n' +
-        '<<(1) = Gawk at the grand house.>>\n' +
-        '<<(2) = Scope out the smaller house.>>\n' +
-        '<<(3) = Munch on something from McFriday\'s.>>\n' +
-        '<<(4) = Back up to the bus station.\'s.>>\n' +
-        '<<(5) = Take a hike to the town hall.\'s.>>\n' +
-        '>');
-}
-wipeScreen();
-while (chooseVar != 1) {
-    if (chooseVar == 2) {
-        displayAntiem(2);
-        chooseVar = PROMPT.question('You enter the RESIDENTIAL AREA.\n ' +
-            'The house, already dwarfed by the far grander one just across the road, looks even shabbier up ' +
-            'close.\n ' +
-            'The wood it\'s made of is a dark red--grand, once, but having succumbed to the ravages of time ' +
-            'long ago, it gives off a pungent scent.\n ' +
-            'You could barely believe that someone could actually live there, but the sound of a young man ' +
-            'yelling is clearly audible through the thin, wooden walls.\n ' +
-            'Through the window, you see a flash of green hair.\n ' +
-            'You remember deviant hair colors were quite popular with certain groups back home, and quickly walk ' +
-            'away.\n' +
-            '                          Press Enter to Continue\n>');
-        displayAntiem(2);
-        chooseVar = PROMPT.question('Now, where would you like to go?\n' +
-            '<<(1) = Gawk at the grand house.>>\n' +
-            '<<(2) = Scope out the smaller house.>>\n' +
-            '<<(3) = Munch on something from McFriday\'s.>>\n' +
-            '<<(4) = Back up to the bus station.\'s.>>\n' +
-            '<<(5) = Take a hike to the town hall.\'s.>>\n' +
-            '>');
-    } else if (chooseVar == 3) {
-        displayAntiem(3);
-        chooseVar = PROMPT.question('Through the windows, you see that the McFriday\'s seems to be entirely ' +
-            'empty, aside from a surly-looking girl at the counter.\n ' +
-            'The red-and-white tiles, and 1970s diner aesthetic, makes you nostalgic for a time you weren\'t ' +
-            'on the right continent to experience.\n ' +
-            'Of course, you weren\'t even born yet, either.\n ' +
-            'You cautiously open the door and walk inside.\n ' +
-            '                          Press Enter to Continue\n>');
-        displayMcFriday();
-        chooseVar = PROMPT.question('The diner\'s windows let you see most of the inside from the scorched ' +
-            'street outside, but there were a few things you didn\'t notice.\n ' +
-            'Immediately to your right is a one-armed bandit.\n ' +
-            'An American gambling machine, which seems very out of place in a McFriday\'s.\n ' +
-            'You notice the surly-looking girl at the counter, though clearly under eighteen, is smoking.\n ' +
-            'Perhaps this quiet town has more in common with your home than you thought.\n ' +
-            'The girl waves you over.\n ' +
-            '                          Press Enter to Continue\n>');
-        displayMcFriday(1);
-        chooseVar = PROMPT.question('She speaks quickly, and you understand nothing she says.\n ' +
-            'She cottons on to this quickly, and instead repeats the same old script every McFriday\'s employee ' +
-            'knows by heart.\n ' +
-            'You still have no idea what she\'s saying, but you know what she\'s asking.\n ' +
-            'Over-enunciating your words, you order a Joyful Meal, McFriday\'s specialty.\n ' +
-            'The girl nods, then points at a seat, clearly inviting you to sit down.\n ' +
-            'You do so.\n ' +
-            '                          Press Enter to Continue\n>');
-        displayMcFriday(2);
-        chooseVar = PROMPT.question('The girl disappears into the kitchen.\n ' +
-            'You don\'t hear any further communications from the girl, so you assume she\'s alone.\n ' +
-            '                          Press Enter to Continue\n>');
-        displayMcFriday(1);
-        chooseVar = PROMPT.question('The girl comes back, and presents you with a fresh Joyful Meal.\n ' +
-            'You note, with some distaste, that she\'s still clutching her cigarette in her hand.\n ' +
-            'You eat your burger quickly, in awkward silence.\n ' +
-            'The girl at the counter shows you her phone. Google translate is open, and her phone is displaying a ' +
-            'message.' +
-            '                          Press Enter to Continue\n>');
+ chooseVar = PROMPT.question('Now, where would you like to go?\n' +
+ '<<(1) = Gawk at the grand house.>>\n' +
+ '<<(2) = Scope out the smaller house.>>\n' +
+ '<<(3) = Munch on something from McFriday\'s.>>\n' +
+ '<<(4) = Back up to the bus station.\'s.>>\n' +
+ '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+ '>');
+ while (chooseVar != 1 && chooseVar != 2 && chooseVar != 3 && chooseVar != 4 && chooseVar != 5) {
+ chooseVar = PROMPT.question('\nThat is not an option.\n' +
+ '<<(1) = Gawk at the grand house.>>\n' +
+ '<<(2) = Scope out the smaller house.>>\n' +
+ '<<(3) = Munch on something from McFriday\'s.>>\n' +
+ '<<(4) = Back up to the bus station.\'s.>>\n' +
+ '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+ '>');
+ }
+ wipeScreen();
+ while (chooseVar != 1) {
+ if (chooseVar == 2) {
+ displayAntiem(2);
+ chooseVar = PROMPT.question('You enter the RESIDENTIAL AREA.\n ' +
+ 'The house, already dwarfed by the far grander one just across the road, looks even shabbier up ' +
+ 'close.\n ' +
+ 'The wood it\'s made of is a dark red--grand, once, but having succumbed to the ravages of time ' +
+ 'long ago, it gives off a pungent scent.\n ' +
+ 'You could barely believe that someone could actually live there, but the sound of a young man ' +
+ 'yelling is clearly audible through the thin, wooden walls.\n ' +
+ 'Through the window, you see a flash of green hair.\n ' +
+ 'You remember deviant hair colors were quite popular with certain groups back home, and quickly walk ' +
+ 'away.\n' +
+ '                          Press Enter to Continue\n>');
+ displayAntiem(2);
+ chooseVar = PROMPT.question('Now, where would you like to go?\n' +
+ '<<(1) = Gawk at the grand house.>>\n' +
+ '<<(2) = Scope out the smaller house.>>\n' +
+ '<<(3) = Munch on something from McFriday\'s.>>\n' +
+ '<<(4) = Back up to the bus station.\'s.>>\n' +
+ '<<(5) = Take a hike to the town hall.\'s.>>\n' +
+ '>');
+ } else if (chooseVar == 3) {
+ displayAntiem(3);
+ chooseVar = PROMPT.question('Through the windows, you see that the McFriday\'s seems to be entirely ' +
+ 'empty, aside from a surly-looking girl at the counter.\n ' +
+ 'The red-and-white tiles, and 1970s diner aesthetic, makes you nostalgic for a time you weren\'t ' +
+ 'on the right continent to experience.\n ' +
+ 'Of course, you weren\'t even born yet, either.\n ' +
+ 'You cautiously open the door and walk inside.\n ' +
+ '                          Press Enter to Continue\n>');
+ displayMcFriday();
+ chooseVar = PROMPT.question('The diner\'s windows let you see most of the inside from the scorched ' +
+ 'street outside, but there were a few things you didn\'t notice.\n ' +
+ 'Immediately to your right is a one-armed bandit.\n ' +
+ 'An American gambling machine, which seems very out of place in a McFriday\'s.\n ' +
+ 'You notice the surly-looking girl at the counter, though clearly under eighteen, is smoking.\n ' +
+ 'Perhaps this quiet town has more in common with your home than you thought.\n ' +
+ 'The girl waves you over.\n ' +
+ '                          Press Enter to Continue\n>');
+ displayMcFriday(1);
+ chooseVar = PROMPT.question('She speaks quickly, and you understand nothing she says.\n ' +
+ 'She cottons on to this quickly, and instead repeats the same old script every McFriday\'s employee ' +
+ 'knows by heart.\n ' +
+ 'You still have no idea what she\'s saying, but you know what she\'s asking.\n ' +
+ 'Over-enunciating your words, you order a Joyful Meal, McFriday\'s specialty.\n ' +
+ 'The girl nods, then points at a seat, clearly inviting you to sit down.\n ' +
+ 'You do so.\n ' +
+ '                          Press Enter to Continue\n>');
+ displayMcFriday(2);
+ chooseVar = PROMPT.question('The girl disappears into the kitchen.\n ' +
+ 'You don\'t hear any further communications from the girl, so you assume she\'s alone.\n ' +
+ '                          Press Enter to Continue\n>');
+ displayMcFriday(1);
+ chooseVar = PROMPT.question('The girl comes back, and presents you with a fresh Joyful Meal.\n ' +
+ 'You note, with some distaste, that she\'s still clutching her cigarette in her hand.\n ' +
+ 'You eat your burger quickly, in awkward silence.\n ' +
+ 'The girl at the counter shows you her phone. Google translate is open, and her phone is displaying a ' +
+ 'message.' +
+ '                          Press Enter to Continue\n>');
 
-    }
-}*/
+ }
+ }*/
