@@ -331,6 +331,7 @@ function printPlayerStatus() {
 function navigateDream(partOfDream, position) {
     if (partOfDream == 0 && position == null) {
         let activeMap = [];
+        let direction = 'N';
         let fileReader = IO.readFileSync(`data/maps/introArea.csv`, `utf8`);
         let tempArray = fileReader.toString().split(/\r?\n/);
         for (let i = 0; i < tempArray.length; i++) {
@@ -343,8 +344,93 @@ function navigateDream(partOfDream, position) {
                 }
             }
         }
-        console.log(activeMap[position[0]][position[1]]);
-        console.log(activeMap[position[0] - 1][position[1]]);
+        while (activeMap[position[0]][position[1]] != 3) {
+            if (direction == 'N') {
+                if (activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0] - 1][position[1]] == 0) {
+                    displayDream(0);
+                } else if (activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0] - 1][position[1]] != 0) {
+                    displayDream(1);
+                } else if (activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0] - 1][position[1]] != 0) {
+                    displayDream(2);
+                } else if (activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0] - 1][position[1]] != 0) {
+                    displayDream(3);
+                } else if (activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0] - 1][position[1]] != 0) {
+                    displayDream(4);
+                } else if (activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0] - 1][position[1]] == 0) {
+                    displayDream(5);
+                } else if (activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0] - 1][position[1]] == 0) {
+                    displayDream(6);
+                } else if (activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0] - 1][position[1]] == 0) {
+                    displayDream(7);
+                }
+            } else if (direction == 'S') {
+                if (activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0] + 1][position[1]] == 0) {
+                    displayDream(0);
+                } else if (activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0] + 1][position[1]] != 0) {
+                    displayDream(1);
+                } else if (activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0] + 1][position[1]] != 0) {
+                    displayDream(2);
+                } else if (activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0] + 1][position[1]] != 0) {
+                    displayDream(3);
+                } else if (activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0] + 1][position[1]] != 0) {
+                    displayDream(4);
+                } else if (activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0] + 1][position[1]] == 0) {
+                    displayDream(5);
+                } else if (activeMap[position[0]][position[1] + 1] == 0 && activeMap[position[0]][position[1] - 1] != 0 && activeMap[position[0] + 1][position[1]] == 0) {
+                    displayDream(6);
+                } else if (activeMap[position[0]][position[1] + 1] != 0 && activeMap[position[0]][position[1] - 1] == 0 && activeMap[position[0] + 1][position[1]] == 0) {
+                    displayDream(7);
+                }
+            } else if (direction == 'E') {
+                if (activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0]][position[1] + 1] == 0) {
+                    displayDream(0);
+                } else if (activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0]][position[1] + 1] != 0) {
+                    displayDream(1);
+                } else if (activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0]][position[1] + 1] != 0) {
+                    displayDream(2);
+                } else if (activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0]][position[1] + 1] != 0) {
+                    displayDream(3);
+                } else if (activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0]][position[1] + 1] != 0) {
+                    displayDream(4);
+                } else if (activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0]][position[1] + 1] == 0) {
+                    displayDream(5);
+                } else if (activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0]][position[1] + 1] == 0) {
+                    displayDream(6);
+                } else if (activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0]][position[1] + 1] == 0) {
+                    displayDream(7);
+                }
+            } else if (direction == 'W') {
+                if (activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0]][position[1] - 1] == 0) {
+                    displayDream(0);
+                } else if (activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0]][position[1] - 1] != 0) {
+                    displayDream(1);
+                } else if (activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0]][position[1] - 1] != 0) {
+                    displayDream(2);
+                } else if (activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0]][position[1] - 1] != 0) {
+                    displayDream(3);
+                } else if (activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0]][position[1] - 1] != 0) {
+                    displayDream(4);
+                } else if (activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0]][position[1] - 1] == 0) {
+                    displayDream(5);
+                } else if (activeMap[position[0] + 1][position[1]] == 0 && activeMap[position[0] - 1][position[1]] != 0 && activeMap[position[0]][position[1] - 1] == 0) {
+                    displayDream(6);
+                } else if (activeMap[position[0] + 1][position[1]] != 0 && activeMap[position[0] - 1][position[1]] == 0 && activeMap[position[0]][position[1] - 1] == 0) {
+                    displayDream(7);
+                }
+            }
+            if (direction = 'N') {
+                console.log('>Looking North')
+            } else if (direction == 'S') {
+                console.log('>Looking South')
+            } else if (direction == 'E') {
+                console.log('>Looking East')
+            } else if (direction == 'W') {
+                console.log('>Looking West')
+            }
+            chooseVar = PROMPT.question('You head in which direction?\n ' +
+                'W - North.   A - West.   S - South.   D - East.\n ' +
+                '>');
+        }
     }
 }
 
@@ -1815,6 +1901,68 @@ function displayDream(position) {
             '|               └                                                             └            |\n' +
             '|                                                             ┘                            |\n' +
             '|                         ┘                                                                |\n' +
+            '|__________________________________________________________________________________________|\n');
+    } else if (position == 6) {
+        console.log(
+            ' __________________________________________________________________________________________\n' +
+            '|        |                                                                                 |\n' +
+            '|        |    ║       ║                            ║                 ║                     |\n' +
+            '|        |                      ║                                                          |\n' +
+            '|      ║ |          ║                                                       ║        ║     |\n' +
+            '|   ║    |     ║                         ║                                                 |\n' +
+            '|        |                 ║                              ║                                |\n' +
+            '|        |       ║                                                       ║         ║       |\n' +
+            '|  ║     |                                                                              ║  |\n' +
+            '|        |                                        ║                                        |\n' +
+            '|        |                             ║                                     ║          ║  |\n' +
+            '|    ║   |   ║           ║                                                                 |\n' +
+            '|        |                                                                         ║       |\n' +
+            '|        |                                                    ║               ║            |\n' +
+            '|    ║   |                                       ║                                         |\n' +
+            '|        |        ║             ║                                                          |\n' +
+            '|        |                                                               ║              ║  |\n' +
+            '|   ║    |                                                                         ║       |\n' +
+            '|        |_________________________________________________________________________________|\n' +
+            '|        /                                              ┘                                  |\n' +
+            '|       /   └          └                                              └                    |\n' +
+            '|      /                                                                               └   |\n' +
+            '|  ║  /                         ┘                        ┘                                 |\n' +
+            '|    /                                                                                     |\n' +
+            '|   /                                      └                                               |\n' +
+            '|  /            └                                                             └            |\n' +
+            '| /                                                           ┘                            |\n' +
+            '|/                        ┘                                                                |\n' +
+            '|__________________________________________________________________________________________|\n');
+    } else if (position == 7) {
+        console.log(
+            ' __________________________________________________________________________________________\n' +
+            '|                                                                                |         |\n' +
+            '|             ║       ║                            ║                 ║           |         |\n' +
+            '|                               ║                                                |         |\n' +
+            '|      ║            ║                                                       ║    |   ║     |\n' +
+            '|   ║          ║                         ║                                       |         |\n' +
+            '|                          ║                              ║                      |         |\n' +
+            '|                ║                                                       ║       | ║       |\n' +
+            '|                                                                                |      ║  |\n' +
+            '|       ║                                         ║                              |         |\n' +
+            '|                                      ║                                     ║   |      ║  |\n' +
+            '|    ║       ║           ║                                                       |         |\n' +
+            '|                                                                                | ║       |\n' +
+            '|                                                             ║               ║  |         |\n' +
+            '|                                                ║                               |         |\n' +
+            '|                 ║             ║                                                |         |\n' +
+            '|                                                                        ║       |      ║  |\n' +
+            '|       ║                                                                        | ║       |\n' +
+            '|________________________________________________________________________________|         |\n' +
+            '|                                                       ┘                         \\        |\n' +
+            '|           └          └                                              └            \\       |\n' +
+            '|                                                                                   \\  ║   |\n' +
+            '|  ┘                            ┘                        ┘                           \\     |\n' +
+            '|                                                                                     \\    |\n' +
+            '|                                          └                                           \\   |\n' +
+            '|               └                                                             └         \\  |\n' +
+            '|                                                             ┘                          \\ |\n' +
+            '|                         ┘                                                               \\|\n' +
             '|__________________________________________________________________________________________|\n');
     }
 }
