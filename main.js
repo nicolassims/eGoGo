@@ -329,10 +329,17 @@ function printPlayerStatus() {
 } //Displays player status
 
 function navigateDream(partOfDream, position) {
-    if (partOfDream == 0 && position == null) {
+    let activeMap = [];
+    let fileReader = IO.readFileSync(`data/maps/introArea.csv`, `utf8`);
+    let tempArray = fileReader.toString().split(/\r?\n/);
+    for (let i = 0; i < tempArray.length; i++) {
+        activeMap.push(tempArray[i].toString().split(/,/));
+    }
+    console.log(activeMap);
+    /*if (partOfDream == 0 && position == null) {
         position = [11, 5];
 
-    }
+    }*/
 }
 
 function battleScript() {
