@@ -329,17 +329,23 @@ function printPlayerStatus() {
 } //Displays player status
 
 function navigateDream(partOfDream, position) {
-    let activeMap = [];
-    let fileReader = IO.readFileSync(`data/maps/introArea.csv`, `utf8`);
-    let tempArray = fileReader.toString().split(/\r?\n/);
-    for (let i = 0; i < tempArray.length; i++) {
-        activeMap.push(tempArray[i].toString().split(/,/));
+    if (partOfDream == 0 && position == null) {
+        let activeMap = [];
+        let fileReader = IO.readFileSync(`data/maps/introArea.csv`, `utf8`);
+        let tempArray = fileReader.toString().split(/\r?\n/);
+        for (let i = 0; i < tempArray.length; i++) {
+            activeMap.push(tempArray[i].toString().split(/,/));
+        }
+        for (let i = 0; i < activeMap.length; i++) {
+            for (let j = 0; j < activeMap[i].length; j++) {
+                if (activeMap[i][j] == 2) {
+                    position = [i, j];
+                }
+            }
+        }
+        console.log(activeMap[position[0]][position[1]]);
+        console.log(activeMap[position[0] - 1][position[1]]);
     }
-    console.log(activeMap);
-    /*if (partOfDream == 0 && position == null) {
-        position = [11, 5];
-
-    }*/
 }
 
 function battleScript() {
@@ -1628,21 +1634,21 @@ function displayDream(position) {
         console.log(
             ' __________________________________________________________________________________________\n' +
             '|         |                                                                     |          |\n' +
-            '|         |           ╬                           ╬                             |          |\n' +
+            '|         |           ║                           ║                             |          |\n' +
             '|         |                                                                     |          |\n' +
-            '|      ║  |                                                                 ╬   |    ║     |\n' +
-            '|   ║     |                             ╬                                       |          |\n' +
-            '|         |               ╬                              ╬                      |          |\n' +
+            '|      ║  |                                                                 ║   |    ║     |\n' +
+            '|   ║     |                             ║                                       |          |\n' +
+            '|         |               ║                              ║                      |          |\n' +
             '|         |                                                                     |  ║       |\n' +
-            '|         |                                                          ╬          |       ║  |\n' +
+            '|         |                                                          ║          |       ║  |\n' +
             '|       ║ |                                                                     |          |\n' +
-            '|         |                           ╬                                         |          |\n' +
-            '|    ║    |             ╬                                                       |          |\n' +
+            '|         |                           ║                                         |          |\n' +
+            '|    ║    |             ║                                                       |          |\n' +
             '|         |                                                                     |  ║       |\n' +
-            '|         |                                                  ╬                  |          |\n' +
-            '|         |                                     ╬                               |          |\n' +
-            '|         |      ╬                                                              |          |\n' +
-            '|         |                                                             ╬       |       ║  |\n' +
+            '|         |                                                  ║                  |          |\n' +
+            '|         |                                     ║                               |          |\n' +
+            '|         |      ║                                                              |          |\n' +
+            '|         |                                                             ║       |       ║  |\n' +
             '|       ║ |_____________________________________________________________________|  ║       |\n' +
             '|  ║      /                                                                      \\         |\n' +
             '|        /                                              ┘                         \\        |\n' +
@@ -1778,6 +1784,37 @@ function displayDream(position) {
             '|               └                                                             └         \\  |\n' +
             '|                                                             ┘                          \\ |\n' +
             '|                         ┘                                                               \\|\n' +
+            '|__________________________________________________________________________________________|\n');
+    } else if (position == 5) {
+        console.log(
+            ' __________________________________________________________________________________________\n' +
+            '|                                                                                          |\n' +
+            '|             ║       ║                            ║                 ║                     |\n' +
+            '|                               ║                                                          |\n' +
+            '|      ║            ║                                                       ║        ║     |\n' +
+            '|   ║          ║                         ║                                                 |\n' +
+            '|                          ║                              ║                                |\n' +
+            '|                ║                                                       ║         ║       |\n' +
+            '|                                                                                       ║  |\n' +
+            '|       ║                                         ║                                        |\n' +
+            '|                                      ║                                     ║          ║  |\n' +
+            '|    ║       ║           ║                                                                 |\n' +
+            '|                                                                                  ║       |\n' +
+            '|                                                             ║               ║            |\n' +
+            '|                                                ║                                         |\n' +
+            '|                 ║             ║                                                          |\n' +
+            '|                                                                        ║              ║  |\n' +
+            '|       ║                                                                          ║       |\n' +
+            '|__________________________________________________________________________________________|\n' +
+            '|                                                       ┘                                  |\n' +
+            '|           └          └                                              └                    |\n' +
+            '|                                                                                      └   |\n' +
+            '|  ┘                            ┘                        ┘                                 |\n' +
+            '|                                                                                          |\n' +
+            '|                                          └                                               |\n' +
+            '|               └                                                             └            |\n' +
+            '|                                                             ┘                            |\n' +
+            '|                         ┘                                                                |\n' +
             '|__________________________________________________________________________________________|\n');
     }
 }
