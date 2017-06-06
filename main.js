@@ -1310,6 +1310,7 @@ function day1part2() {
 }
 
 function day1part3() {
+    wipeScreen();
     displayBed();
     chooseVar = PROMPT.question('Your new room looks enormous, warm, and comfy.\n ' +
         'Also, in your new attic-room, are your chess sets, starwatching kits, action figures, and an easy-bake oven ' +
@@ -1337,6 +1338,7 @@ function day1part3() {
         'So, needless to say, you aren\'t actually dead.\n ' +
         'You are, however, somewhere you have never seen before.\n ' +
         '                          Press Enter to Continue\n>');
+    wipeScreen();
     displayDream(0);
     chooseVar = PROMPT.question('You appear to be facing a wall of some kind.\n ' +
         'It is pitch black, far too dark to see normally, but the surface is rough, and spotted with sharp edges.\n ' +
@@ -1350,6 +1352,7 @@ function day1part3() {
         'At the very least, you want to know what you\'re wearing.\n ' +
         'Although finding out where you are would be nice, too.\n ' +
         '                          Press Enter to Continue\n>');
+    wipeScreen();
     navigateDream(0);
 }
 
