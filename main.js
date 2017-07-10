@@ -428,8 +428,16 @@ function navigateDream(partOfDream, position) {
                 console.log('>Looking West')
             }
             chooseVar = PROMPT.question('You head in which direction?\n ' +
-                'W - North.   A - West.   S - South.   D - East.\n ' +
+                'W - Forward.   A - Left.   S - Backward.   D - Right.\n ' +
+                'Q - Rotate Left. E - Rotate Right.\n ' +
                 '>');
+            while (chooseVar != 'W' && chooseVar != 'w' && chooseVar != 'A' && chooseVar != 'a' && chooseVar != 'S' && chooseVar != 's' && chooseVar != 'D' && chooseVar != 'd' && chooseVar != 'Q' && chooseVar != 'q' && chooseVar != 'E' && chooseVar != 'e') {
+                chooseVar = PROMPT.question('That\'s not an option.' +
+                    'You head in which direction?\n ' +
+                    'W - Forward.   A - Left.   S - Backward.   D - Right.\n ' +
+                    'Q - Rotate Left. E - Rotate Right.\n ' +
+                    '>');
+            }
         }
     }
 }
