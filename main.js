@@ -418,7 +418,7 @@ function navigateDream(partOfDream, position) {
                     displayDream(7);
                 }
             }
-            if (direction = 'N') {
+            if (direction == 'N') {
                 console.log('>Looking North')
             } else if (direction == 'S') {
                 console.log('>Looking South')
@@ -432,12 +432,104 @@ function navigateDream(partOfDream, position) {
                 'Q - Rotate Left. E - Rotate Right.\n ' +
                 '>');
             while (chooseVar != 'W' && chooseVar != 'w' && chooseVar != 'A' && chooseVar != 'a' && chooseVar != 'S' && chooseVar != 's' && chooseVar != 'D' && chooseVar != 'd' && chooseVar != 'Q' && chooseVar != 'q' && chooseVar != 'E' && chooseVar != 'e') {
-                chooseVar = PROMPT.question('That\'s not an option.' +
+                chooseVar = PROMPT.question('That\'s not an option.\n ' +
                     'You head in which direction?\n ' +
                     'W - Forward.   A - Left.   S - Backward.   D - Right.\n ' +
                     'Q - Rotate Left. E - Rotate Right.\n ' +
                     '>');
             }
+            if (direction == 'N') {
+                if (chooseVar == 'W' || chooseVar == 'w') {
+                    chooseVar = 'N';
+                } else if (chooseVar == 'A' || chooseVar == 'a') {
+                    chooseVar = 'E';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'W';
+                } else if (chooseVar == 'S' || chooseVar == 's') {
+                    chooseVar = 'S';
+                }
+            } else if (direction == 'E') {
+                if (chooseVar == 'W' || chooseVar == 'w') {
+                    chooseVar = 'E';
+                } else if (chooseVar == 'A' || chooseVar == 'a') {
+                    chooseVar = 'N';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'S';
+                } else if (chooseVar == 'S' || chooseVar == 's') {
+                    chooseVar = 'W';
+                }
+            } else if (direction == 'W') {
+                if (chooseVar == 'W' || chooseVar == 'w') {
+                    chooseVar = 'W';
+                } else if (chooseVar == 'A' || chooseVar == 'a') {
+                    chooseVar = 'S';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'N';
+                } else if (chooseVar == 'S' || chooseVar == 's') {
+                    chooseVar = 'E';
+                }
+            } else if (direction == 'S') {
+                if (chooseVar == 'W' || chooseVar == 'w') {
+                    chooseVar = 'S';
+                } else if (chooseVar == 'A' || chooseVar == 'a') {
+                    chooseVar = 'W';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'E';
+                } else if (chooseVar == 'S' || chooseVar == 's') {
+                    chooseVar = 'N';
+                }
+            }
+            if (chooseVar == 'N') {
+                if (activeMap[position[0] - 1][position[1]] == 0) {
+                    console.log('You walked into a wall. Ouch!\n');
+                    pause();
+                } else {
+                    position[0] = position[0] - 2;
+                }
+            } else if (chooseVar == 'W') {
+                if (activeMap[position[0]][position[1] - 1] == 0) {
+                    console.log('You walked into a wall. Ouch!\n');
+                    pause();
+                } else {
+                    position[1] = position[1] - 2;
+                }
+            } else if (chooseVar == 'E') {
+                if (activeMap[position[0]][position[1] + 1] == 0) {
+                    console.log('You walked into a wall. Ouch!\n');
+                    pause();
+                } else {
+                    position[1] = position[1] + 2;
+                }
+            } else if (chooseVar == 'S') {
+                if (activeMap[position[0] + 1][position[1]] == 0) {
+                    console.log('You walked into a wall. Ouch!\n');
+                    pause();
+                } else {
+                    position[0] = position[0] + 2;
+                }
+            } else if (chooseVar == 'Q' || chooseVar == 'q') {
+                if (direction == 'N') {
+                    direction = 'W';
+                } else if (direction == 'W') {
+                    direction = 'S';
+                } else if (direction == 'S') {
+                    direction = 'E';
+                } else {
+                    direction = 'N';
+                }
+            } else {
+                if (direction == 'N') {
+                    direction = 'E';
+                } else if (direction == 'E') {
+                    direction = 'S';
+                } else if (direction == 'S') {
+                    direction = 'W';
+                } else {
+                    direction = 'N';
+                }
+            }
+            console.log(activeMap[position[0]][position[1]]);
+            pause();
         }
     }
 }
