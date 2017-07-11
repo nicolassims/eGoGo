@@ -565,7 +565,7 @@ function callFlavorText() {
         } else if (timesCalled[0] == 4) {
             timesCalled[0] = 5;
             console.log('The hissing sound grows louder.\n ' +
-                'You remember a documentary you once saw about Pythons...');
+                'You remember a documentary you once saw about pythons...');
         } else if (timesCalled[0] == 5) {
             timesCalled[0] = 6;
             console.log('You sniff.\n ' +
