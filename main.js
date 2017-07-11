@@ -8,9 +8,9 @@
 "use strict";
 const PROMPT = require('readline-sync'), IO = require(`fs`);
 
-let chooseVar, adventure, sense, dateMonth, dateDay;
+let chooseVar, dateMonth, dateDay;
 let fName, lName, dateName;
-let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [], moveList = [];
+let playerStats = [], activePlayers = [], enemyTypes = [], enemyTeam = [], moveList = [], timesCalled = [];
 
 function main() {
     day1part1();
@@ -485,6 +485,7 @@ function navigateDream(partOfDream, position) {
                     pause();
                 } else {
                     position[0] = position[0] - 2;
+                    callFlavorText();
                 }
             } else if (chooseVar == 'W') {
                 if (activeMap[position[0]][position[1] - 1] == 0) {
@@ -492,6 +493,7 @@ function navigateDream(partOfDream, position) {
                     pause();
                 } else {
                     position[1] = position[1] - 2;
+                    callFlavorText();
                 }
             } else if (chooseVar == 'E') {
                 if (activeMap[position[0]][position[1] + 1] == 0) {
@@ -499,6 +501,7 @@ function navigateDream(partOfDream, position) {
                     pause();
                 } else {
                     position[1] = position[1] + 2;
+                    callFlavorText();
                 }
             } else if (chooseVar == 'S') {
                 if (activeMap[position[0] + 1][position[1]] == 0) {
@@ -506,6 +509,7 @@ function navigateDream(partOfDream, position) {
                     pause();
                 } else {
                     position[0] = position[0] + 2;
+                    callFlavorText();
                 }
             } else if (chooseVar == 'Q' || chooseVar == 'q') {
                 if (direction == 'N') {
@@ -517,6 +521,7 @@ function navigateDream(partOfDream, position) {
                 } else {
                     direction = 'N';
                 }
+                callFlavorText();
             } else {
                 if (direction == 'N') {
                     direction = 'E';
@@ -527,8 +532,76 @@ function navigateDream(partOfDream, position) {
                 } else {
                     direction = 'N';
                 }
+                callFlavorText();
             }
+            wipeScreen();
         }
+    }
+}
+
+function callFlavorText() {
+    let randomVar = Math.floor((Math.random() * 5) + 1);
+    if (randomVar == 5) {
+        if (timesCalled[0] == null) {
+            timesCalled[0] = 0;
+            console.log('Your footsteps echo on the floor.\n ' +
+                'Your shoes make a squeaking sound, like they\'re brand new.');
+        } else if (timesCalled[0] == 0) {
+            timesCalled[0] = 1;
+            console.log('Your hand scrapes against the wall.\n ' +
+                'It\'s rough, and solid. It feels like marble.');
+        } else if (timesCalled[0] == 1) {
+            timesCalled[0] = 2;
+            console.log('You thought you heard someone cough.\n ' +
+                'It was just you.');
+        } else if (timesCalled[0] == 2) {
+            timesCalled[0] = 3;
+            console.log('You hear what sounds like water dripping up ahead.\n ' +
+                'The air is very dry, however...');
+        } else if (timesCalled[0] == 3) {
+            timesCalled[0] = 4;
+            console.log('You could\'ve sworn you just heard what sounded like gas escaping a small hole.\n ' +
+                'You hope somebody\'s just letting the air out of some balloons.');
+        } else if (timesCalled[0] == 4) {
+            timesCalled[0] = 5;
+            console.log('The hissing sound grows louder.\n ' +
+                'You remember a documentary you once saw about Pythons...');
+        } else if (timesCalled[0] == 5) {
+            timesCalled[0] = 6;
+            console.log('You sniff.\n ' +
+                'The air carries no scent whatsoever.');
+        } else if (timesCalled[0] == 6) {
+            timesCalled[0] = 7;
+            console.log('Your clothes rustle, making a soft sound.\n ' +
+                'You hold them closer to your body.');
+        } else if (timesCalled[0] == 7) {
+            timesCalled[0] = 8;
+            console.log('You hear a footstep.\n ' +
+                'It was not your own.');
+        } else if (timesCalled[0] == 8) {
+            timesCalled[0] = 9;
+            console.log('Suddenly, the air seems to get denser.\n ' +
+                'As though perfumed from an unseen censer.');
+        } else if (timesCalled[0] == 9) {
+            timesCalled[0] = 10;
+            console.log('You hear something in the distance.\n ' +
+                'Someone--or something--is running.');
+        } else if (timesCalled[0] == 10) {
+            timesCalled[0] = 11;
+            console.log('You hear the sound of a struggle ahead.\n ' +
+                'Your mouth is dry.');
+        } else if (timesCalled[0] == 11) {
+            timesCalled[0] = 12;
+            console.log('You\'re sweating bullets.\n ' +
+                'Your clothes remain dry, however.');
+        } else if (timesCalled[0] == 12) {
+            timesCalled[0] = 13;
+            console.log('You\'d better hurry.\n ' +
+                'You\'ve dawdled about in here for too long.');
+        } else {
+            console.log('The struggle gets louder and louder...');
+        }
+        pause();
     }
 }
 
