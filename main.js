@@ -442,9 +442,9 @@ function navigateDream(partOfDream, position) {
                 if (chooseVar == 'W' || chooseVar == 'w') {
                     chooseVar = 'N';
                 } else if (chooseVar == 'A' || chooseVar == 'a') {
-                    chooseVar = 'E';
-                } else if (chooseVar == 'D' || chooseVar == 'd') {
                     chooseVar = 'W';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'E';
                 } else if (chooseVar == 'S' || chooseVar == 's') {
                     chooseVar = 'S';
                 }
@@ -472,9 +472,9 @@ function navigateDream(partOfDream, position) {
                 if (chooseVar == 'W' || chooseVar == 'w') {
                     chooseVar = 'S';
                 } else if (chooseVar == 'A' || chooseVar == 'a') {
-                    chooseVar = 'W';
-                } else if (chooseVar == 'D' || chooseVar == 'd') {
                     chooseVar = 'E';
+                } else if (chooseVar == 'D' || chooseVar == 'd') {
+                    chooseVar = 'W';
                 } else if (chooseVar == 'S' || chooseVar == 's') {
                     chooseVar = 'N';
                 }
@@ -528,8 +528,6 @@ function navigateDream(partOfDream, position) {
                     direction = 'N';
                 }
             }
-            console.log(activeMap[position[0]][position[1]]);
-            pause();
         }
     }
 }
