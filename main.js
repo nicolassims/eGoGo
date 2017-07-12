@@ -1527,12 +1527,11 @@ function day1part3() {
     navigateDream(0);
     displaySnake();
     chooseVar = PROMPT.question('...It looks like you were too late.\n ' +
-        'Some large, serpentine creature has wrapped itself around a girl in a yellow raincoat.\n ' +
+        'Some large, serpentine creature has wrapped itself around a girl in an overlarge yellow coat.\n ' +
         'The creature seemed to be occupied with choking the life out of her, but it\'s noticed you now.\n ' +
-        'The girl gasps for air as the snake slowly turns around to face you.\n ' +
         'You notice it has a hood, like a cobra, and the pattern on said hood resembles a devilish smile.\n ' +
+        'The girl seems mostly unconscious; her hair covers her face.\n ' +
         '                          Press Enter to Continue\n>');
-
 }
 
 //
