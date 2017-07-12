@@ -1525,6 +1525,14 @@ function day1part3() {
         '                          Press Enter to Continue\n>');
     wipeScreen();
     navigateDream(0);
+    displaySnake();
+    chooseVar = PROMPT.question('...It looks like you were too late.\n ' +
+        'Some large, serpentine creature has wrapped itself around a girl in a yellow raincoat.\n ' +
+        'The creature seemed to be occupied with choking the life out of her, but it\'s noticed you now.\n ' +
+        'The girl gasps for air as the snake slowly turns around to face you.\n ' +
+        'You notice it has a hood, like a cobra, and the pattern on said hood resembles a devilish smile.\n ' +
+        '                          Press Enter to Continue\n>');
+
 }
 
 //
@@ -1749,6 +1757,31 @@ function displayHeart() {
         '                       -p=oiu\\t-p=o\n' +
         '                           as/fg\n' +
         '                             l\n');
+}
+
+function displaySnake() {
+    console.log('\n' +
+        '            ___________\n' +
+        '        .-\'/  /    /   \\\'-.\n' +
+        '     .-\' <o> /    /<o>  \\  \'-.\n' +
+        '  .-\'    /  /    /       \\    \'-.\n' +
+        ' |.--.  /  |   /          \\  .--.|\n' +
+        '|( () )|    | |            |( () )|\n' +
+        ' |\'--\'  \\                 /  \'--\'|\n' +
+        '  |  |\\__\\___^______/    /__/|  |                       __--__\n' +
+        '   | |^^^^\\ |    | /    /^^^^| |                       /      \\\n' +
+        '    \\ \\_   \\|    |/    /  _/\' /                       | |\\/\\/| |\n' +
+        '     \\  \\_^^/ _ _ _   /^_/  /                         //_\\_-_/_\\\\\n' +
+        '      \\   \\/         /_/  /                            /   Y    \\\n' +
+        '       \\  /  _ _ _  /   /                             | |  | |\\  \\\n' +
+        '        \\|         |  /                              /\'-┴-.| ||  |\n' +
+        '        | _ _ _ _ |  /                              / /\'-.\'-┴/  /\n' +
+        '         |         |/                              |  \'-./  |  /--.\n' +
+        '         |  _ _ _  |                                \'-.     /\\__\\ |\n' +
+        '         |         |\\_________________________________/\'---.\'-./ /\n' +
+        '         |  _ _ _  |   \\___/      \\___/      \\___/      \\__ \'--./\n' +
+        '          \\         \\ - _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ - /\n' +
+        '           \\_________\\______________________________________/\n');
 }
 
 function displayGeneric() {
