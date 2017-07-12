@@ -1828,7 +1828,6 @@ function displayZoe() {
         '            |  |≡|≡\\° UUU \'\\            \n' +
         '            |  |─┼─\\°       \\              \n' +
         '            |  | |  \\°       \\             \n');
-    pause();
 }
 
 function displayDaniela() {
